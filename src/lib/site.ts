@@ -2,7 +2,7 @@ export const SITE = {
   name: "RC Armazenagem",
   legalName: "RC Armazenagem",
   url: "https://rcarmazenagem.com.br",
-  transportesUrl: "https://rctransportes.com.br",
+  transportesUrl: "https://rctransportes.netlify.app",
   email: "cotacao@rctransportes.com.br",
   phone: "(11) 5521-8282",
   phoneHref: "tel:+551155218282",
