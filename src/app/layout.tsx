@@ -8,7 +8,7 @@ import "./globals.css";
 
 const archivo = Archivo({
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  weight: ["600", "700", "800", "900"],
   variable: "--font-archivo",
   display: "swap",
 });
@@ -36,7 +36,8 @@ export const metadata: Metadata = {
   description:
     "Armazenagem certificada com transporte incluso: recebimento, estocagem e expedição de cosméticos, químicos e medicamentos num único fornecedor.",
   icons: {
-    icon: "/assets-visuais/logo-simbolo.png",
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    apple: "/apple-icon.png",
   },
   openGraph: {
     type: "website",

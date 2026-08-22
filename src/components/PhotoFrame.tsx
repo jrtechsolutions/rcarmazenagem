@@ -20,6 +20,7 @@ export function PhotoFrame({ src, alt, className = "", label }: Props) {
     <div className={`ph-ortho overflow-hidden ${className}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="h-full w-full object-cover" />
+      {label ? <span className="bento-label">{label}</span> : null}
     </div>
   );
 }

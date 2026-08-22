@@ -6,8 +6,8 @@ type Props = {
 
 export function PageHero({ eyebrow, title, description }: Props) {
   return (
-    <section className="border-b border-borda bg-white px-4 pt-[42px] pb-8 sm:px-7">
-      <div className="mx-auto max-w-[1120px]">
+    <section className="bg-[linear-gradient(180deg,#FBFBFA,#fff)] pt-[42px] pb-8">
+      <div className="shell">
         <p className="font-mono text-[11.5px] tracking-[0.08em] text-verde-escuro uppercase">
           {eyebrow}
         </p>

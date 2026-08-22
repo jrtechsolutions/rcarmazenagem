@@ -217,7 +217,7 @@ export function QuoteForm() {
       <button
         type="submit"
         disabled={sending}
-        className="w-fit rounded-[9px] bg-verde-escuro px-[22px] py-3 text-[13.5px] font-semibold text-white disabled:opacity-60"
+        className="btn w-fit rounded-[9px] bg-ambar px-[22px] py-3 text-[13.5px] font-semibold disabled:opacity-60"
       >
         {sending ? "Enviando…" : "Solicitar orçamento"}
       </button>

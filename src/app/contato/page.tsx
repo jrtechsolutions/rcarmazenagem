@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { QuoteForm } from "@/components/QuoteForm";
+import { RevealSection } from "@/components/RevealSection";
 import { ENDERECOS, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -10,6 +11,9 @@ export const metadata: Metadata = {
 };
 
 export default function ContatoPage() {
+  const sp = ENDERECOS.filter((e) => e.cidade === "São Paulo");
+  const jundiai = ENDERECOS.filter((e) => e.cidade === "Jundiaí");
+
   return (
     <>
       <PageHero
@@ -18,8 +22,8 @@ export default function ContatoPage() {
         description="Orçamento de armazenagem — com transporte incluso por padrão, se fizer sentido pra carga."
       />
 
-      <section className="px-4 py-9 sm:px-7">
-        <div className="mx-auto grid max-w-[1120px] gap-10 lg:grid-cols-[1fr_1.1fr]">
+      <RevealSection alt>
+        <div className="shell grid gap-10 lg:grid-cols-[1fr_1.1fr]">
           <div>
             <h2 className="mb-4 font-mono text-[12px] tracking-[0.08em] text-mono-ink uppercase">
               Canais
@@ -50,21 +54,47 @@ export default function ContatoPage() {
               </li>
             </ul>
 
-            <h2 className="mt-8 mb-4 font-mono text-[12px] tracking-[0.08em] text-mono-ink uppercase">
-              Unidades
-            </h2>
-            <ul className="space-y-4 text-[13px] text-mono-ink">
-              {ENDERECOS.map((e) => (
-                <li key={`${e.logradouro}-${e.cep}`}>
-                  <b className="text-texto">{e.cidade}</b>
-                  <br />
-                  {e.logradouro}
-                  {e.extra ? ` · ${e.extra}` : ""}
-                  <br />
-                  <span className="font-mono text-[11.5px]">CEP {e.cep}</span>
-                </li>
-              ))}
-            </ul>
+            <div id="unidades" className="scroll-mt-24">
+              <h2 className="mt-8 mb-4 font-mono text-[12px] tracking-[0.08em] text-mono-ink uppercase">
+                Unidades
+              </h2>
+
+              <div id="unidades-sao-paulo" className="scroll-mt-28">
+                <h3 className="mb-2 text-[14px] font-semibold text-texto">
+                  São Paulo
+                </h3>
+                <ul className="mb-6 space-y-3 text-[13px] text-mono-ink">
+                  {sp.map((e) => (
+                    <li key={`${e.logradouro}-${e.cep}`}>
+                      {e.logradouro}
+                      {e.extra ? ` · ${e.extra}` : ""}
+                      <br />
+                      <span className="font-mono text-[11.5px]">
+                        CEP {e.cep}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div id="unidades-jundiai" className="scroll-mt-28">
+                <h3 className="mb-2 text-[14px] font-semibold text-texto">
+                  Jundiaí ({jundiai.length})
+                </h3>
+                <ul className="space-y-3 text-[13px] text-mono-ink">
+                  {jundiai.map((e) => (
+                    <li key={`${e.logradouro}-${e.cep}`}>
+                      {e.logradouro}
+                      {e.extra ? ` · ${e.extra}` : ""}
+                      <br />
+                      <span className="font-mono text-[11.5px]">
+                        CEP {e.cep}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
 
           <div className="rounded-[16px] border border-borda bg-card p-5 sm:p-7">
@@ -74,7 +104,7 @@ export default function ContatoPage() {
             <QuoteForm />
           </div>
         </div>
-      </section>
+      </RevealSection>
     </>
   );
 }

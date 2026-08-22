@@ -7,7 +7,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/estrutura",
     "/compliance",
     "/como-funciona",
-    "/transporte",
     "/contato",
     "/orcamento",
   ];
