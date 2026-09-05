@@ -133,7 +133,7 @@ export const NUMEROS: readonly {
   },
 ];
 
-/** Quotes fictícios só pra layout — manter `ficticio: true` até o cliente enviar depoimentos reais. */
+/** Quotes fictícios só pra layout. Manter `ficticio: true` até o cliente enviar depoimentos reais. */
 export const DEPOIMENTOS: readonly {
   quote: string;
   autor: string;
@@ -171,35 +171,35 @@ export const PASSOS = [
     titulo: "Estocagem",
     texto: "Posição por tipo de produto e FEFO.",
     legend:
-      "Cada classe de produto tem sua área segregada dentro do galpão — químicos não ficam ao lado de cosméticos. A posição também considera FEFO.",
+      "Cada classe de produto tem sua área segregada dentro do galpão. Químicos não ficam ao lado de cosméticos. A posição também considera FEFO.",
     detalhe:
-      "Produto regulado não divide espaço com caixa qualquer. Cada classe de produto tem sua área segregada dentro do galpão — químicos não ficam ao lado de cosméticos, produtos controlados não dividem corredor com saneantes. A posição também considera FEFO — o que vence primeiro sai primeiro.",
+      "Produto regulado não divide espaço com caixa qualquer. Cada classe de produto tem sua área segregada dentro do galpão: químicos não ficam ao lado de cosméticos, produtos controlados não dividem corredor com saneantes. A posição também considera FEFO: o que vence primeiro sai primeiro.",
   },
   {
     n: "3",
     titulo: "Expedição",
     texto: "Saída já na frota RC, com rastreio.",
     legend:
-      "Separação, conferência de saída e carregamento na frota própria — a rastreabilidade não quebra na troca de fornecedor.",
+      "Separação, conferência de saída e carregamento na frota própria. A rastreabilidade não quebra na troca de fornecedor.",
     detalhe:
-      "Separação, conferência de saída e carregamento na frota própria. A rastreabilidade não quebra na troca de fornecedor — é a mesma operação.",
+      "Separação, conferência de saída e carregamento na frota própria. A rastreabilidade não quebra na troca de fornecedor: é a mesma operação.",
   },
 ] as const;
 
 export const FLOW_TECH = [
   {
     title: "WMS com rastreio por lote",
-    text: "Sistema que registra posição, entrada e saída de cada lote — nada se move sem ficar registrado.",
+    text: "Sistema que registra posição, entrada e saída de cada lote. Nada se move sem ficar registrado.",
     icon: "nested" as const,
   },
   {
     title: "Regra FEFO aplicada",
-    text: "O lote que vence primeiro sai primeiro — evita produto vencendo parado no fundo do rack.",
+    text: "O lote que vence primeiro sai primeiro. Evita produto vencendo parado no fundo do rack.",
     icon: "check" as const,
   },
   {
     title: "Separação por classe",
-    text: "Produto químico não fica ao lado de cosmético — cada categoria tem sua área própria dentro do galpão.",
+    text: "Produto químico não fica ao lado de cosmético: cada categoria tem sua área própria dentro do galpão.",
     icon: "warehouse" as const,
   },
 ] as const;
@@ -208,7 +208,7 @@ export const BENEFICIOS = [
   {
     titulo: "Localização estratégica",
     texto:
-      "Operação em Jundiaí e São Paulo — saída rápida para capital, Grande SP e interior, sem transbordo extra.",
+      "Operação em Jundiaí e São Paulo. Saída rápida para capital, Grande SP e interior, sem transbordo extra.",
     icon: "warehouse" as const,
   },
   {
@@ -226,7 +226,7 @@ export const BENEFICIOS = [
   {
     titulo: "Compliance de carga regulada",
     texto:
-      "Processo para produto controlado, inflamável, hospitalar e correlato — não é galpão genérico.",
+      "Processo para produto controlado, inflamável, hospitalar e correlato. Não é galpão genérico.",
     icon: "rack" as const,
   },
 ] as const;
@@ -239,12 +239,12 @@ export const FEATURES_ESTRUTURA = [
   },
   {
     titulo: "Controle de acesso",
-    texto: "Restrição e registro de entrada por área — quem entra, quando e onde.",
+    texto: "Restrição e registro de entrada por área: quem entra, quando e onde.",
     icon: "warehouse" as const,
   },
   {
     titulo: "Sistema WMS",
-    texto: "Posição, lote e rotatividade (FEFO) no sistema — não na memória de quem opera.",
+    texto: "Posição, lote e rotatividade (FEFO) no sistema, não na memória de quem opera.",
     icon: "nested" as const,
     proof: { label: "Detalhado em Compliance", href: "/compliance" },
   },
@@ -275,7 +275,7 @@ export const FOTOS_ESTRUTURA = [
 ] as const;
 
 export const COMPLIANCE_INTRO =
-  "É a nossa licença ANVISA que garante que produto regulado é armazenado do jeito que a legislação pede, não só guardado — com processo documentado em cada etapa, não só espaço reservado.";
+  "É a nossa licença ANVISA que garante que produto regulado é armazenado do jeito que a legislação pede, não só guardado. Processo documentado em cada etapa, não só espaço reservado.";
 
 export const COMPLIANCE_DESTAQUE = [
   {
@@ -308,7 +308,7 @@ export const COMPLIANCE_DESTAQUE = [
   {
     titulo: "FISPQ arquivada por produto",
     texto:
-      "Ficha de Informação de Segurança de Produto Químico disponível pra cada item armazenado — consulta rápida em caso de incidente ou fiscalização.",
+      "Ficha de Informação de Segurança de Produto Químico disponível pra cada item armazenado. Consulta rápida em caso de incidente ou fiscalização.",
     icon: "clipboard" as const,
   },
 ] as const;
@@ -362,11 +362,11 @@ export const CERTS_COMPLEMENTARES = [
   },
   {
     label: "SASSMAQ",
-    tip: "Sistema de Avaliação de Saúde, Segurança, Meio Ambiente e Qualidade — específico pro transporte de produtos químicos.",
+    tip: "Sistema de Avaliação de Saúde, Segurança, Meio Ambiente e Qualidade, específico pro transporte de produtos químicos.",
   },
   {
     label: "CRF",
-    tip: "Conselho Regional de Farmácia — habilitação necessária pra transportar medicamentos controlados.",
+    tip: "Conselho Regional de Farmácia: habilitação necessária pra transportar medicamentos controlados.",
   },
   {
     label: "IBAMA",
@@ -382,7 +382,7 @@ export const FAQ = [
   },
   {
     q: "Que tipos de produto vocês armazenam?",
-    a: "Cosméticos, saneantes, correlatos, produtos químicos (incluindo perigosos, controlados e inflamáveis) e medicamentos — sempre com a licença e o processo específico de cada categoria.",
+    a: "Cosméticos, saneantes, correlatos, produtos químicos (incluindo perigosos, controlados e inflamáveis) e medicamentos, sempre com a licença e o processo específico de cada categoria.",
     pendente: false,
   },
   {
@@ -392,17 +392,17 @@ export const FAQ = [
   },
   {
     q: "Qual o prazo mínimo de contrato?",
-    a: "O prazo varia conforme volume e tipo de operação — nossa equipe monta uma proposta sob medida a partir do seu perfil de carga.",
+    a: "O prazo varia conforme volume e tipo de operação. Nossa equipe monta uma proposta sob medida a partir do seu perfil de carga.",
     pendente: true,
   },
   {
     q: "O transporte já sai incluso?",
-    a: "Sim. Sua carga sai do nosso galpão direto na frota RC — não é preciso contratar transporte à parte.",
+    a: "Sim. Sua carga sai do nosso galpão direto na frota RC. Não é preciso contratar transporte à parte.",
     pendente: false,
   },
   {
     q: "Como funciona o controle de temperatura?",
-    a: "Depende da área de armazenagem contratada — temos galpões com e sem climatização. Nosso time indica a opção certa pro seu produto.",
+    a: "Depende da área de armazenagem contratada: temos galpões com e sem climatização. Nosso time indica a opção certa pro seu produto.",
     pendente: true,
   },
 ] as const;

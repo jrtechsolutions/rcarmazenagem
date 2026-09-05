@@ -21,7 +21,7 @@ export default function ContatoPage() {
       <PageHero
         eyebrow="Contato"
         title="Fale com quem opera o galpão."
-        description="Orçamento de armazenagem — com transporte incluso por padrão, se fizer sentido pra carga."
+        description="Orçamento de armazenagem, com transporte incluso por padrão, se fizer sentido pra carga."
       />
 
       <RevealSection alt>

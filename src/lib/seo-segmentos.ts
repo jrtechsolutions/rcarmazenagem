@@ -45,7 +45,7 @@ export type SegmentPage = {
 export const TIPS = {
   anvisa:
     "Agência reguladora responsável pela vigilância sanitária de produtos regulados.",
-  wms: "Warehouse Management System — sistema que registra posição, entrada e saída de cada lote armazenado.",
+  wms: "Warehouse Management System: sistema que registra posição, entrada e saída de cada lote armazenado.",
   cetesb:
     "Companhia Ambiental do Estado de São Paulo, responsável por licenciar armazenagem de produto químico no estado.",
   fispq:

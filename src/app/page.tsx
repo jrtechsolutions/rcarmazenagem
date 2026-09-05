@@ -203,7 +203,7 @@ export default function HomePage() {
             O galpão por trás da operação
           </h2>
           <p className="mt-2 mb-5 max-w-[640px] text-[14.5px] text-mono-ink">
-            Dimensionado pra produto regulado — não é galpão genérico adaptado.
+            Dimensionado pra produto regulado. Não é galpão genérico adaptado.
             Corredores largos, sinalização de segurança em cada zona, e todo o
             processo documentado do recebimento à expedição.
           </p>

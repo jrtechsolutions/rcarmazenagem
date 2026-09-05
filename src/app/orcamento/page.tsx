@@ -6,7 +6,7 @@ import { RevealSection } from "@/components/RevealSection";
 export const metadata: Metadata = {
   title: "Orçamento",
   description:
-    "Solicite orçamento de armazenagem de carga regulada. Transporte incluso por padrão — um único fornecedor do recebimento à entrega.",
+    "Solicite orçamento de armazenagem de carga regulada. Transporte incluso por padrão: um único fornecedor do recebimento à entrega.",
 };
 
 export default function OrcamentoPage() {
@@ -15,7 +15,7 @@ export default function OrcamentoPage() {
       <PageHero
         eyebrow="Orçamento"
         title="Diga o tipo de produto e o volume estimado."
-        description="Retornamos com proposta de armazenagem. Transporte RC já vem marcado — desmarque só se a carga chegar por conta própria."
+        description="Retornamos com proposta de armazenagem. Transporte RC já vem marcado: desmarque só se a carga chegar por conta própria."
       />
       <RevealSection alt>
         <div className="shell">

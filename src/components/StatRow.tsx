@@ -12,7 +12,13 @@ function animateCount(el: HTMLElement, target: number, suffix: string) {
     el.textContent = Math.floor(p * target).toLocaleString("pt-BR") + suffix;
     if (p < 1) requestAnimationFrame(tick);
   };
+  // Efeito visual: parte de 0 só no client, depois que o HTML já mostrou o valor real.
+  el.textContent = `0${suffix}`;
   requestAnimationFrame(tick);
+}
+
+function formatCount(value: number, suffix: string) {
+  return `${value.toLocaleString("pt-BR")}${suffix}`;
 }
 
 type Props = {
@@ -46,7 +52,10 @@ export function StatRow({ variant = "cards" }: Props) {
               data-count={isCount ? String(n.value) : undefined}
               data-suffix={isCount ? n.suffix : undefined}
             >
-              {n.display ?? (isCount ? `0${n.suffix}` : `[ ]${n.suffix}`)}
+              {n.display ??
+                (isCount
+                  ? formatCount(n.value as number, n.suffix)
+                  : `[ ]${n.suffix}`)}
             </b>
             <span className={variant === "strip" ? "lbl" : undefined}>
               {n.label}

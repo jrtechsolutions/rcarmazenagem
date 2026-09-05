@@ -23,7 +23,7 @@ export default function ComoFuncionaPage() {
             Um mesmo responsável.
           </h1>
           <p>
-            Recebimento, estocagem e expedição — sem trocar de empresa no meio
+            Recebimento, estocagem e expedição, sem trocar de empresa no meio
             do processo.
           </p>
         </div>

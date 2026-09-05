@@ -76,7 +76,7 @@ export async function POST(request: Request) {
           from:
             process.env.CONTACT_FROM_EMAIL || "orcamento@rcarmazenagem.com.br",
           to: [to],
-          subject: `Orçamento RC Armazenagem — ${segmento} (${payload.empresa})`,
+          subject: `Orçamento RC Armazenagem: ${segmento} (${payload.empresa})`,
           text: [
             `Nome: ${payload.nome}`,
             `Empresa: ${payload.empresa}`,

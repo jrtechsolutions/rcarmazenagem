@@ -11,7 +11,7 @@ export default function ConfirmacaoPage() {
   return (
     <ConfirmationView
       tone="azul"
-      description="Enquanto isso, veja como funciona o Transporte RC — sua carga sai do nosso galpão direto na frota."
+      description="Enquanto isso, veja como funciona o Transporte RC: sua carga sai do nosso galpão direto na frota."
       ctaHref={SITE.transportesUrl}
       ctaLabel="Ver Transporte →"
       ctaExternal

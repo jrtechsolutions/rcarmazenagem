@@ -11,7 +11,7 @@ export function Footer() {
           <div className="foot-brand">
             <h4 className="font-display font-extrabold">RC Armazenagem</h4>
             <p>
-              Armazenagem certificada de carga regulada — cosméticos, saneantes,
+              Armazenagem certificada de carga regulada: cosméticos, saneantes,
               correlatos, químicos e medicamentos. Transporte incluso na mesma
               operação.
             </p>

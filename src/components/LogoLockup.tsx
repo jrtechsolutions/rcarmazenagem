@@ -5,7 +5,7 @@ export function LogoLockup() {
     <Link
       href="/"
       className="flex items-center gap-2"
-      aria-label="RC Armazenagem — página inicial"
+      aria-label="RC Armazenagem, página inicial"
     >
       <div className="logo-stage logo-static">
         {/* eslint-disable-next-line @next/next/no-img-element */}
