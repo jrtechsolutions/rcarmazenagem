@@ -4,9 +4,9 @@ import { CutawayFlow } from "@/components/CutawayFlow";
 import { RevealSection } from "@/components/RevealSection";
 
 export const metadata: Metadata = {
-  title: "Como funciona",
+  title: "Como Funciona a Armazenagem",
   description:
-    "Recebimento, estocagem FEFO e expedição na frota RC: três etapas, um mesmo responsável do início ao fim.",
+    "Recebimento, estocagem e expedição numa só operação. Entenda o fluxo de armazenagem regulada da RC.",
 };
 
 export default function ComoFuncionaPage() {

@@ -8,9 +8,9 @@ import { RevealSection } from "@/components/RevealSection";
 import { COMPLIANCE_INTRO } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Compliance",
+  title: "Compliance e Certificações",
   description:
-    "Licença ANVISA, FISPQ, controle de acesso, auditoria de lote, ISO 9001, SASSMAQ, CRF, AVCB e IBAMA para armazenagem de carga regulada.",
+    "Licença ANVISA, registro CETESB, FISPQ por produto. Veja as certificações da operação de armazenagem regulada.",
 };
 
 export default function CompliancePage() {

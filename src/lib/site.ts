@@ -60,6 +60,7 @@ export const SEGMENTOS = [
     cert: "ANVISA",
     icon: "rack" as const,
     image: "/segmentos/cosmeticos.jpg",
+    href: "/armazenagem-cosmeticos-regulados",
   },
   {
     id: "saneantes",
@@ -68,6 +69,7 @@ export const SEGMENTOS = [
     cert: "Bombeiros",
     icon: "check" as const,
     image: "/segmentos/saneantes.jpg",
+    href: "/armazenagem-saneantes",
   },
   {
     id: "correlatos",
@@ -76,6 +78,7 @@ export const SEGMENTOS = [
     cert: "ANVISA",
     icon: "nested" as const,
     image: "/segmentos/correlatos.png",
+    href: "/armazenagem-correlatos",
   },
   {
     id: "quimicos",
@@ -85,6 +88,7 @@ export const SEGMENTOS = [
     cert: "Polícia Federal",
     icon: "warehouse" as const,
     image: "/segmentos/quimicos.jpg",
+    href: "/armazenagem-produtos-quimicos",
   },
   {
     id: "medicamentos",
@@ -94,6 +98,7 @@ export const SEGMENTOS = [
     cert: "ANVISA · CRF",
     icon: "check" as const,
     image: "/segmentos/medicamentos.jpg",
+    href: "/armazenagem-medicamentos",
   },
 ] as const;
 
@@ -279,6 +284,12 @@ export const COMPLIANCE_DESTAQUE = [
     icon: "warehouse" as const,
   },
   {
+    titulo: "CETESB",
+    texto:
+      "Registro ambiental do estado de São Paulo pra armazenagem de produto químico.",
+    icon: "clipboard" as const,
+  },
+  {
     titulo: "Controle de Acesso",
     texto: "Restrição e registro de entrada por área.",
     icon: "rack" as const,
@@ -305,24 +316,24 @@ export const COMPLIANCE_DESTAQUE = [
 export const COMPLIANCE_GROUPS = [
   {
     head: "Licenciamento",
-    items: [COMPLIANCE_DESTAQUE[0]],
+    items: [COMPLIANCE_DESTAQUE[0], COMPLIANCE_DESTAQUE[1]],
   },
   {
     head: "Controle operacional",
     items: [
-      COMPLIANCE_DESTAQUE[1],
+      COMPLIANCE_DESTAQUE[2],
       {
-        ...COMPLIANCE_DESTAQUE[2],
+        ...COMPLIANCE_DESTAQUE[3],
         texto: "Monitoramento contínuo, onde aplicável.",
       },
-      COMPLIANCE_DESTAQUE[3],
+      COMPLIANCE_DESTAQUE[4],
     ],
   },
   {
     head: "Documentação técnica",
     items: [
       {
-        ...COMPLIANCE_DESTAQUE[4],
+        ...COMPLIANCE_DESTAQUE[5],
         texto:
           "Ficha de Informação de Segurança de Produto Químico disponível pra cada item armazenado.",
       },
@@ -333,6 +344,7 @@ export const COMPLIANCE_GROUPS = [
 export const CERTS_COMPLETAS = [
   "ISO 9001",
   "ANVISA",
+  "CETESB",
   "Licenças da Polícia Federal, Exército, Governo Estadual e Prefeitura",
   "Corpo de Bombeiros (AVCB)",
   "SASSMAQ",
@@ -341,6 +353,10 @@ export const CERTS_COMPLETAS = [
 ] as const;
 
 export const CERTS_COMPLEMENTARES = [
+  {
+    label: "CETESB",
+    tip: "Companhia Ambiental do Estado de São Paulo, responsável por licenciar armazenagem de produto químico no estado.",
+  },
   {
     label: "Licenças da Polícia Federal, Exército, Governo Estadual e Prefeitura",
   },
@@ -359,6 +375,11 @@ export const CERTS_COMPLEMENTARES = [
 ] as const;
 
 export const FAQ = [
+  {
+    q: "A RC Armazenagem tem licença ambiental?",
+    a: "Sim. A RC Armazenagem possui registro na CETESB, órgão ambiental do estado de São Paulo responsável por licenciar armazenagem de produto químico.",
+    pendente: false,
+  },
   {
     q: "Que tipos de produto vocês armazenam?",
     a: "Cosméticos, saneantes, correlatos, produtos químicos (incluindo perigosos, controlados e inflamáveis) e medicamentos — sempre com a licença e o processo específico de cada categoria.",

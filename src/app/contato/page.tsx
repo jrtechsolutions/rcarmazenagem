@@ -5,9 +5,11 @@ import { RevealSection } from "@/components/RevealSection";
 import { ENDERECOS, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contato",
+  title: {
+    absolute: "Fale com a RC Armazenagem",
+  },
   description:
-    "Fale com a RC Armazenagem: orçamento de guarda e transporte de carga regulada, unidades em São Paulo e Jundiaí.",
+    "Solicite orçamento de armazenagem regulada em São Paulo ou Jundiaí.",
 };
 
 export default function ContatoPage() {

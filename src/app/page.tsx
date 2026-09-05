@@ -5,16 +5,19 @@ import { CertWall } from "@/components/CertWall";
 import { CompareTable } from "@/components/CompareTable";
 import { CrossLink } from "@/components/CrossLink";
 import { CutawayFlow } from "@/components/CutawayFlow";
+import { JsonLdScript } from "@/components/JsonLdScript";
 import { RevealSection } from "@/components/RevealSection";
 import { SegmentCarousel } from "@/components/SegmentCarousel";
 import { SegmentIcon } from "@/components/Icons";
 import { StatRow } from "@/components/StatRow";
 import { Testimonials } from "@/components/Testimonials";
+import { faqPageJsonLd } from "@/lib/schema";
 import { COMPLIANCE_DESTAQUE, COMPLIANCE_INTRO, FAQ, SITE } from "@/lib/site";
 
 export default function HomePage() {
   return (
     <>
+      <JsonLdScript data={faqPageJsonLd()} />
       <section
         id="hero"
         className="bg-[linear-gradient(160deg,#E9F2ED,#fff_65%)]"

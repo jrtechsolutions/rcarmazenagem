@@ -7,9 +7,9 @@ import { StatRow } from "@/components/StatRow";
 import { FEATURES_ESTRUTURA, FOTOS_ESTRUTURA } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Estrutura",
+  title: "Estrutura do Galpão",
   description:
-    "O galpão por trás da operação: área, porta-paletes, controle de acesso, WMS e prevenção de incêndio para carga regulada.",
+    "Galpão dimensionado pra produto regulado, com corredores largos e sinalização por zona. Conheça a estrutura.",
 };
 
 const TONES = ["t1", "t2", "t3"] as const;

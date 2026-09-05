@@ -72,6 +72,14 @@ export function IconArrowLeft({ className }: IconProps) {
   );
 }
 
+export function IconChevronRight({ className }: IconProps) {
+  return (
+    <svg {...stroke} className={className}>
+      <path d="M9 6l6 6-6 6" />
+    </svg>
+  );
+}
+
 export function IconWhatsApp({ className }: IconProps) {
   return (
     <svg

@@ -30,11 +30,11 @@ const ibmMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "RC Armazenagem — Armazenagem e Transporte de Carga Regulada",
-    template: "%s - RC Armazenagem",
+    default: "Armazenagem de Produtos Regulados em SP | RC Armazenagem",
+    template: "%s | RC Armazenagem",
   },
   description:
-    "Armazenagem certificada com transporte incluso: recebimento, estocagem e expedição de cosméticos, químicos e medicamentos num único fornecedor.",
+    "Armazenagem de cosméticos regulados, químicos, saneantes, correlatos e medicamentos. Licença ANVISA, CETESB e sistema WMS.",
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png" }],
     apple: "/apple-icon.png",
@@ -43,9 +43,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName: SITE.name,
-    title: "RC Armazenagem — Armazenagem e Transporte de Carga Regulada",
+    title: "Armazenagem de Produtos Regulados em SP | RC Armazenagem",
     description:
-      "Armazenagem certificada com transporte incluso: recebimento, estocagem e expedição de cosméticos, químicos e medicamentos num único fornecedor.",
+      "Armazenagem de cosméticos regulados, químicos, saneantes, correlatos e medicamentos. Licença ANVISA, CETESB e sistema WMS.",
     images: ["/assets-visuais/hero-armazenagem-poster.jpg"],
   },
 };
