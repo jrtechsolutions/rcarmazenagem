@@ -22,7 +22,7 @@ export default function EstruturaPage() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/assets-estrutura/estrutura-fachada.jpg"
-          alt="Fachada do galpão RC Armazenagem"
+          alt="Fachada do galpão RC Armazém"
         />
         <div className="photo-hero-content">
           <div className="shell">

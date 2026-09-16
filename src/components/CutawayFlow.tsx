@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useId, useRef } from "react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { IconCheck, IconNested, IconWarehouse } from "@/components/Icons";
-import { FLOW_TECH, PASSOS } from "@/lib/site";
 import { onVisibleOnce } from "@/lib/onVisibleOnce";
+import { FLOW_TECH, PASSOS } from "@/lib/site";
 
 const TECH_ICONS = {
   nested: IconNested,
@@ -11,243 +12,240 @@ const TECH_ICONS = {
   warehouse: IconWarehouse,
 } as const;
 
-function CutawaySvg({ clipId }: { clipId: string }) {
-  return (
-    <svg viewBox="0 0 900 260" fill="none" aria-hidden>
-      <path
-        d="M20,60 L450,15 L880,60"
-        stroke="#164D33"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      <line
-        x1="20"
-        y1="230"
-        x2="880"
-        y2="230"
-        stroke="#164D33"
-        strokeWidth="3"
-      />
+type Props = {
+  /** Home: teaser com 1 vídeo. Página: etapas interativas + tech grid. */
+  compact?: boolean;
+};
 
-      <g className="zone-1">
-        <rect
-          x="40"
-          y="60"
-          width="220"
-          height="170"
-          fill="none"
-          stroke="#DCDFDA"
-          strokeWidth="1.5"
-          strokeDasharray="4 4"
-        />
-        <rect
-          x="65"
-          y="150"
-          width="70"
-          height="80"
-          fill="#E7EFF7"
-          stroke="#2D6CA6"
-          strokeWidth="2"
-        />
-        <path
-          d="M135,175 h35 l20,20 v35 h-55z"
-          fill="#E7EFF7"
-          stroke="#2D6CA6"
-          strokeWidth="2"
-        />
-        <circle cx="90" cy="230" r="9" fill="#fff" stroke="#164D33" strokeWidth="2" />
-        <circle cx="175" cy="230" r="9" fill="#fff" stroke="#164D33" strokeWidth="2" />
-        <rect x="185" y="110" width="26" height="26" rx="3" fill="#1F6B47" />
-        <path
-          d="M191,123 l6,6 12,-13"
-          stroke="#fff"
-          strokeWidth="2.5"
-          fill="none"
-        />
-        <circle cx="60" cy="80" r="14" fill="#164D33" />
-        <text
-          x="60"
-          y="85"
-          textAnchor="middle"
-          fill="#fff"
-          fontFamily="IBM Plex Mono, monospace"
-          fontSize="14"
-          fontWeight="700"
-        >
-          1
-        </text>
-      </g>
-
-      <defs>
-        <clipPath id={clipId}>
-          <rect className="line-clip-rect" x="270" y="150" width="0" height="30" />
-        </clipPath>
-      </defs>
-      <path
-        className="flow-line"
-        d="M270,165 L660,165"
-        stroke="#D98A2B"
-        strokeWidth="2.5"
-        strokeDasharray="6 6"
+function MuteIcon({ muted }: { muted: boolean }) {
+  if (muted) {
+    return (
+      <svg
+        viewBox="0 0 24 24"
         fill="none"
-        clipPath={`url(#${clipId})`}
-      />
-
-      <g className="zone-2">
-        <rect
-          x="290"
-          y="60"
-          width="320"
-          height="170"
-          fill="none"
-          stroke="#DCDFDA"
-          strokeWidth="1.5"
-          strokeDasharray="4 4"
-        />
-        <rect x="320" y="90" width="60" height="120" fill="none" stroke="#164D33" strokeWidth="2" />
-        <line x1="320" y1="130" x2="380" y2="130" stroke="#164D33" strokeWidth="2" />
-        <line x1="320" y1="170" x2="380" y2="170" stroke="#164D33" strokeWidth="2" />
-        <rect x="327" y="98" width="18" height="18" fill="#1F6B47" />
-        <rect x="352" y="138" width="18" height="18" fill="#1F6B47" />
-        <rect x="327" y="178" width="18" height="18" fill="#B9CBC0" />
-        <rect x="420" y="90" width="60" height="120" fill="none" stroke="#164D33" strokeWidth="2" />
-        <line x1="420" y1="130" x2="480" y2="130" stroke="#164D33" strokeWidth="2" />
-        <line x1="420" y1="170" x2="480" y2="170" stroke="#164D33" strokeWidth="2" />
-        <rect x="427" y="98" width="18" height="18" fill="#B9CBC0" />
-        <rect x="452" y="138" width="18" height="18" fill="#1F6B47" />
-        <rect x="427" y="178" width="18" height="18" fill="#1F6B47" />
-        <rect x="520" y="90" width="60" height="120" fill="none" stroke="#164D33" strokeWidth="2" />
-        <line x1="520" y1="130" x2="580" y2="130" stroke="#164D33" strokeWidth="2" />
-        <line x1="520" y1="170" x2="580" y2="170" stroke="#164D33" strokeWidth="2" />
-        <rect x="527" y="98" width="18" height="18" fill="#1F6B47" />
-        <rect x="552" y="178" width="18" height="18" fill="#1F6B47" />
-        <circle cx="320" cy="80" r="14" fill="#164D33" />
-        <text
-          x="320"
-          y="85"
-          textAnchor="middle"
-          fill="#fff"
-          fontFamily="IBM Plex Mono, monospace"
-          fontSize="14"
-          fontWeight="700"
-        >
-          2
-        </text>
-      </g>
-
-      <g className="zone-3">
-        <rect
-          x="630"
-          y="60"
-          width="230"
-          height="170"
-          fill="none"
-          stroke="#DCDFDA"
-          strokeWidth="1.5"
-          strokeDasharray="4 4"
-        />
-        <rect
-          x="680"
-          y="150"
-          width="70"
-          height="80"
-          fill="#EEF4F0"
-          stroke="#1F6B47"
-          strokeWidth="2"
-        />
-        <path
-          d="M750,175 h35 l20,20 v35 h-55z"
-          fill="#EEF4F0"
-          stroke="#1F6B47"
-          strokeWidth="2"
-        />
-        <circle cx="705" cy="230" r="9" fill="#fff" stroke="#164D33" strokeWidth="2" />
-        <circle cx="790" cy="230" r="9" fill="#fff" stroke="#164D33" strokeWidth="2" />
-        <path d="M655,120 l10,-14 h14 l0,14z" fill="#D98A2B" />
-        <line x1="662" y1="106" x2="662" y2="150" stroke="#D98A2B" strokeWidth="2.5" />
-        <circle cx="655" cy="80" r="14" fill="#164D33" />
-        <text
-          x="655"
-          y="85"
-          textAnchor="middle"
-          fill="#fff"
-          fontFamily="IBM Plex Mono, monospace"
-          fontSize="14"
-          fontWeight="700"
-        >
-          3
-        </text>
-      </g>
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden
+      >
+        <path d="M11 5L6 9H2v6h4l5 4V5z" />
+        <line x1="23" y1="9" x2="17" y2="15" />
+        <line x1="17" y1="9" x2="23" y2="15" />
+      </svg>
+    );
+  }
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M11 5L6 9H2v6h4l5 4V5z" />
+      <path d="M15.5 8.5a5 5 0 010 7" />
+      <path d="M18.5 5.5a9 9 0 010 13" />
     </svg>
   );
 }
 
-type Props = {
-  /** Home: só a ilustração. Página: ilustração + legenda + tech grid. */
-  compact?: boolean;
-};
-
-export function CutawayFlow({ compact = false }: Props) {
+function HomeFlowTeaser() {
   const wrapRef = useRef<HTMLDivElement>(null);
-  const blockRef = useRef<HTMLDivElement>(null);
-  const rawId = useId().replace(/:/g, "");
-  const clipId = `lineClip-${rawId}`;
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const block = blockRef.current;
-    const wrap = wrapRef.current;
-    if (!block || !wrap) return;
+    const el = wrapRef.current;
+    const video = videoRef.current;
+    if (!el || !video) return;
     return onVisibleOnce(
-      block,
+      el,
       () => {
-        wrap.classList.add("on");
+        void video.play().catch(() => {});
       },
-      0.3,
+      0.4,
     );
   }, []);
 
   return (
-    <div ref={blockRef} className={compact ? "cutaway-block cutaway-compact" : "cutaway-block"}>
-      <div ref={wrapRef} className="cutaway-wrap">
-        <CutawaySvg clipId={clipId} />
-
-        {compact ? null : (
-          <>
-            <p className="cutaway-hint">
-              Cada número da ilustração corresponde a uma etapa abaixo:
-            </p>
-            <div className="cutaway-legend">
-              {PASSOS.map((p) => (
-                <div key={p.n}>
-                  <div className="top-zone">
-                    <span className="n">{p.n}</span>
-                    <h5>{p.titulo}</h5>
-                    <p>{p.texto}</p>
-                  </div>
-                  <div className="long">{p.legend}</div>
-                </div>
-              ))}
-            </div>
-          </>
-        )}
+    <div className="home-flow-teaser" ref={wrapRef}>
+      <video
+        ref={videoRef}
+        muted
+        playsInline
+        preload="metadata"
+        src={PASSOS[0].video}
+      />
+      <div className="home-flow-overlay">
+        <div className="home-flow-steps">
+          {PASSOS.map((p) => (
+            <span key={p.key}>
+              {p.n} {p.titulo}
+            </span>
+          ))}
+        </div>
+        <Link href="/como-funciona" className="home-flow-link">
+          Ver o fluxo completo →
+        </Link>
       </div>
+    </div>
+  );
+}
 
-      {compact ? null : (
-        <div className="tech-grid">
-          {FLOW_TECH.map((item) => {
-            const Icon = TECH_ICONS[item.icon];
+function FullVideoFlow() {
+  const [current, setCurrent] = useState(0);
+  const [muted, setMuted] = useState(true);
+  const [progressMs, setProgressMs] = useState(0);
+  const currentRef = useRef(0);
+  const startedRef = useRef(false);
+  const videoColRef = useRef<HTMLDivElement>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  const goToStep = (index: number) => {
+    const next = ((index % PASSOS.length) + PASSOS.length) % PASSOS.length;
+    currentRef.current = next;
+    setCurrent(next);
+
+    videoRefs.current.forEach((v, i) => {
+      if (!v) return;
+      if (i === next) {
+        v.currentTime = 0;
+        const applyDuration = () => {
+          if (Number.isFinite(v.duration) && v.duration > 0) {
+            setProgressMs(v.duration * 1000);
+          }
+        };
+        if (v.readyState >= 1) applyDuration();
+        else v.addEventListener("loadedmetadata", applyDuration, { once: true });
+        void v.play().catch(() => {});
+      } else {
+        v.pause();
+      }
+    });
+  };
+
+  useEffect(() => {
+    const el = videoColRef.current;
+    if (!el) return;
+    return onVisibleOnce(
+      el,
+      () => {
+        if (startedRef.current) return;
+        startedRef.current = true;
+        goToStep(0);
+      },
+      0.4,
+    );
+  }, []);
+
+  useEffect(() => {
+    videoRefs.current.forEach((v) => {
+      if (v) v.muted = muted;
+    });
+  }, [muted]);
+
+  return (
+    <div className="video-flow">
+      <div className="video-flow-layout">
+        <div className="video-flow-steps">
+          {PASSOS.map((passo, idx) => {
+            const active = idx === current;
             return (
-              <div key={item.title} className="tech-box">
-                <div className="head">
-                  <Icon />
-                  <h6>{item.title}</h6>
-                </div>
-                <p>{item.text}</p>
-              </div>
+              <button
+                key={passo.key}
+                type="button"
+                className={`video-step-btn${active ? " active" : ""}`}
+                onClick={() => {
+                  startedRef.current = true;
+                  goToStep(idx);
+                }}
+              >
+                <span className="video-step-n">{passo.n}</span>
+                <span className="video-step-text">
+                  <h5>{passo.titulo}</h5>
+                  <p>{passo.texto}</p>
+                  {active ? (
+                    <span className="video-step-progress">
+                      <span
+                        key={`${passo.key}-${progressMs}`}
+                        className="video-step-progress-fill"
+                        style={
+                          progressMs > 0
+                            ? { animationDuration: `${progressMs}ms` }
+                            : undefined
+                        }
+                      />
+                    </span>
+                  ) : null}
+                </span>
+              </button>
             );
           })}
         </div>
-      )}
+
+        <div className="video-flow-col" ref={videoColRef}>
+          {PASSOS.map((passo, idx) => (
+            <video
+              key={passo.key}
+              ref={(el) => {
+                videoRefs.current[idx] = el;
+              }}
+              className={idx === current ? "active" : undefined}
+              muted={muted}
+              playsInline
+              preload={idx === 0 ? "metadata" : "none"}
+              src={passo.video}
+              onEnded={() => {
+                if (idx === currentRef.current) {
+                  goToStep(currentRef.current + 1);
+                }
+              }}
+            />
+          ))}
+          <span className="video-flow-label">{PASSOS[current].titulo}</span>
+          <button
+            type="button"
+            className="video-mute-btn"
+            aria-label={muted ? "Ativar som" : "Desativar som"}
+            onClick={() => setMuted((m) => !m)}
+          >
+            <MuteIcon muted={muted} />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function CutawayFlow({ compact = false }: Props) {
+  if (compact) {
+    return (
+      <div className="cutaway-block cutaway-compact">
+        <HomeFlowTeaser />
+      </div>
+    );
+  }
+
+  return (
+    <div className="cutaway-block">
+      <FullVideoFlow />
+
+      <div className="tech-grid">
+        {FLOW_TECH.map((item) => {
+          const Icon = TECH_ICONS[item.icon];
+          return (
+            <div key={item.title} className="tech-box">
+              <div className="head">
+                <Icon />
+                <h6>{item.title}</h6>
+              </div>
+              <p>{item.text}</p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

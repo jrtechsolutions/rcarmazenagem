@@ -1782,132 +1782,242 @@ button.btn {
   margin-bottom: 22px;
 }
 
-.cutaway-wrap {
-  border-radius: 18px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #edf3ee, #f7faf8);
-  padding: 22px 10px 0;
-  position: relative;
+.cutaway-block {
+  max-width: 100%;
+  overflow-x: clip;
 }
 
-.cutaway-wrap svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.cutaway-compact .cutaway-wrap {
-  padding-bottom: 16px;
-}
-
-.cutaway-hint {
-  padding: 16px 18px 0;
-  font-size: 12px;
-  color: var(--mono-ink);
-  border-top: 1px solid var(--borda);
-  margin-top: 6px;
-}
-
-.cutaway-legend {
+/* —— Como funciona: vídeo real sincronizado —— */
+.video-flow-layout {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border-top: none;
-  margin-top: 0;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 32px;
+  align-items: center;
 }
 
-.cutaway-legend > div {
-  padding: 16px 18px;
-  border-right: 1px solid var(--borda);
-}
-
-.cutaway-legend > div:last-child {
-  border-right: none;
-}
-
-@media (max-width: 700px) {
-  .cutaway-legend {
+@media (max-width: 760px) {
+  .video-flow-layout {
     grid-template-columns: 1fr;
   }
-
-  .cutaway-legend > div {
-    border-right: none;
-    border-bottom: 1px solid var(--borda);
-  }
-
-  .cutaway-legend > div:last-child {
-    border-bottom: none;
-  }
 }
 
-.cutaway-legend .n {
-  display: inline-flex;
+.video-flow-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.video-step-btn {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 16px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.25s ease;
+  font-family: inherit;
+  width: 100%;
+  color: inherit;
+}
+
+.video-step-btn:hover {
+  background: #fafaf8;
+}
+
+.video-step-btn.active {
+  background: #eef4f0;
+}
+
+.video-step-n {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--borda);
+  color: var(--mono-ink);
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
+  flex-shrink: 0;
+  font-family: var(--font-ibm-plex-mono), "IBM Plex Mono", monospace;
+  font-weight: 700;
+  font-size: 13px;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.video-step-btn.active .video-step-n {
   background: var(--verde);
   color: #fff;
-  font-family: var(--font-ibm-plex-mono), "IBM Plex Mono", monospace;
-  font-size: 11px;
+}
+
+.video-step-text h5 {
+  font-size: 15px;
+  margin-bottom: 4px;
   font-weight: 700;
-  margin-right: 8px;
-  vertical-align: middle;
+  transition: color 0.25s ease;
 }
 
-.cutaway-legend .top-zone {
-  min-height: 78px;
+.video-step-btn.active .video-step-text h5 {
+  color: var(--verde-escuro);
 }
 
-.cutaway-legend h5 {
-  font-size: 13.5px;
-  display: inline;
-  vertical-align: middle;
-}
-
-.cutaway-legend .top-zone > p {
-  font-size: 11.5px;
+.video-step-text p {
+  font-size: 12.5px;
   color: var(--mono-ink);
-  margin-top: 6px;
+  line-height: 1.45;
 }
 
-.cutaway-legend .long {
-  font-size: 11px;
-  color: var(--mono-ink);
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px dashed var(--borda);
+.video-step-progress {
+  display: block;
+  height: 2px;
+  background: var(--borda);
+  border-radius: 2px;
+  margin-top: 10px;
+  overflow: hidden;
 }
 
-.zone-1 {
+.video-step-progress-fill {
+  display: block;
+  height: 100%;
+  background: var(--verde);
+  width: 0%;
+  animation: videoFlowProgress linear forwards;
+}
+
+@keyframes videoFlowProgress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.video-flow-col {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #0f1912;
+}
+
+.video-flow-col video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.4s ease;
 }
 
-.zone-2 {
-  opacity: 0;
-  transition: opacity 0.5s ease 0.25s;
-}
-
-.zone-3 {
-  opacity: 0;
-  transition: opacity 0.5s ease 0.5s;
-}
-
-.cutaway-wrap.on .zone-1,
-.cutaway-wrap.on .zone-2,
-.cutaway-wrap.on .zone-3 {
+.video-flow-col video.active {
   opacity: 1;
 }
 
-.line-clip-rect {
-  width: 0;
-  transition: width 1.3s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+.video-flow-label {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  z-index: 2;
+  background: rgba(15, 25, 18, 0.65);
+  color: #fff;
+  font-family: var(--font-ibm-plex-mono), "IBM Plex Mono", monospace;
+  font-size: 11px;
+  padding: 5px 12px;
+  border-radius: 100px;
+  backdrop-filter: blur(4px);
 }
 
-.cutaway-wrap.on .line-clip-rect {
-  width: 390px;
+.video-mute-btn {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(15, 25, 18, 0.65);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-mute-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.home-flow-teaser {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 340px;
+  background: #0f1912;
+}
+
+.home-flow-teaser video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-flow-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 14px;
+  padding: 22px;
+  background: linear-gradient(
+    180deg,
+    transparent 35%,
+    rgba(15, 25, 18, 0.72) 100%
+  );
+}
+
+.home-flow-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  font-family: var(--font-ibm-plex-mono), "IBM Plex Mono", monospace;
+  font-size: 11px;
+  color: #fff;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.home-flow-link {
+  align-self: flex-start;
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.home-flow-link:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-step-progress-fill {
+    animation: none;
+    width: 100%;
+  }
+
+  .video-flow-col video {
+    transition: none;
+  }
 }
 
 .tech-grid {
@@ -1974,25 +2084,6 @@ button.btn {
   margin: 8px 0 0;
   padding-top: 8px;
   border-top: 1px dashed var(--borda);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .zone-1,
-  .zone-2,
-  .zone-3,
-  .line-clip-rect {
-    transition: none;
-  }
-
-  .zone-1,
-  .zone-2,
-  .zone-3 {
-    opacity: 1;
-  }
-
-  .line-clip-rect {
-    width: 390px;
-  }
 }
 
 /* —— Depoimentos (cascata; fictícios até o cliente enviar quotes reais) —— */

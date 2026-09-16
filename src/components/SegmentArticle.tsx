@@ -29,7 +29,7 @@ function SegmentBody({ id }: { id: SegmentId }) {
         <>
           <p>
             Marcas e distribuidoras de cosméticos que precisam de armazenagem
-            regulada contam com a RC Armazenagem em São Paulo e Jundiaí. O
+            regulada contam com a RC Armazém em São Paulo e Jundiaí. O
             galpão tem licença ANVISA e área segregada pra produto cosmético,
             separado de outras categorias de risco diferente.
           </p>
@@ -69,7 +69,7 @@ function SegmentBody({ id }: { id: SegmentId }) {
       return (
         <>
           <p>
-            Distribuidoras de produtos correlatos contam com a RC Armazenagem pra
+            Distribuidoras de produtos correlatos contam com a RC Armazém pra
             manter conformidade com a regulamentação da ANVISA do recebimento
             até a expedição.
           </p>

@@ -12,7 +12,7 @@ export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "RC Armazenagem",
+    name: SITE.name,
     url: SITE.url,
     logo: `${SITE.url}/assets-visuais/logo-simbolo.png`,
     telephone: "+55-11-5521-8282",
@@ -84,7 +84,7 @@ export function serviceJsonLd(page: SegmentPage) {
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: page.serviceType,
-    provider: { "@type": "Organization", name: "RC Armazenagem" },
+    provider: { "@type": "Organization", name: SITE.name },
     areaServed: [
       { "@type": "City", name: "São Paulo" },
       { "@type": "City", name: "Jundiaí" },

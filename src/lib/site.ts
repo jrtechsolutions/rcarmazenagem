@@ -1,7 +1,7 @@
 export const SITE = {
-  name: "RC Armazenagem",
-  legalName: "RC Armazenagem",
-  url: "https://rcarmazenagem.com.br",
+  name: "RC Armazém",
+  legalName: "RC Armazém",
+  url: "https://rcarmazem.com.br",
   transportesUrl: "https://rctransportes.netlify.app",
   email: "cotacao@rctransportes.com.br",
   phone: "(11) 5521-8282",
@@ -159,8 +159,10 @@ export const DEPOIMENTOS: readonly {
 export const PASSOS = [
   {
     n: "1",
+    key: "recebimento",
     titulo: "Recebimento",
-    texto: "Conferência e etiquetagem de cada lote na entrada.",
+    texto: "Conferência e etiquetagem de cada lote na entrada, direto na doca.",
+    video: "/assets-visuais/fluxo-recebimento.mp4",
     legend:
       "Cada lote é conferido na doca, etiquetado e registrado antes de ir pra posição. Sem lote identificado, não entra no rack.",
     detalhe:
@@ -168,8 +170,10 @@ export const PASSOS = [
   },
   {
     n: "2",
+    key: "estocagem",
     titulo: "Estocagem",
-    texto: "Posição por tipo de produto e FEFO.",
+    texto: "Posição definida por tipo de produto, carregamento organizado por classe.",
+    video: "/assets-visuais/fluxo-estocagem.mp4",
     legend:
       "Cada classe de produto tem sua área segregada dentro do galpão. Químicos não ficam ao lado de cosméticos. A posição também considera FEFO.",
     detalhe:
@@ -177,8 +181,10 @@ export const PASSOS = [
   },
   {
     n: "3",
+    key: "expedicao",
     titulo: "Expedição",
-    texto: "Saída já na frota RC, com rastreio.",
+    texto: "Separação, liberação e saída já na frota RC, com rastreio.",
+    video: "/assets-visuais/fluxo-expedicao.mp4",
     legend:
       "Separação, conferência de saída e carregamento na frota própria. A rastreabilidade não quebra na troca de fornecedor.",
     detalhe:
@@ -259,7 +265,7 @@ export const FEATURES_ESTRUTURA = [
 export const FOTOS_ESTRUTURA = [
   {
     label: "Fachada",
-    alt: "Fachada do galpão RC Armazenagem",
+    alt: "Fachada do galpão RC Armazém",
     src: "/assets-estrutura/estrutura-fachada.jpg",
   },
   {
@@ -376,8 +382,8 @@ export const CERTS_COMPLEMENTARES = [
 
 export const FAQ = [
   {
-    q: "A RC Armazenagem tem licença ambiental?",
-    a: "Sim. A RC Armazenagem possui registro na CETESB, órgão ambiental do estado de São Paulo responsável por licenciar armazenagem de produto químico.",
+    q: "A RC Armazém tem licença ambiental?",
+    a: "Sim. A RC Armazém possui registro na CETESB, órgão ambiental do estado de São Paulo responsável por licenciar armazenagem de produto químico.",
     pendente: false,
   },
   {

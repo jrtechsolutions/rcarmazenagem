@@ -6,7 +6,7 @@ import { ENDERECOS, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Fale com a RC Armazenagem",
+    absolute: "Fale com a RC Armazém",
   },
   description:
     "Solicite orçamento de armazenagem regulada em São Paulo ou Jundiaí.",

@@ -1,4 +1,4 @@
-# Prompt para o Cursor — RC Armazenagem (Fase 2 de 2)
+# Prompt para o Cursor — RC Armazém (Fase 2 de 2)
 
 > Cole este documento inteiro como contexto/instrução inicial no Cursor, num **projeto/chat novo**, separado do site de Transportes. Gere **por etapas** (ver seção 10), nunca peça pra gerar o site inteiro numa tacada só — isso produz resultado genérico.
 
@@ -7,9 +7,9 @@
 **Antes de escrever qualquer código, adicione estes arquivos à pasta do projeto e ABRA cada um deles:**
 
 1. `rc-brand-book.html` — abra no navegador. Referência definitiva de cor, tipografia, ícone, tratamento de foto e componentes. Copie os valores exatos do código-fonte, não reescreva "parecido".
-2. `rc-wireframe-hifi-homes.html` — abra e inspecione o código-fonte, aba "RC Armazenagem". Layout pixel a pixel a reproduzir.
-3. `rc-wireframe-hifi-internas.html` — mesma lógica, aba "RC Armazenagem" (Estrutura, Compliance).
-4. `rc-copy-dois-sites.md` — seção "SITE 2 — RC ARMAZENAGEM", copiar o texto exatamente.
+2. `rc-wireframe-hifi-homes.html` — abra e inspecione o código-fonte, aba "RC Armazém". Layout pixel a pixel a reproduzir.
+3. `rc-wireframe-hifi-internas.html` — mesma lógica, aba "RC Armazém" (Estrutura, Compliance).
+4. `rc-copy-dois-sites.md` — seção "SITE 2 — RC ARMAZÉM", copiar o texto exatamente.
 5. Pasta `assets-visuais/`:
    - `logo-simbolo.png` — símbolo R/C oficial (mesma logo do site de Transportes — é a mesma empresa, mesmo símbolo)
    - `header-anim-armazenagem.webp` — animação da empilhadeira passando pelo logo no header
@@ -80,7 +80,7 @@ Baseada no wireframe hi-fi + nos 3 concorrentes pesquisados (DSV, Unimol Brasil,
 3. **Bloco cross-link** (logo abaixo do hero, não no rodapé): "Armazenagem e transporte, numa só operação" — CTA pro site de Transportes
 4. **Números em destaque** (padrão validado nos 3 concorrentes — usar `IBM Plex Mono` grande): m² de área, posições de pallet, certificações. **Valores reais pendentes do cliente — usar placeholder `[ ]` visível até confirmação, nunca inventar número**
 5. **Como funciona:** 3 passos (Recebimento → Estocagem → Expedição) com o motivo animado de rack (níveis acendendo em sequência — código de referência na seção 5)
-6. **Por que escolher a RC Armazenagem:** 3-4 cards de benefício (ex: localização estratégica, tecnologia/WMS, redução de custo operacional, compliance regulatório) — adaptar copy ao segmento de carga regulada da RC, não copiar texto dos concorrentes
+6. **Por que escolher a RC Armazém:** 3-4 cards de benefício (ex: localização estratégica, tecnologia/WMS, redução de custo operacional, compliance regulatório) — adaptar copy ao segmento de carga regulada da RC, não copiar texto dos concorrentes
 7. **Compliance:** chips com as certificações (seção 6)
 8. **FAQ:** 4-5 perguntas comuns (rascunho na seção 6 — validar com cliente antes de publicar)
 9. **Depoimentos:** estrutura pronta para receber depoimentos reais de clientes — **não inventar depoimentos falsos**, deixar placeholder claro ("Depoimento em breve") até o cliente fornecer
@@ -125,7 +125,7 @@ Usar `IntersectionObserver` pra disparar `animation-play-state: running` quando 
 ## 6. Conteúdo real (copy já escrita — copiar exatamente do `rc-copy-dois-sites.md`)
 
 ### Tom: incluso/integrado
-O transporte é apresentado como parte natural do serviço, não como upsell à parte (diferente do site de Transportes, onde armazenagem é oferecida como opcional). Ver `rc-copy-dois-sites.md`, seção "SITE 2 — RC ARMAZENAGEM" para hero, cross-link, como funciona, formulário — copiar literalmente.
+O transporte é apresentado como parte natural do serviço, não como upsell à parte (diferente do site de Transportes, onde armazenagem é oferecida como opcional). Ver `rc-copy-dois-sites.md`, seção "SITE 2 — RC ARMAZÉM" para hero, cross-link, como funciona, formulário — copiar literalmente.
 
 ### Certificações a exibir (mesma lista do site de Transportes — é a mesma empresa)
 ISO 9001 · ANVISA · Licenças da Polícia Federal, Exército, Governo Estadual e Prefeitura · Corpo de Bombeiros (AVCB) · SASSMAQ · CRF (Conselho Regional de Farmácia) · Licença Ambiental IBAMA
@@ -146,7 +146,7 @@ Cosméticos · Saneantes · Correlatos · Químicos (produtos perigosos, control
 
 Ao contrário do site de Transportes, aqui **não existe posição no Google a proteger** — é a oportunidade de começar já otimizado, sem dívida técnica:
 
-1. Meta tags únicas por página, padrão `[Serviço] - RC Armazenagem`
+1. Meta tags únicas por página, padrão `[Serviço] - RC Armazém`
 2. `sitemap.xml` e `robots.txt` desde o primeiro deploy
 3. Schema.org `LocalBusiness` no `<head>`
 4. Vocabulário a incluir no texto/meta (mesmo vocabulário que já rankeia pro site de Transportes, vale usar aqui também): "produtos perigosos", "produtos controlados", "produtos inflamáveis", "produtos hospitalares"

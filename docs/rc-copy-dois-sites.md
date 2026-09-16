@@ -1,4 +1,4 @@
-# RC Transportes & RC Armazenagem — Copy completa
+# RC Transportes & RC Armazém — Copy completa
 
 Tom de voz geral: direto, técnico quando precisa (certificações, compliance), sem jargão de marketing genérico ("soluções", "sinergia"). Frases curtas. O texto assume que quem está lendo já sabe o que é carga regulada — não precisa explicar o óbvio.
 
@@ -91,12 +91,12 @@ Selo no header: **Parte do Grupo RC →** (link cruzado, aparece em toda página
 > Recebemos sua solicitação. Enquanto isso, veja como funciona nossa Armazenagem →
 
 ### Footer
-> RC Transportes e Logística — rctransportes.com.br · rcarmazenagem.com.br
+> RC Transportes e Logística — rctransportes.com.br · rcarmazem.com.br
 
 ---
 ---
 
-## SITE 2 — RC ARMAZENAGEM (rcarmazenagem.com.br)
+## SITE 2 — RC ARMAZÉM (rcarmazem.com.br)
 *Tom: incluso/integrado — transporte tratado como parte natural do serviço, não como upsell.*
 
 ### Header / navegação
@@ -172,7 +172,7 @@ Cosméticos · Saneantes · Correlatos · Químicos · Medicamentos
 > Recebemos sua solicitação. Enquanto isso, veja nossa frota e áreas de cobertura →
 
 ### Footer
-> RC Armazenagem — rcarmazenagem.com.br · rctransportes.com.br
+> RC Armazém — rcarmazem.com.br · rctransportes.com.br
 
 ---
 
@@ -182,8 +182,8 @@ Cosméticos · Saneantes · Correlatos · Químicos · Medicamentos
 - Title: `RC Transportes — Transporte de Cosméticos, Químicos e Medicamentos`
 - Meta: `Transporte certificado (ISO 9001, ANVISA) para carga regulada: cosméticos, saneantes, químicos e medicamentos. Frota própria, rastreio em tempo real.`
 
-**RC Armazenagem (home)**
-- Title: `RC Armazenagem — Armazenagem e Transporte de Carga Regulada`
+**RC Armazém (home)**
+- Title: `RC Armazém — Armazenagem e Transporte de Carga Regulada`
 - Meta: `Armazenagem certificada com transporte incluso: recebimento, estocagem e expedição de cosméticos, químicos e medicamentos num único fornecedor.`
 
 *(Nota: deixei alguns campos como [inserir] onde depende de dado real do cliente — metragem do galpão, região de cobertura, presença ou não de climatização. Preciso dessa informação da RC pra fechar 100%.)*

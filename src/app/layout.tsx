@@ -30,8 +30,8 @@ const ibmMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "Armazenagem de Produtos Regulados em SP | RC Armazenagem",
-    template: "%s | RC Armazenagem",
+    default: "Armazenagem de Produtos Regulados em SP | RC Armazém",
+    template: "%s | RC Armazém",
   },
   description:
     "Armazenagem de cosméticos regulados, químicos, saneantes, correlatos e medicamentos. Licença ANVISA, CETESB e sistema WMS.",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName: SITE.name,
-    title: "Armazenagem de Produtos Regulados em SP | RC Armazenagem",
+    title: "Armazenagem de Produtos Regulados em SP | RC Armazém",
     description:
       "Armazenagem de cosméticos regulados, químicos, saneantes, correlatos e medicamentos. Licença ANVISA, CETESB e sistema WMS.",
     images: ["/assets-visuais/hero-armazenagem-poster.jpg"],

@@ -84,12 +84,6 @@ export default function HomePage() {
           </p>
           <div className="mt-[18px]">
             <CutawayFlow compact />
-            <Link
-              href="/como-funciona"
-              className="mt-4 inline-block text-[13px] font-semibold text-verde-escuro"
-            >
-              Ver o fluxo completo →
-            </Link>
           </div>
         </div>
       </RevealSection>
@@ -97,7 +91,7 @@ export default function HomePage() {
       <RevealSection alt>
         <div className="shell">
           <p className="mb-2 font-mono text-[12px] tracking-[0.08em] text-mono-ink uppercase">
-            Por que escolher a RC Armazenagem
+            Por que escolher a RC Armazém
           </p>
           <h2 className="mb-5 font-display text-[22px] font-extrabold">
             Um fornecedor, do início ao fim

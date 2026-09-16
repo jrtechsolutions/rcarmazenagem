@@ -9,7 +9,7 @@ export function Footer() {
       <div className="shell pt-8 pb-5">
         <div className="foot-top">
           <div className="foot-brand">
-            <h4 className="font-display font-extrabold">RC Armazenagem</h4>
+            <h4 className="font-display font-extrabold">RC Armazém</h4>
             <p>
               Armazenagem certificada de carga regulada: cosméticos, saneantes,
               correlatos, químicos e medicamentos. Transporte incluso na mesma
@@ -50,7 +50,7 @@ export function Footer() {
 
         <div className="foot-bottom">
           <span>© {SITE.legalName}</span>
-          <span>rcarmazenagem.com.br · rctransportes.com.br</span>
+          <span>rcarmazem.com.br · rctransportes.com.br</span>
         </div>
       </div>
     </footer>

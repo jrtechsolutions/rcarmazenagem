@@ -5,13 +5,13 @@ export function LogoLockup() {
     <Link
       href="/"
       className="flex items-center gap-2"
-      aria-label="RC Armazenagem, página inicial"
+      aria-label="RC Armazém, página inicial"
     >
       <div className="logo-stage logo-static">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/assets-visuais/logo-simbolo.png" alt="" />
       </div>
-      <b className="wordmark visible">Armazenagem</b>
+      <b className="wordmark visible">Armazém</b>
     </Link>
   );
 }

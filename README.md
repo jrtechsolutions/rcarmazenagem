@@ -1,6 +1,6 @@
-# RC Armazenagem
+# RC Armazém
 
-Site institucional da RC Armazenagem. Site novo — não havia site próprio antes. Identidade do Brand Book + wireframes hi-fi, com hierarquia de cor invertida em relação ao site de Transportes (verde dominante).
+Site institucional da RC Armazém. Site novo — não havia site próprio antes. Identidade do Brand Book + wireframes hi-fi, com hierarquia de cor invertida em relação ao site de Transportes (verde dominante).
 
 ## Stack
 
