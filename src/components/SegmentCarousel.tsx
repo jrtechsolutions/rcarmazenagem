@@ -63,25 +63,25 @@ export function SegmentCarousel() {
     <div className="carousel-wrap">
       <div className="carousel" ref={ref}>
         {SEGMENTOS.map((s) => (
-          <Link
-            key={s.id}
-            href={s.href}
-            className="seg-card"
-            draggable={false}
-          >
-            <div className="seg-photo">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={s.image} alt="" draggable={false} />
-              <div className="ic-badge">
-                <SegmentIcon name={s.icon} />
+          <article key={s.id} className="seg-card">
+            <Link href={s.href} className="seg-card__link" draggable={false}>
+              <div className="seg-photo">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={s.image} alt="" draggable={false} />
+                {"risco" in s && s.risco ? (
+                  <span className="risk-badge">{s.risco}</span>
+                ) : null}
+                <div className="ic-badge">
+                  <SegmentIcon name={s.icon} />
+                </div>
               </div>
-            </div>
-            <div className="seg-body">
-              <h5>{s.nome}</h5>
-              <p>{s.descricao}</p>
-              <span className="ref">{s.cert}</span>
-            </div>
-          </Link>
+              <div className="seg-body">
+                <h5>{s.nome}</h5>
+                <p>{s.descricao}</p>
+                <span className="ref">{s.cert}</span>
+              </div>
+            </Link>
+          </article>
         ))}
       </div>
       <p className="carousel-hint mt-1 font-mono text-[11px] text-mono-ink">

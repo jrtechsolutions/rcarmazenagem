@@ -166,19 +166,135 @@ export function IconClipboard({ className }: IconProps) {
   );
 }
 
+export function IconLipstick({ className }: IconProps) {
+  return (
+    <svg {...stroke} className={className}>
+      <path d="M9 14l3-9 3 9" />
+      <path d="M8.5 14h7v5a2 2 0 01-2 2h-3a2 2 0 01-2-2v-5z" />
+      <path d="M10 8.5h4" />
+    </svg>
+  );
+}
+
+export function IconSpray({ className }: IconProps) {
+  return (
+    <svg {...stroke} className={className}>
+      <path d="M9 10h6v10a1 1 0 01-1 1h-4a1 1 0 01-1-1V10z" />
+      <path d="M11 10V7h3v3" />
+      <path d="M14 6.5c1.2-1 2.5-1.5 3.5-1.5M14.5 4.5c1-.8 2-1.2 3-1" />
+      <circle cx="12" cy="15" r="1" />
+    </svg>
+  );
+}
+
+export function IconStethoscope({ className }: IconProps) {
+  return (
+    <svg {...stroke} className={className}>
+      <path d="M6 4v5a4 4 0 008 0V4" />
+      <path d="M6 4h2M14 4h2" />
+      <path d="M14 13a4 4 0 108 0c0-2.2-1.5-3.5-4-4.5" />
+      <circle cx="18" cy="13" r="1.5" />
+    </svg>
+  );
+}
+
+export function IconFlask({ className }: IconProps) {
+  return (
+    <svg {...stroke} className={className}>
+      <path d="M9 3h6M10 3v4l-3 4v9a1 1 0 001 1h8a1 1 0 001-1v-9l-3-4V3" />
+    </svg>
+  );
+}
+
+export function IconDrop({ className }: IconProps) {
+  return (
+    <svg {...stroke} className={className}>
+      <path d="M12 3c3 4 6 7.5 6 11a6 6 0 01-12 0c0-3.5 3-7 6-11z" />
+    </svg>
+  );
+}
+
+export function IconShieldCheck({ className }: IconProps) {
+  return (
+    <svg {...stroke} className={className}>
+      <path d="M9 12l2 2 4-4" />
+      <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
+    </svg>
+  );
+}
+
+export function IconHazard({ className }: IconProps) {
+  return (
+    <svg {...stroke} className={className}>
+      <path d="M9 3h6M10 3v5l-5 9a1.5 1.5 0 001.3 2.2h11.4A1.5 1.5 0 0018 17l-5-9V3" />
+      <circle cx="12" cy="15" r="1" />
+    </svg>
+  );
+}
+
+export function IconCapsule({ className }: IconProps) {
+  return (
+    <svg {...stroke} className={className}>
+      <rect
+        x="3.5"
+        y="9"
+        width="17"
+        height="7"
+        rx="3.5"
+        transform="rotate(-35 12 12)"
+      />
+      <path d="M10.2 11.2l3.6 3.6" />
+    </svg>
+  );
+}
+
+export function IconPackage({ className }: IconProps) {
+  return (
+    <svg {...stroke} className={className}>
+      <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" />
+      <path d="M12 22V12" />
+      <path d="m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7" />
+      <path d="m7.5 4.27 9 5.15" />
+    </svg>
+  );
+}
+
+export function IconServer({ className }: IconProps) {
+  return (
+    <svg {...stroke} className={className}>
+      <rect x="4" y="4" width="16" height="6" rx="1" />
+      <rect x="4" y="14" width="16" height="6" rx="1" />
+      <circle cx="8" cy="7" r="1" fill="currentColor" stroke="none" />
+      <circle cx="8" cy="17" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 const MAP = {
   rack: IconRack,
   nested: IconNested,
   warehouse: IconWarehouse,
   check: IconCheck,
   clipboard: IconClipboard,
+  lipstick: IconLipstick,
+  spray: IconSpray,
+  stethoscope: IconStethoscope,
+  flask: IconFlask,
+  drop: IconDrop,
+  shield: IconShieldCheck,
+  hazard: IconHazard,
+  capsule: IconCapsule,
+  package: IconPackage,
+  server: IconServer,
 } as const;
+
+export type SegmentIconName = keyof typeof MAP;
 
 export function SegmentIcon({
   name,
   className,
 }: {
-  name: keyof typeof MAP;
+  name: SegmentIconName;
   className?: string;
 }) {
   const Cmp = MAP[name];

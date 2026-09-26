@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Archivo, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { CookieBanner, GoogleAnalytics } from "@/components/CookieBanner";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
+import { WhatsAppFab } from "@/components/WhatsAppFab";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
     template: "%s | RC Armazém",
   },
   description:
-    "Armazenagem de cosméticos regulados, químicos, saneantes, correlatos e medicamentos. Licença ANVISA, CETESB e sistema WMS.",
+    "Armazenagem de matérias-primas cosméticas, saneantes, correlatos, medicamentos, químicos, alimentícios e equipamentos de TI. Licença ANVISA, CETESB e sistema WMS.",
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png" }],
     apple: "/apple-icon.png",
@@ -45,8 +47,8 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     title: "Armazenagem de Produtos Regulados em SP | RC Armazém",
     description:
-      "Armazenagem de cosméticos regulados, químicos, saneantes, correlatos e medicamentos. Licença ANVISA, CETESB e sistema WMS.",
-    images: ["/assets-visuais/hero-armazenagem-poster.jpg"],
+      "Armazenagem de matérias-primas cosméticas, saneantes, correlatos, medicamentos, químicos, alimentícios e equipamentos de TI. Licença ANVISA, CETESB e sistema WMS.",
+    images: ["/assets-visuais/hero-cinematic-poster.jpg"],
   },
 };
 
@@ -61,6 +63,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main className="flex-1 bg-white">{children}</main>
         <Footer />
+        <WhatsAppFab />
+        <CookieBanner />
+        <GoogleAnalytics
+          measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}
+        />
       </body>
     </html>
   );

@@ -6,7 +6,11 @@ export type BreadcrumbItem = {
   path: string;
 };
 
-export type FaqLike = { q: string; a: string };
+export type FaqLike = {
+  q: string;
+  a: string;
+  link?: { href: string; label: string };
+};
 
 export function organizationJsonLd() {
   return {
@@ -40,7 +44,7 @@ export function organizationJsonLd() {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Armazenagem de cosméticos regulados",
+          name: "Armazenagem de matérias-primas para cosméticos",
         },
       },
       {
@@ -55,14 +59,56 @@ export function organizationJsonLd() {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Armazenagem de produtos químicos",
+          name: "Armazenagem de medicamentos",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Armazenagem de medicamentos",
+          name: "Armazenagem de medicamentos controlados",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Armazenagem de produtos controlados e químicos perigosos",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Armazenagem de insumos para resinas e química industrial",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Armazenagem de polímeros, borrachas e carbono",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Armazenagem de aditivos e especialidades químicas",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Armazenagem de equipamentos e gabinetes de TI",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Armazenagem de produtos alimentícios",
         },
       },
     ],
@@ -74,6 +120,18 @@ export function organizationJsonLd() {
       {
         "@type": "EducationalOccupationalCredential",
         credentialCategory: "CETESB",
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "IBAMA",
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "Polícia Federal",
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "AVCB",
       },
     ],
   };
@@ -113,14 +171,20 @@ export function faqPageJsonLd(items: readonly FaqLike[] = FAQ) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: items.map((item) => ({
-      "@type": "Question",
-      name: item.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.a,
-      },
-    })),
+    mainEntity: items.map((item) => {
+      const link =
+        "link" in item && item.link
+          ? ` ${item.link.label}`
+          : "";
+      return {
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `${item.a}${link}`,
+        },
+      };
+    }),
   };
 }
 

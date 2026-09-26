@@ -89,21 +89,48 @@ export function NavPill() {
 
 export function HeaderCta() {
   const pathname = usePathname();
-  const [heroVisible, setHeroVisible] = useState(false);
+  const [heroVisible, setHeroVisible] = useState(
+    pathname === "/" || pathname === "/estrutura",
+  );
 
   useEffect(() => {
-    const heroEl = document.querySelector("#hero");
-    if (!heroEl) {
+    const cinematic = pathname === "/" || pathname === "/estrutura";
+    if (!cinematic) {
       setHeroVisible(false);
       return;
     }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => setHeroVisible(entry.isIntersecting),
-      { threshold: 0.3 },
-    );
-    observer.observe(heroEl);
-    return () => observer.disconnect();
+    setHeroVisible(true);
+
+    let cancelled = false;
+    let observer: IntersectionObserver | null = null;
+    let raf = 0;
+    let tries = 0;
+
+    const connect = () => {
+      const heroEl = document.querySelector("#hero");
+      if (!heroEl) {
+        if (tries++ < 60) raf = requestAnimationFrame(connect);
+        return;
+      }
+      if (cancelled) return;
+
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!cancelled) setHeroVisible(entry.isIntersecting);
+        },
+        { threshold: 0.3 },
+      );
+      observer.observe(heroEl);
+    };
+
+    connect();
+
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(raf);
+      observer?.disconnect();
+    };
   }, [pathname]);
 
   return (

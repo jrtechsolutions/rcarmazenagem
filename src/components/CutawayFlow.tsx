@@ -15,6 +15,8 @@ const TECH_ICONS = {
 type Props = {
   /** Home: teaser com 1 vídeo. Página: etapas interativas + tech grid. */
   compact?: boolean;
+  /** Exibe o grid técnico abaixo do fluxo (padrão: true). */
+  showTech?: boolean;
 };
 
 function MuteIcon({ muted }: { muted: boolean }) {
@@ -165,7 +167,7 @@ function FullVideoFlow() {
                 <span className="video-step-n">{passo.n}</span>
                 <span className="video-step-text">
                   <h5>{passo.titulo}</h5>
-                  <p>{passo.texto}</p>
+                  <p>{active ? passo.detalhe : passo.texto}</p>
                   {active ? (
                     <span className="video-step-progress">
                       <span
@@ -219,7 +221,7 @@ function FullVideoFlow() {
   );
 }
 
-export function CutawayFlow({ compact = false }: Props) {
+export function CutawayFlow({ compact = false, showTech = true }: Props) {
   if (compact) {
     return (
       <div className="cutaway-block cutaway-compact">
@@ -232,20 +234,22 @@ export function CutawayFlow({ compact = false }: Props) {
     <div className="cutaway-block">
       <FullVideoFlow />
 
-      <div className="tech-grid">
-        {FLOW_TECH.map((item) => {
-          const Icon = TECH_ICONS[item.icon];
-          return (
-            <div key={item.title} className="tech-box">
-              <div className="head">
-                <Icon />
-                <h6>{item.title}</h6>
+      {showTech ? (
+        <div className="tech-grid">
+          {FLOW_TECH.map((item) => {
+            const Icon = TECH_ICONS[item.icon];
+            return (
+              <div key={item.title} className="tech-box">
+                <div className="head">
+                  <Icon />
+                  <h6>{item.title}</h6>
+                </div>
+                <p>{item.text}</p>
               </div>
-              <p>{item.text}</p>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      ) : null}
     </div>
   );
 }

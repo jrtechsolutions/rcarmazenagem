@@ -1,78 +1,46 @@
 import Link from "next/link";
 import { BentoGrid } from "@/components/BentoGrid";
-import { CertLine } from "@/components/CertLine";
-import { CertWall } from "@/components/CertWall";
-import { CompareTable } from "@/components/CompareTable";
+import { CertMarquee } from "@/components/CertMarquee";
 import { CrossLink } from "@/components/CrossLink";
 import { CutawayFlow } from "@/components/CutawayFlow";
+import { HeroCinematicVideo } from "@/components/HeroCinematicVideo";
 import { JsonLdScript } from "@/components/JsonLdScript";
 import { RevealSection } from "@/components/RevealSection";
 import { SegmentCarousel } from "@/components/SegmentCarousel";
-import { SegmentIcon } from "@/components/Icons";
-import { StatRow } from "@/components/StatRow";
 import { Testimonials } from "@/components/Testimonials";
 import { faqPageJsonLd } from "@/lib/schema";
-import { COMPLIANCE_DESTAQUE, COMPLIANCE_INTRO, FAQ, SITE } from "@/lib/site";
+import { FAQ, SITE } from "@/lib/site";
 
 export default function HomePage() {
   return (
     <>
       <JsonLdScript data={faqPageJsonLd()} />
-      <section
-        id="hero"
-        className="bg-[linear-gradient(160deg,#E9F2ED,#fff_65%)]"
-      >
-        <div className="shell grid items-center gap-6 py-12 lg:grid-cols-2 lg:gap-6 lg:py-[54px]">
-          <div>
-            <p className="font-mono text-[11.5px] tracking-[0.08em] text-verde-escuro uppercase">
-              Grupo RC
+      <section id="hero" className="hero-cinematic relative isolate overflow-hidden">
+        <HeroCinematicVideo />
+
+        <div className="hero-cinematic__content shell relative z-10 flex items-center">
+          <div className="hero-cinematic__copy max-w-[540px]">
+            <p className="font-mono text-[11.5px] tracking-[0.08em] text-white/75 uppercase">
+              Armazenagem regulada · desde {SITE.founded}
             </p>
-            <h1 className="mt-2 max-w-[440px] font-display text-[clamp(27px,3.6vw,40px)] font-extrabold leading-[1.12] text-texto">
+            <h1 className="mt-3 font-display text-[clamp(28px,4.2vw,44px)] font-extrabold leading-[1.1] text-white">
               Um grupo. Do galpão à entrega.
             </h1>
-            <p className="mt-3.5 max-w-[400px] text-[14.5px] text-mono-ink">
+            <p className="mt-4 max-w-[420px] text-[15px] leading-relaxed text-white/85">
               Sem repasse entre empresas. A mesma operação que guarda a carga
               também organiza o transporte.
             </p>
             <Link
               href="/estrutura"
-              className="btn mt-[22px] inline-block rounded-[9px] bg-ambar px-[22px] py-3 text-[13.5px] font-semibold"
+              className="btn mt-7 inline-block rounded-[9px] bg-ambar px-[22px] py-3 text-[13.5px] font-semibold shadow-[0_8px_24px_rgba(0,0,0,0.25)]"
             >
               Conhecer estrutura
             </Link>
           </div>
-
-          <div className="hero-media clip-ortho h-[220px] sm:h-[240px]">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster="/assets-visuais/hero-armazenagem-poster.jpg"
-              className="h-full w-full object-cover"
-            >
-              <source src="/assets-visuais/hero-armazenagem.mp4" type="video/mp4" />
-            </video>
-            <div className="stat-chip">
-              <b>25</b>
-              <span>anos de grupo RC</span>
-            </div>
-          </div>
         </div>
       </section>
 
-      <RevealSection>
-        <CrossLink compact />
-      </RevealSection>
-
-      <RevealSection alt>
-        <div className="shell">
-          <h2 className="mb-4 font-mono text-[12px] tracking-[0.08em] text-mono-ink uppercase">
-            Números
-          </h2>
-          <StatRow />
-        </div>
-      </RevealSection>
+      <CertMarquee />
 
       <RevealSection>
         <div className="shell">
@@ -90,54 +58,15 @@ export default function HomePage() {
 
       <RevealSection alt>
         <div className="shell">
-          <p className="mb-2 font-mono text-[12px] tracking-[0.08em] text-mono-ink uppercase">
-            Por que escolher a RC Armazém
-          </p>
-          <h2 className="mb-5 font-display text-[22px] font-extrabold">
-            Um fornecedor, do início ao fim
-          </h2>
-          <CompareTable />
-        </div>
-      </RevealSection>
-
-      <RevealSection>
-        <div className="shell">
           <div className="mb-6 max-w-2xl">
             <p className="mb-2 font-mono text-[14px] tracking-[0.08em] text-mono-ink uppercase">
               Segmentos
             </p>
             <h2 className="font-display text-[22px] font-extrabold">
-              Cosméticos · Saneantes · Correlatos · Químicos · Medicamentos
+              11 segmentos com processo próprio pra cada categoria
             </h2>
           </div>
           <SegmentCarousel />
-        </div>
-      </RevealSection>
-
-      <RevealSection alt>
-        <div className="shell">
-          <h2 className="mb-2 font-mono text-[12px] tracking-[0.08em] text-mono-ink uppercase">
-            Compliance
-          </h2>
-          <p className="mb-4 max-w-xl text-[14px] text-mono-ink">
-            {COMPLIANCE_INTRO}
-          </p>
-          <div className="comp-chip-row mb-6">
-            {COMPLIANCE_DESTAQUE.map((c) => (
-              <span key={c.titulo} className="comp-chip-ic">
-                <SegmentIcon name={c.icon} />
-                {c.titulo}
-              </span>
-            ))}
-          </div>
-          <CertWall />
-          <CertLine />
-          <Link
-            href="/compliance"
-            className="mt-4 inline-block text-[13px] font-semibold text-verde-escuro"
-          >
-            Ver certificações →
-          </Link>
         </div>
       </RevealSection>
 
@@ -162,6 +91,17 @@ export default function HomePage() {
                 </summary>
                 <p className="mt-2 max-w-[640px] text-[13.5px] text-mono-ink">
                   {item.a}
+                  {"link" in item && item.link ? (
+                    <>
+                      {" "}
+                      <Link
+                        href={item.link.href}
+                        className="font-semibold text-verde-escuro"
+                      >
+                        {item.link.label}
+                      </Link>
+                    </>
+                  ) : null}
                 </p>
               </details>
             ))}
@@ -203,6 +143,10 @@ export default function HomePage() {
           </p>
           <BentoGrid href="/estrutura" />
         </div>
+      </RevealSection>
+
+      <RevealSection alt>
+        <CrossLink compact />
       </RevealSection>
     </>
   );

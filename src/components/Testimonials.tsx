@@ -4,6 +4,18 @@ import { useEffect, useRef } from "react";
 import { DEPOIMENTOS } from "@/lib/site";
 import { onVisibleOnce } from "@/lib/onVisibleOnce";
 
+function Stars({ n }: { n: number }) {
+  return (
+    <span className="depo-stars" aria-label={`${n} de 5 estrelas`}>
+      {Array.from({ length: n }, (_, i) => (
+        <span key={i} aria-hidden>
+          ★
+        </span>
+      ))}
+    </span>
+  );
+}
+
 export function Testimonials() {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -22,18 +34,15 @@ export function Testimonials() {
   return (
     <div className="depo-grid" ref={ref}>
       {DEPOIMENTOS.map((d) => (
-        <blockquote
-          key={`${d.empresa}-${d.autor}`}
-          className={`depo-card ${d.ficticio ? "is-ficticio" : ""}`}
-        >
-          {d.ficticio ? <span className="fict-tag">FICTÍCIO</span> : null}
+        <blockquote key={d.autor} className="depo-card">
+          <Stars n={d.estrelas} />
           <span className="quote-mark" aria-hidden>
             &quot;
           </span>
           <p>“{d.quote}”</p>
           <footer>
-            <b>{d.empresa}</b>
-            <span className="role">{d.autor}</span>
+            <b>{d.autor}</b>
+            <span className="role">Avaliação no {d.fonte}</span>
           </footer>
         </blockquote>
       ))}

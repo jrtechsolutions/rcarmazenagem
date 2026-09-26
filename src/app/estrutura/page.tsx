@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { CtaBand } from "@/components/CtaBand";
+import { HeroCinematicVideo } from "@/components/HeroCinematicVideo";
 import { NumberedCard, NumCardGrid } from "@/components/NumberedCard";
 import { RevealSection } from "@/components/RevealSection";
 import { SegmentIcon } from "@/components/Icons";
-import { StatRow } from "@/components/StatRow";
+import { Tooltip } from "@/components/Tooltip";
 import { FEATURES_ESTRUTURA, FOTOS_ESTRUTURA } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -18,17 +19,18 @@ const [, corredor, expedicao] = FOTOS_ESTRUTURA;
 export default function EstruturaPage() {
   return (
     <>
-      <section className="photo-hero">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/assets-estrutura/estrutura-fachada.jpg"
-          alt="Fachada do galpão RC Armazém"
-        />
-        <div className="photo-hero-content">
-          <div className="shell">
-            <p className="eyebrow">Estrutura</p>
-            <h1>O galpão por trás da operação.</h1>
-            <p>
+      <section id="hero" className="hero-cinematic relative isolate overflow-hidden">
+        <HeroCinematicVideo />
+
+        <div className="hero-cinematic__content shell relative z-10 flex items-center">
+          <div className="hero-cinematic__copy max-w-[540px]">
+            <p className="font-mono text-[11.5px] tracking-[0.08em] text-white/75 uppercase">
+              Estrutura
+            </p>
+            <h1 className="mt-3 font-display text-[clamp(28px,4.2vw,44px)] font-extrabold leading-[1.1] text-white">
+              O galpão por trás da operação.
+            </h1>
+            <p className="mt-4 max-w-[420px] text-[15px] leading-relaxed text-white/85">
               Feito pra carga que não pode misturar. Cada zona com regra
               própria. Do recebimento à expedição, o processo fica registrado.
               Espaço físico com disciplina de operação.
@@ -36,8 +38,6 @@ export default function EstruturaPage() {
           </div>
         </div>
       </section>
-
-      <StatRow variant="strip" />
 
       <RevealSection className="sec-compact">
         <div className="shell">
@@ -71,7 +71,15 @@ export default function EstruturaPage() {
                 key={f.titulo}
                 index={i}
                 tone={TONES[i % 3]}
-                title={f.titulo}
+                title={
+                  "tip" in f && f.tip ? (
+                    <>
+                      <Tooltip term={f.tip.term} tip={f.tip.text} /> vigente
+                    </>
+                  ) : (
+                    f.titulo
+                  )
+                }
                 text={f.texto}
                 icon={<SegmentIcon name={f.icon} className="text-verde" />}
                 proof={"proof" in f ? f.proof : undefined}

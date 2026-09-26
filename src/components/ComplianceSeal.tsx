@@ -40,7 +40,7 @@ export function ComplianceSeal() {
         <g fill="#164D33">
           <circle cx="100" cy="100" r="96" />
         </g>
-        <g ref={ticksRef} />
+        <g ref={ticksRef} className="seal__ticks" />
         <circle
           cx="100"
           cy="100"
@@ -57,6 +57,7 @@ export function ComplianceSeal() {
           stroke="#1F6B47"
           strokeWidth="1.5"
           strokeDasharray="2 3"
+          className="seal__ring"
         />
         <text
           fontFamily="IBM Plex Mono, monospace"
@@ -80,7 +81,7 @@ export function ComplianceSeal() {
             RC ARMAZENAGEM
           </textPath>
         </text>
-        <g transform="translate(100,104)">
+        <g transform="translate(100,104)" className="seal__badge">
           <path
             d="M0,-32 L26,-22 V6 C26,26 12,38 0,44 C-12,38 -26,26 -26,6 V-22 Z"
             fill="#1F6B47"
@@ -88,6 +89,7 @@ export function ComplianceSeal() {
             strokeWidth="2"
           />
           <path
+            className="seal__check"
             d="M-11,0 L-3,9 L13,-11"
             stroke="#fff"
             strokeWidth="4"

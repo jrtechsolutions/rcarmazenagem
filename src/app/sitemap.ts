@@ -8,8 +8,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/estrutura",
     "/compliance",
     "/como-funciona",
+    "/quem-somos",
     "/contato",
     "/orcamento",
+    "/politica-de-privacidade",
   ];
 
   const now = new Date();

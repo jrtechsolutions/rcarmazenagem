@@ -4,10 +4,11 @@ const csp = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
+  "img-src 'self' data: blob: https://*.googleapis.com https://*.gstatic.com https://*.google.com https://*.google.com.br",
   "font-src 'self'",
   "media-src 'self'",
   "connect-src 'self'",
+  "frame-src 'self' https://www.google.com https://maps.google.com https://www.google.com.br",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",
@@ -17,6 +18,20 @@ const csp = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/armazenagem-cosmeticos-regulados",
+        destination: "/armazenagem-materias-primas-cosmeticos",
+        permanent: true,
+      },
+      {
+        source: "/armazenagem-produtos-quimicos",
+        destination: "/armazenagem-produtos-quimicos-perigosos",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

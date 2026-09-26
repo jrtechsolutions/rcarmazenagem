@@ -15,7 +15,7 @@ export function NumberedCard({
 }: {
   index: number;
   tone: CardTone;
-  title: string;
+  title: ReactNode;
   text: string;
   icon: ReactNode;
   proof?: { label: string; href: string };

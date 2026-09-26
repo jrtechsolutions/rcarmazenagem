@@ -8,9 +8,17 @@ import { HeaderCta, NavPill } from "@/components/NavPill";
 import { IconClose, IconMenu } from "@/components/Icons";
 import { NAV, SITE } from "@/lib/site";
 
+const CINEMATIC_PATHS = new Set(["/", "/estrutura"]);
+
+function isCinematicPath(pathname: string) {
+  return CINEMATIC_PATHS.has(pathname);
+}
+
 export function Header() {
   const pathname = usePathname();
+  const isCinematicHero = isCinematicPath(pathname);
   const [open, setOpen] = useState(false);
+  const [overHero, setOverHero] = useState(isCinematicHero);
 
   useEffect(() => {
     setOpen(false);
@@ -23,8 +31,62 @@ export function Header() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!isCinematicHero) {
+      setOverHero(false);
+      return;
+    }
+
+    // Assume overlay transparente até o observer confirmar (evita flash branco)
+    setOverHero(true);
+
+    let cancelled = false;
+    let observer: IntersectionObserver | null = null;
+    let raf = 0;
+    let tries = 0;
+
+    const connect = () => {
+      const heroEl = document.querySelector("#hero");
+      if (!heroEl) {
+        // Hero ainda não montou após navegação client-side
+        if (tries++ < 60) {
+          raf = requestAnimationFrame(connect);
+        }
+        return;
+      }
+      if (cancelled) return;
+
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!cancelled) setOverHero(entry.isIntersecting);
+        },
+        { threshold: 0, rootMargin: "-72px 0px 0px 0px" },
+      );
+      observer.observe(heroEl);
+      setOverHero(heroEl.getBoundingClientRect().bottom > 72);
+    };
+
+    connect();
+
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(raf);
+      observer?.disconnect();
+    };
+  }, [isCinematicHero, pathname]);
+
+  const transparent = isCinematicHero && overHero && !open;
+
   return (
-    <header className="sticky top-0 z-40 border-b border-borda bg-white">
+    <header
+      className={[
+        "site-header",
+        isCinematicHero ? "site-header--overlay" : "",
+        transparent ? "is-transparent" : "is-solid",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
       <div className="shell flex items-center justify-between gap-3 py-3">
         <LogoLockup />
         <NavPill />
@@ -32,16 +94,16 @@ export function Header() {
           <HeaderCta />
           <button
             type="button"
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[8px] border border-borda lg:hidden"
+            className="site-header__menu-btn flex h-10 w-10 shrink-0 items-center justify-center rounded-[8px] border lg:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Fechar menu" : "Abrir menu"}
           >
             {open ? (
-              <IconClose className="h-5 w-5 text-texto" />
+              <IconClose className="h-5 w-5" />
             ) : (
-              <IconMenu className="h-5 w-5 text-texto" />
+              <IconMenu className="h-5 w-5" />
             )}
           </button>
         </div>
