@@ -1,7 +1,15 @@
 import { NextResponse } from "next/server";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
 import { parseQuoteBody, validateQuote } from "@/lib/validations";
-import { SEGMENTOS, SITE, VOLUMES } from "@/lib/site";
+import {
+  ESPACO_UNIDADES,
+  SEGMENTOS,
+  SERVICOS_EXTRAS,
+  SITE,
+  TEMPERATURAS,
+  TRANSPORTE_ESCOPOS,
+  VOLUMES,
+} from "@/lib/site";
 
 export async function POST(request: Request) {
   const ip = clientIp(request.headers);
@@ -40,6 +48,20 @@ export async function POST(request: Request) {
     SEGMENTOS.find((s) => s.id === input.tipoCarga)?.nome ?? input.tipoCarga;
   const volume =
     VOLUMES.find((v) => v.id === input.volumeMensal)?.label ?? input.volumeMensal;
+  const unidade = ESPACO_UNIDADES.find((u) => u.id === input.espacoUnidade);
+  const espaco =
+    input.espacoUnidade === "nao-sei" || !unidade
+      ? "Ainda não sei"
+      : `${Number(input.espacoQuantidade).toLocaleString("pt-BR")} ${unidade.sufixo}`;
+  const temperatura =
+    TEMPERATURAS.find((t) => t.id === input.temperatura)?.label ?? input.temperatura;
+  const transporteEscopo = input.transporte
+    ? (TRANSPORTE_ESCOPOS.find((t) => t.id === input.transporteEscopo)?.label ??
+      input.transporteEscopo)
+    : "";
+  const servicos = input.servicos.map(
+    (id) => SERVICOS_EXTRAS.find((s) => s.id === id)?.label ?? id,
+  );
 
   const payload = {
     nome: input.nome,
@@ -49,8 +71,12 @@ export async function POST(request: Request) {
     telefone: input.telefone,
     tipoCarga: segmento,
     volumeMensal: volume,
+    espaco,
+    temperatura,
     mensagem: input.mensagem,
     transporte: input.transporte,
+    transporteEscopo,
+    servicos,
   };
 
   const webhook = process.env.CONTACT_WEBHOOK_URL;
@@ -83,9 +109,12 @@ export async function POST(request: Request) {
             `CNPJ: ${payload.cnpj}`,
             `E-mail: ${payload.email}`,
             `Telefone: ${payload.telefone}`,
-            `Produto/carga: ${payload.tipoCarga}`,
+            `Segmento: ${payload.tipoCarga}`,
+            `Espaço necessário: ${payload.espaco}`,
             `Volume mensal: ${payload.volumeMensal}`,
-            `Transporte RC: ${payload.transporte ? "sim" : "não"}`,
+            `Temperatura controlada: ${payload.temperatura}`,
+            `Transporte RC: ${payload.transporte ? `sim (${payload.transporteEscopo})` : "não"}`,
+            `Serviços extras: ${payload.servicos.length ? payload.servicos.join(", ") : "nenhum"}`,
             "",
             payload.mensagem,
           ].join("\n"),

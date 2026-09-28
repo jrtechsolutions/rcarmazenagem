@@ -142,7 +142,8 @@ export function serviceJsonLd(page: SegmentPage) {
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: page.serviceType,
-    provider: { "@type": "Organization", name: SITE.name },
+    url: `${SITE.url}/${page.slug}`,
+    provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
     areaServed: [
       { "@type": "City", name: "São Paulo" },
       { "@type": "City", name: "Jundiaí" },

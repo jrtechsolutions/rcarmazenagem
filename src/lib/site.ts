@@ -774,3 +774,31 @@ export const VOLUMES = [
   { id: "acima-500", label: "Acima de 500 paletes/mês" },
   { id: "nao-sei", label: "Ainda não sei" },
 ] as const;
+
+export const ESPACO_UNIDADES = [
+  { id: "posicoes", label: "Posições de pallet", sufixo: "posições" },
+  { id: "m2", label: "Metros quadrados", sufixo: "m²" },
+  { id: "nao-sei", label: "Ainda não sei", sufixo: "" },
+] as const;
+
+export const TEMPERATURAS = [
+  { id: "ambiente", label: "Não, temperatura ambiente" },
+  { id: "controlada", label: "Sim, precisa de temperatura controlada" },
+  { id: "nao-sei", label: "Não sei, preciso de orientação" },
+] as const;
+
+export const TRANSPORTE_ESCOPOS = [
+  { id: "coleta-entrega", label: "Coleta e entrega" },
+  { id: "coleta", label: "Só coleta até o galpão" },
+  { id: "entrega", label: "Só entrega / distribuição" },
+] as const;
+
+export const SERVICOS_EXTRAS = [
+  { id: "picking", label: "Picking e fracionamento" },
+  { id: "etiquetagem", label: "Etiquetagem e rotulagem" },
+  { id: "kits", label: "Montagem de kits" },
+  { id: "paletizacao", label: "Paletização e filmagem" },
+  { id: "cross-docking", label: "Cross-docking" },
+  { id: "inventario", label: "Inventário periódico" },
+  { id: "reversa", label: "Logística reversa / devoluções" },
+] as const;

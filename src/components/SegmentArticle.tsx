@@ -1,6 +1,10 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { IconCheck, IconChevronRight } from "@/components/Icons";
+import {
+  IconCheck,
+  IconChevronRight,
+  IconWhatsApp,
+} from "@/components/Icons";
 import { JsonLdScript } from "@/components/JsonLdScript";
 import { Tooltip } from "@/components/Tooltip";
 import {
@@ -9,12 +13,14 @@ import {
   segmentBreadcrumbs,
   serviceJsonLd,
 } from "@/lib/schema";
+import { getSegmentDetail } from "@/lib/segmento-detalhes";
 import {
   TIPS,
   type SegmentId,
   type SegmentPage,
   type SegmentRef,
 } from "@/lib/seo-segmentos";
+import { SEGMENTOS, SITE } from "@/lib/site";
 
 function RefValue({ item }: { item: SegmentRef }): ReactNode {
   if (item.tip) {
@@ -249,32 +255,96 @@ function SegmentBody({ id }: { id: SegmentId }) {
   }
 }
 
+function SectionHead({ eyebrow, title }: { eyebrow: string; title: string }) {
+  return (
+    <header className="seg-head">
+      <span className="seg-eyebrow">{eyebrow}</span>
+      <h2>{title}</h2>
+    </header>
+  );
+}
+
 export function SegmentArticle({ page }: { page: SegmentPage }) {
   const crumbs = segmentBreadcrumbs(page);
+  const detail = getSegmentDetail(page.id);
+  const segmento = SEGMENTOS.find((s) => s.id === page.id);
+  const faq = detail?.faq;
+  const orcamentoHref = `/orcamento?segmento=${page.id}`;
+
+  const anchors: [string, string][] = [["sobre", "Sobre"]];
+  if (detail) {
+    anchors.push(
+      ["para-quem", "Para quem é"],
+      ["produtos", "O que armazenamos"],
+      ["exigencias", detail.requisitosCuidados ? "Cuidados" : "Exigências"],
+      ["operacao", "Operação"],
+      ["estrutura", "Estrutura"],
+    );
+  }
+  if (faq?.length) anchors.push(["faq", "FAQ"]);
+  if (detail) anchors.push(["guia", "Guia"]);
+  anchors.push(["relacionadas", "Relacionadas"]);
 
   return (
     <>
       <JsonLdScript data={serviceJsonLd(page)} />
       <JsonLdScript data={breadcrumbJsonLd(crumbs)} />
-      {page.faq?.length ? <JsonLdScript data={faqPageJsonLd(page.faq)} /> : null}
+      {faq?.length ? <JsonLdScript data={faqPageJsonLd(faq)} /> : null}
 
-      <section className="bg-[linear-gradient(180deg,#FBFBFA,#fff)] pt-[42px] pb-0">
-        <div className="shell mx-auto max-w-[1000px]">
+      <section className="seg-hero">
+        <div className="seg-hero__bg" aria-hidden />
+        <div className="shell relative z-[1] mx-auto max-w-[1000px]">
           <nav className="seo-breadcrumb" aria-label="Breadcrumb">
             <Link href="/">Home</Link>
             {" / "}
             <span>{page.serviceType}</span>
           </nav>
-          <div className="pb-6 pt-5">
-            <p className="font-mono text-[11.5px] tracking-[0.08em] text-verde-escuro uppercase">
-              {page.eyebrow}
-            </p>
-            <h1 className="mt-2 max-w-[600px] font-display text-[clamp(22px,3.2vw,30px)] font-extrabold leading-[1.15]">
-              {page.h1}
-            </h1>
-            <p className="mt-2.5 max-w-[560px] text-[13.5px] text-mono-ink">
-              {page.lead}
-            </p>
+          <div className="seg-hero__grid">
+            <div className="seg-hero__copy">
+              <p className="seg-eyebrow">{page.eyebrow}</p>
+              <h1>{page.h1}</h1>
+              <p className="seg-hero__lead">{page.lead}</p>
+              <div className="seg-hero__cta">
+                <Link
+                  href={orcamentoHref}
+                  className="btn rounded-[9px] bg-ambar px-[20px] py-[11px] text-[13.5px] font-semibold"
+                >
+                  Solicitar orçamento
+                </Link>
+                <a
+                  href={SITE.whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="seg-btn-ghost"
+                >
+                  <IconWhatsApp />
+                  Falar no WhatsApp
+                </a>
+              </div>
+              <ul className="seg-hero__badges">
+                {page.refs.map((ref) => (
+                  <li key={ref.hint + ref.label}>
+                    <b>
+                      <RefValue item={ref} />
+                    </b>
+                    <span>{ref.hint}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {segmento?.image ? (
+              <figure className="seg-hero__media">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={segmento.image}
+                  alt={`${page.serviceType} na RC Armazém`}
+                  fetchPriority="high"
+                />
+                {"risco" in segmento && segmento.risco ? (
+                  <figcaption>{segmento.risco}</figcaption>
+                ) : null}
+              </figure>
+            ) : null}
           </div>
         </div>
       </section>
@@ -282,29 +352,17 @@ export function SegmentArticle({ page }: { page: SegmentPage }) {
       <div className="shell mx-auto max-w-[1000px]">
         <nav className="anchor-nav" aria-label="Nesta página">
           <span>Nesta página:</span>
-          <a href="#referencia">Referência</a>
-          <a href="#sobre">Sobre o serviço</a>
-          {page.faq?.length ? <a href="#faq">FAQ</a> : null}
-          <a href="#relacionadas">Relacionadas</a>
+          {anchors.map(([id, label]) => (
+            <a key={id} href={`#${id}`}>
+              {label}
+            </a>
+          ))}
         </nav>
 
         <div className="seo-sp-layout">
           <div className="seo-sp-main min-w-0">
-            <section className="seo-sp-sec" id="referencia">
-              <h2>Referência da operação</h2>
-              <div className="seo-data-row">
-                {page.refs.map((ref) => (
-                  <div key={ref.hint + ref.label} className="seo-data-box">
-                    <b>
-                      <RefValue item={ref} />
-                    </b>
-                    <span>{ref.hint}</span>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section className="seo-sp-sec" id="sobre">
+            <section className="seo-sp-sec seg-sec" id="sobre">
+              <SectionHead eyebrow="Visão geral" title="Sobre o serviço" />
               <div className="seo-body-copy">
                 <SegmentBody id={page.id} />
               </div>
@@ -317,11 +375,125 @@ export function SegmentArticle({ page }: { page: SegmentPage }) {
               </div>
             </section>
 
-            {page.faq?.length ? (
-              <section className="seo-sp-sec" id="faq">
-                <h2>Perguntas frequentes</h2>
+            {detail ? (
+              <>
+                <section className="seo-sp-sec seg-sec" id="para-quem">
+                  <SectionHead eyebrow="Para quem é" title="Quem armazena com a RC" />
+                  <div className="seg-cards">
+                    {detail.perfis.map((p) => (
+                      <article key={p.titulo} className="seg-card">
+                        <h3>{p.titulo}</h3>
+                        <p>{p.texto}</p>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="seo-sp-sec seg-sec" id="produtos">
+                  <SectionHead eyebrow="Produtos" title="O que armazenamos" />
+                  <div className="seg-products">
+                    {detail.produtos.map((p) => (
+                      <article key={p.grupo} className="seg-product">
+                        <span className="seg-product__tag">{p.grupo}</span>
+                        <p>{p.itens}</p>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="seo-sp-sec seg-sec" id="exigencias">
+                  <SectionHead
+                    eyebrow={detail.requisitosCuidados ? "Cuidados" : "Regulação"}
+                    title={
+                      detail.requisitosCuidados
+                        ? "O que esse tipo de carga pede e como a RC atende"
+                        : "O que a norma exige e como a RC atende"
+                    }
+                  />
+                  <div className="seg-req">
+                    <div className="seg-req__head" aria-hidden>
+                      <span>
+                        {detail.requisitosCuidados ? "O que é necessário" : "O que é exigido"}
+                      </span>
+                      <span>Como a RC atende</span>
+                    </div>
+                    {detail.requisitos.map((r) => (
+                      <div key={r.exigencia} className="seg-req__row">
+                        <p className="seg-req__need">
+                          <span className="seg-req__label">
+                            {detail.requisitosCuidados ? "Necessidade" : "Exigência"}
+                          </span>
+                          {r.exigencia}
+                        </p>
+                        <p className="seg-req__done">
+                          <span className="seg-req__label">Na RC</span>
+                          <IconCheck />
+                          {r.comoAtendemos}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="seo-sp-sec seg-sec" id="operacao">
+                  <SectionHead
+                    eyebrow="Operação"
+                    title="Como funciona, do recebimento à entrega"
+                  />
+                  <ol className="seg-steps">
+                    {detail.passos.map((p, i) => (
+                      <li key={p.titulo}>
+                        <span className="seg-steps__n">{i + 1}</span>
+                        <div>
+                          <h3>{p.titulo}</h3>
+                          <p>{p.texto}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                </section>
+
+                <section className="seo-sp-sec seg-sec" id="estrutura">
+                  <SectionHead eyebrow="Estrutura" title="Condições do galpão e serviços" />
+                  <div className="seg-cards">
+                    {detail.condicoes.map((c) => (
+                      <article key={c.titulo} className="seg-card">
+                        <h3>{c.titulo}</h3>
+                        <p>{c.texto}</p>
+                      </article>
+                    ))}
+                  </div>
+                  <p className="seg-services__label">Serviços disponíveis</p>
+                  <ul className="seg-services">
+                    {detail.servicos.map((s) => (
+                      <li key={s}>
+                        <IconCheck />
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="seg-group">
+                    <span className="seg-group__tag">Grupo RC</span>
+                    <h3>{detail.grupo.titulo}</h3>
+                    <p>{detail.grupo.texto}</p>
+                    <a
+                      href={SITE.transportesUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Conhecer a RC Transportes
+                      <IconChevronRight />
+                    </a>
+                  </div>
+                </section>
+              </>
+            ) : null}
+
+            {faq?.length ? (
+              <section className="seo-sp-sec seg-sec" id="faq">
+                <SectionHead eyebrow="Dúvidas" title="Perguntas frequentes" />
                 <div className="divide-y divide-borda border-y border-borda">
-                  {page.faq.map((item) => (
+                  {faq.map((item) => (
                     <details key={item.q} className="group py-3.5">
                       <summary className="cursor-pointer list-none text-[14px] font-semibold marker:content-none">
                         <span className="flex items-start justify-between gap-4">
@@ -343,8 +515,23 @@ export function SegmentArticle({ page }: { page: SegmentPage }) {
               </section>
             ) : null}
 
-            <section className="seo-sp-sec" id="relacionadas">
-              <h2>Páginas relacionadas</h2>
+            {detail ? (
+              <section className="seo-sp-sec seg-sec" id="guia">
+                <SectionHead eyebrow="Guia rápido" title={detail.guia.titulo} />
+                <article className="seg-guide">
+                  <p className="seg-guide__intro">{detail.guia.intro}</p>
+                  {detail.guia.blocos.map((b) => (
+                    <div key={b.titulo} className="seg-guide__block">
+                      <h3>{b.titulo}</h3>
+                      <p>{b.texto}</p>
+                    </div>
+                  ))}
+                </article>
+              </section>
+            ) : null}
+
+            <section className="seo-sp-sec seg-sec" id="relacionadas">
+              <SectionHead eyebrow="Veja também" title="Páginas relacionadas" />
               <div className="related-grid">
                 {page.related.map((r) => (
                   <Link key={r.href} href={r.href} className="related-card">
@@ -368,7 +555,7 @@ export function SegmentArticle({ page }: { page: SegmentPage }) {
                   {page.ctaTitle}
                 </b>
                 <Link
-                  href="/orcamento"
+                  href={orcamentoHref}
                   className="btn rounded-[9px] bg-ambar px-[18px] py-[11px] text-[13px] font-semibold whitespace-nowrap"
                 >
                   Solicitar orçamento
@@ -378,8 +565,28 @@ export function SegmentArticle({ page }: { page: SegmentPage }) {
           </div>
 
           <aside className="seo-sp-side">
-            <div className="sidebar-sticky">
-              <span className="sb-label">Referência rápida</span>
+            <div className="sidebar-sticky seg-side">
+              <span className="sb-label">Orçamento rápido</span>
+              <p className="seg-side__title">{page.ctaTitle}</p>
+              <p className="seg-side__text">
+                Conte o produto e o volume estimado. Retornamos com a proposta.
+              </p>
+              <Link
+                href={orcamentoHref}
+                className="btn seg-side__btn rounded-[9px] bg-ambar text-[13px] font-semibold"
+              >
+                Solicitar orçamento
+              </Link>
+              <a
+                href={SITE.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="seg-side__wa"
+              >
+                <IconWhatsApp />
+                {SITE.whatsapp}
+              </a>
+              <span className="sb-label seg-side__refs">Licenças e controles</span>
               {page.refs.map((ref) => (
                 <div key={`sb-${ref.label}`} className="sb-box">
                   <b>{ref.label}</b>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { QuoteForm } from "@/components/QuoteForm";
 import { RevealSection } from "@/components/RevealSection";
+import { SEGMENTOS } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Orçamento",
@@ -9,7 +10,16 @@ export const metadata: Metadata = {
     "Solicite orçamento de armazenagem de carga regulada. Transporte incluso por padrão: um único fornecedor do recebimento à entrega.",
 };
 
-export default function OrcamentoPage() {
+type Props = {
+  searchParams: Promise<{ segmento?: string | string[] }>;
+};
+
+export default async function OrcamentoPage({ searchParams }: Props) {
+  const { segmento } = await searchParams;
+  const tipoCarga = SEGMENTOS.some((s) => s.id === segmento)
+    ? (segmento as string)
+    : "";
+
   return (
     <>
       <PageHero
@@ -20,7 +30,7 @@ export default function OrcamentoPage() {
       <RevealSection alt>
         <div className="shell">
           <div className="mx-auto max-w-[640px] rounded-[16px] border border-borda bg-card p-5 sm:p-8">
-            <QuoteForm />
+            <QuoteForm tipoCarga={tipoCarga} />
           </div>
         </div>
       </RevealSection>

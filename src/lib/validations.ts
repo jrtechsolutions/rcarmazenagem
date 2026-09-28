@@ -1,8 +1,20 @@
-import { SEGMENTOS, VOLUMES } from "@/lib/site";
+import {
+  ESPACO_UNIDADES,
+  SEGMENTOS,
+  SERVICOS_EXTRAS,
+  TEMPERATURAS,
+  TRANSPORTE_ESCOPOS,
+  VOLUMES,
+} from "@/lib/site";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const SEGMENT_IDS = SEGMENTOS.map((s) => s.id);
-const VOLUME_IDS = VOLUMES.map((v) => v.id);
+const SEGMENT_IDS: readonly string[] = SEGMENTOS.map((s) => s.id);
+const VOLUME_IDS: readonly string[] = VOLUMES.map((v) => v.id);
+const ESPACO_UNIDADE_IDS: readonly string[] = ESPACO_UNIDADES.map((u) => u.id);
+const TEMPERATURA_IDS: readonly string[] = TEMPERATURAS.map((t) => t.id);
+const TRANSPORTE_ESCOPO_IDS: readonly string[] = TRANSPORTE_ESCOPOS.map((t) => t.id);
+const SERVICO_IDS: readonly string[] = SERVICOS_EXTRAS.map((s) => s.id);
+const ESPACO_MAX = 1_000_000;
 
 export type QuoteInput = {
   nome: string;
@@ -12,8 +24,13 @@ export type QuoteInput = {
   telefone: string;
   tipoCarga: string;
   volumeMensal: string;
+  espacoUnidade: string;
+  espacoQuantidade: string;
+  temperatura: string;
   mensagem: string;
   transporte: boolean;
+  transporteEscopo: string;
+  servicos: string[];
   website?: string;
 };
 
@@ -52,6 +69,13 @@ export function isValidCnpj(value: string) {
 
 export function parseQuoteBody(raw: unknown): QuoteInput {
   const b = raw && typeof raw === "object" ? (raw as Record<string, unknown>) : {};
+  const transporte = b.transporte === undefined ? true : Boolean(b.transporte);
+  const espacoUnidade = sanitizeText(str(b.espacoUnidade, 20));
+  const servicos = Array.isArray(b.servicos)
+    ? [...new Set(b.servicos.map((s) => str(s, 40)))].filter((s) =>
+        SERVICO_IDS.includes(s),
+      )
+    : [];
   return {
     nome: sanitizeText(str(b.nome, 120)),
     empresa: sanitizeText(str(b.empresa, 160)),
@@ -60,8 +84,14 @@ export function parseQuoteBody(raw: unknown): QuoteInput {
     telefone: sanitizeText(str(b.telefone, 40)),
     tipoCarga: sanitizeText(str(b.tipoCarga, 40)),
     volumeMensal: sanitizeText(str(b.volumeMensal, 40)),
+    espacoUnidade,
+    espacoQuantidade:
+      espacoUnidade === "nao-sei" ? "" : digitsOnly(str(b.espacoQuantidade, 12)),
+    temperatura: sanitizeText(str(b.temperatura, 20)),
     mensagem: sanitizeText(str(b.mensagem, 2000)),
-    transporte: b.transporte === undefined ? true : Boolean(b.transporte),
+    transporte,
+    transporteEscopo: transporte ? sanitizeText(str(b.transporteEscopo, 20)) : "",
+    servicos,
     website: str(b.website, 200),
   };
 }
@@ -79,12 +109,29 @@ export function validateQuote(input: QuoteInput): QuoteErrors {
     errors.telefone = "Telefone inválido.";
   }
 
-  if (!SEGMENT_IDS.includes(input.tipoCarga as (typeof SEGMENT_IDS)[number])) {
-    errors.tipoCarga = "Selecione o tipo de produto.";
+  if (!SEGMENT_IDS.includes(input.tipoCarga)) {
+    errors.tipoCarga = "Selecione o segmento.";
   }
 
-  if (!VOLUME_IDS.includes(input.volumeMensal as (typeof VOLUME_IDS)[number])) {
+  if (!VOLUME_IDS.includes(input.volumeMensal)) {
     errors.volumeMensal = "Selecione o volume estimado.";
+  }
+
+  if (!ESPACO_UNIDADE_IDS.includes(input.espacoUnidade)) {
+    errors.espacoUnidade = "Selecione como medir o espaço.";
+  } else if (input.espacoUnidade !== "nao-sei") {
+    const qtd = Number(input.espacoQuantidade);
+    if (!Number.isInteger(qtd) || qtd < 1 || qtd > ESPACO_MAX) {
+      errors.espacoQuantidade = "Informe a quantidade estimada.";
+    }
+  }
+
+  if (!TEMPERATURA_IDS.includes(input.temperatura)) {
+    errors.temperatura = "Informe se precisa de temperatura controlada.";
+  }
+
+  if (input.transporte && !TRANSPORTE_ESCOPO_IDS.includes(input.transporteEscopo)) {
+    errors.transporteEscopo = "Selecione o tipo de transporte.";
   }
 
   return errors;
