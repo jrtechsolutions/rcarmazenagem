@@ -16,7 +16,14 @@ export default function HomePage() {
     <>
       <JsonLdScript data={faqPageJsonLd()} />
       <section id="hero" className="hero-cinematic relative isolate overflow-hidden">
-        <HeroCinematicVideo />
+        <HeroCinematicVideo
+          src="/assets-visuais/hero-home-16x9.mp4"
+          poster="/assets-visuais/hero-home-16x9-poster.jpg"
+          mobile={{
+            src: "/assets-visuais/hero-home-9x16.mp4",
+            poster: "/assets-visuais/hero-home-9x16-poster.jpg",
+          }}
+        />
 
         <div className="hero-cinematic__content shell relative z-10 flex items-center">
           <div className="hero-cinematic__copy max-w-[540px]">
@@ -63,7 +70,7 @@ export default function HomePage() {
               Segmentos
             </p>
             <h2 className="font-display text-[22px] font-extrabold">
-              11 segmentos com processo próprio pra cada categoria
+              Matéria-prima de 9 segmentos, com processo próprio pra cada um
             </h2>
           </div>
           <SegmentCarousel />

@@ -5,7 +5,7 @@ import { NumberedCard, NumCardGrid } from "@/components/NumberedCard";
 import { RevealSection } from "@/components/RevealSection";
 import { SegmentIcon } from "@/components/Icons";
 import { Tooltip } from "@/components/Tooltip";
-import { FEATURES_ESTRUTURA, FOTOS_ESTRUTURA } from "@/lib/site";
+import { FEATURES_ESTRUTURA, FOTOS_GALPAO } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Estrutura do Galpão",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 const TONES = ["t1", "t2", "t3"] as const;
-const [, corredor, expedicao] = FOTOS_ESTRUTURA;
+const { corredor, enderecamento, doca } = FOTOS_GALPAO;
 
 export default function EstruturaPage() {
   return (
@@ -42,18 +42,21 @@ export default function EstruturaPage() {
       <RevealSection className="sec-compact">
         <div className="shell">
           <p className="sec-label">Por dentro</p>
-          <div className="support-photos">
+          <div className="support-photos support-photos--trio">
             <div className="sp-item sp-main">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={corredor.src} alt={corredor.alt} />
-              <span className="lbl">Porta-paletes e circulação por zona</span>
+              <span className="lbl">{corredor.label}</span>
             </div>
-            <div className="sp-side">
-              <div className="sp-item sp-side-photo">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={expedicao.src} alt={expedicao.alt} />
-                <span className="lbl">Saída já na frota RC</span>
-              </div>
+            <div className="sp-item sp-enderecamento">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={enderecamento.src} alt={enderecamento.alt} />
+              <span className="lbl">{enderecamento.label}</span>
+            </div>
+            <div className="sp-item sp-doca">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={doca.src} alt={doca.alt} />
+              <span className="lbl">{doca.label}</span>
             </div>
           </div>
         </div>

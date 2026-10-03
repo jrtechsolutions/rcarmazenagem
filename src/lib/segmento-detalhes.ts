@@ -29,12 +29,12 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       {
         titulo: "Formuladoras e terceirizadoras",
         texto:
-          "Estoque de insumos por projeto, organizado por lote e liberado conforme a ordem de produção.",
+          "Estoque de insumos organizado por lote e liberado por pedido ou solicitação de venda.",
       },
       {
         titulo: "Distribuidoras de matérias-primas",
         texto:
-          "Base perto dos polos de cosméticos de SP, com saída fracionada para vários clientes.",
+          "Base perto dos polos de cosméticos de SP, com separação por pedido para vários clientes.",
       },
       {
         titulo: "Fabricantes de embalagem",
@@ -56,7 +56,7 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       {
         grupo: "Essências e fragrâncias",
         itens:
-          "Essências, óleos essenciais e álcool cosmético, em área própria por serem inflamáveis.",
+          "Essências e fragrâncias. Itens inflamáveis, como álcool cosmético, dependem da área de inflamáveis, em processo de regularização.",
       },
       {
         grupo: "Embalagens e insumos de envase",
@@ -67,9 +67,9 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
     requisitos: [
       {
         exigencia:
-          "Quem armazena insumo sujeito à vigilância sanitária precisa estar regularizado na ANVISA e na Vigilância Sanitária local.",
+          "Quem armazena insumo sujeito à vigilância sanitária precisa estar regularizado na ANVISA.",
         comoAtendemos:
-          "Operação licenciada pela ANVISA, com documentação disponível para auditoria de cliente.",
+          "AFE da ANVISA em processo de regularização, com documentação da operação disponível para auditoria de cliente.",
       },
       {
         exigencia:
@@ -81,13 +81,13 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
         exigencia:
           "Cada insumo tem condição de armazenagem definida na ficha técnica: temperatura, umidade e proteção contra luz.",
         comoAtendemos:
-          "A área é escolhida pela ficha técnica. Temos galpões com e sem climatização.",
+          "A área é escolhida pela ficha técnica. A área climatizada está em processo de regularização junto à ANVISA.",
       },
       {
         exigencia:
-          "Essências e álcool são inflamáveis e não podem ficar junto com os demais insumos.",
+          "Álcool e alguns insumos são inflamáveis e não podem ficar junto com os demais.",
         comoAtendemos:
-          "Inflamáveis ficam em área separada, com a segregação definida antes do recebimento.",
+          "A área de inflamáveis está em processo de regularização. O comercial avalia cada item pela FDS antes do recebimento.",
       },
       {
         exigencia:
@@ -121,12 +121,12 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       {
         titulo: "Liberação para produção",
         texto:
-          "Separação por ordem de produção ou por pedido, seguindo FEFO, com conferência na saída.",
+          "Separação por pedido ou solicitação de venda, seguindo FEFO, com conferência na saída.",
       },
       {
         titulo: "Entrega na fábrica",
         texto:
-          "A frota RC leva o insumo até a linha, na janela combinada com a produção.",
+          "A frota RC leva o insumo até a linha, na janela combinada com a produção, ou a carga sai na transportadora que você indicar.",
       },
     ],
     condicoes: [
@@ -136,14 +136,14 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
           "Corredores sinalizados e piso limpo, sem mistura com carga química industrial.",
       },
       {
-        titulo: "Opção climatizada",
+        titulo: "Área climatizada",
         texto:
-          "Para insumo sensível a calor, indicamos a área climatizada conforme a ficha técnica.",
+          "Em processo de regularização junto à ANVISA, para insumo sensível a calor.",
       },
       {
-        titulo: "Segregação de inflamáveis",
+        titulo: "Área de bloqueio",
         texto:
-          "Essências e álcool em área própria, separados dos demais insumos.",
+          "Avaria separada já no recebimento. Itens avariados, devolvidos ou em análise ficam bloqueados.",
       },
       {
         titulo: "Controle de acesso",
@@ -153,11 +153,10 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
     ],
     servicos: [
       "Armazenagem paletizada",
-      "Separação por ordem de produção",
-      "Separação fracionada",
-      "Etiquetagem de lote",
-      "Inventário periódico",
-      "Entrega programada com a frota RC",
+      "Separação por pedido",
+      "Etiquetagem e reetiquetagem",
+      "Inventários cíclicos e rotativos",
+      "Entrega programada com a frota RC (opcional)",
     ],
     grupo: {
       titulo: "Insumo na linha no dia certo",
@@ -167,23 +166,23 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
     faq: [
       {
         q: "Vocês armazenam produto acabado ou só matéria-prima?",
-        a: "O foco é matéria-prima, insumo e embalagem da indústria cosmética. Para produto acabado, fale com o comercial: avaliamos conforme o tipo de produto e o volume.",
+        a: "Só matéria-prima. A operação de cosméticos atende matérias-primas e insumos da indústria; produto acabado não faz parte do escopo.",
       },
       {
-        q: "Como funciona o controle de temperatura?",
-        a: "Depende do insumo. Temos galpões com e sem climatização e indicamos a área certa a partir da ficha técnica de cada item.",
+        q: "Vocês têm área climatizada?",
+        a: "A área climatizada com registro de temperatura está em processo de regularização junto à ANVISA. O comercial informa o prazo e avalia cada insumo pela ficha técnica.",
       },
       {
         q: "Consigo rastrear um lote específico?",
         a: "Sim. O WMS registra lote, fornecedor, data de entrada e posição de cada volume, então qualquer lote é localizado rapidamente.",
       },
       {
-        q: "Vocês separam por ordem de produção?",
-        a: "Sim. A separação pode seguir a ordem de produção ou o pedido, sempre respeitando a regra FEFO.",
+        q: "Como funciona a separação?",
+        a: "Por pedido ou solicitação de venda, sempre respeitando a regra FEFO, com conferência na saída.",
       },
       {
         q: "Essências e álcool podem ser armazenados?",
-        a: "Sim, em área separada, por serem inflamáveis. A FDS de cada item define as condições de armazenagem.",
+        a: "Itens inflamáveis, como o álcool cosmético, dependem da área de inflamáveis, que está em processo de regularização. A FDS de cada item define se ele entra nesse caso.",
       },
       {
         q: "A matéria-prima pode ir direto do galpão para a linha de produção?",
@@ -233,70 +232,65 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       {
         titulo: "Indústrias de saneantes",
         texto:
-          "Produto acabado fora da fábrica, pronto para expedição a distribuidores e redes.",
+          "Matéria-prima fora da fábrica, liberada para a produção conforme cada pedido.",
       },
       {
-        titulo: "Distribuidoras de limpeza",
+        titulo: "Formuladoras e terceirizadoras",
         texto:
-          "Estoque regional com separação por pedido para atacado, varejo e clientes institucionais.",
+          "Insumos de vários clientes organizados por lote, sem ocupar área produtiva.",
+      },
+      {
+        titulo: "Distribuidoras de insumos",
+        texto:
+          "Estoque regional de matérias-primas com separação personalizada por pedido.",
       },
       {
         titulo: "Importadoras",
         texto:
-          "Recebimento de produto regularizado, com conferência de rotulagem e documentação.",
-      },
-      {
-        titulo: "Limpeza profissional",
-        texto:
-          "Produto concentrado e de uso profissional estocado perto dos contratos atendidos.",
+          "Matéria-prima nacionalizada recebida com conferência de rotulagem e documentação.",
       },
     ],
     produtos: [
       {
-        grupo: "Limpeza doméstica",
+        grupo: "Tensoativos",
         itens:
-          "Detergentes, lava-roupas, amaciantes, limpadores multiuso e desengordurantes.",
+          "Tensoativos aniônicos, não iônicos e anfóteros usados em detergentes e limpadores.",
       },
       {
-        grupo: "Desinfecção",
+        grupo: "Ativos de desinfecção",
         itens:
-          "Água sanitária, alvejantes, desinfetantes e produtos à base de cloro ou quaternário de amônio.",
+          "Matérias-primas à base de cloro, quaternário de amônio e outros ativos desinfetantes.",
       },
       {
-        grupo: "Uso profissional",
+        grupo: "Auxiliares de formulação",
         itens:
-          "Produtos concentrados para limpeza institucional e industrial, desincrustantes e removedores.",
-      },
-      {
-        grupo: "Desinfestantes domissanitários",
-        itens:
-          "Inseticidas e produtos para controle de pragas de uso doméstico e profissional, em área separada.",
+          "Sequestrantes, espessantes, conservantes, corantes e essências para saneantes.",
       },
     ],
     requisitos: [
       {
         exigencia:
-          "Saneante é produto sujeito à vigilância sanitária. Quem armazena precisa estar regularizado na ANVISA e na Vigilância Sanitária local.",
+          "Matéria-prima de saneante é regulada pela vigilância sanitária. Quem armazena precisa estar regularizado na ANVISA.",
         comoAtendemos:
-          "Operação com as licenças sanitárias para armazenagem, com documentação disponível para auditoria.",
+          "A regularização da operação de saneantes está em andamento. Fale com o comercial sobre o prazo.",
       },
       {
         exigencia:
           "O galpão precisa de AVCB adequado ao tipo de produto armazenado.",
         comoAtendemos:
-          "AVCB vigente e plano de atendimento a emergências (PAE).",
+          "AVCB vigente e plano de atendimento a emergências (PAE) com brigada treinada.",
       },
       {
         exigencia:
-          "Produto à base de cloro não pode ficar perto de ácido, e saneante não divide espaço com alimento.",
+          "Matéria-prima à base de cloro não pode ficar perto de ácido.",
         comoAtendemos:
-          "Área própria para saneantes, com separação entre incompatíveis definida pela FDS.",
+          "Posição definida por compatibilidade química, conforme a ficha de segurança de cada insumo.",
       },
       {
         exigencia:
-          "Cada produto precisa de Ficha com Dados de Segurança (FDS).",
+          "Cada matéria-prima precisa de Ficha com Dados de Segurança (FDS).",
         comoAtendemos:
-          "A FDS é arquivada na entrada de cada item e fica disponível para a equipe.",
+          "A FDS de cada item é arquivada na entrada e fica disponível durante todo o período armazenado.",
       },
       {
         exigencia:
@@ -306,53 +300,53 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       },
       {
         exigencia:
-          "Lote e validade precisam ser rastreáveis, inclusive para um recolhimento.",
+          "Lote e validade da matéria-prima precisam ser rastreáveis.",
         comoAtendemos:
-          "O WMS registra lote, validade e posição. A saída segue a regra FEFO.",
+          "O WMS Senior registra lote, validade e posição. A saída segue a regra FEFO.",
       },
     ],
     passos: [
       {
-        titulo: "Cadastro dos produtos",
+        titulo: "Cadastro dos insumos",
         texto:
-          "Recebemos a relação de produtos com FDS e classificação de risco para definir a área de cada um.",
+          "Recebemos a relação de matérias-primas com ficha de segurança e classificação de risco para definir a área de cada uma.",
       },
       {
         titulo: "Recebimento",
         texto:
-          "Conferência de nota, lote, rotulagem e embalagem. Galão com vazamento ou caixa molhada não entra no estoque.",
+          "Conferência de nota, lote, rotulagem e embalagem. Avaria é registrada e o volume vai para a área de bloqueio.",
       },
       {
         titulo: "Armazenagem segregada",
         texto:
-          "Posição definida por compatibilidade, longe de alimento, cosmético e produto incompatível.",
+          "Posição definida por compatibilidade química e registrada no WMS.",
       },
       {
-        titulo: "Separação por pedido",
+        titulo: "Separação",
         texto:
-          "Separação seguindo FEFO, conferência de volumes e paletização com filme para o transporte.",
+          "Separação personalizada conforme a solicitação do cliente, seguindo FEFO, com conferência de volumes.",
       },
       {
-        titulo: "Entrega pela frota RC",
+        titulo: "Entrega",
         texto:
-          "A carga segue na frota do grupo para distribuidores, redes e clientes finais.",
+          "A carga segue na frota do grupo até a fábrica ou na transportadora que você indicar.",
       },
     ],
     condicoes: [
       {
-        titulo: "Área própria",
-        texto:
-          "Saneantes em área definida, sem dividir corredor com alimento ou cosmético.",
-      },
-      {
         titulo: "Separação de incompatíveis",
         texto:
-          "Cloro longe de ácido e desinfestantes em área separada, conforme a FDS.",
+          "Insumos à base de cloro longe de ácidos, conforme a ficha de segurança.",
+      },
+      {
+        titulo: "Área de bloqueio",
+        texto:
+          "Avaria separada já no recebimento. Itens avariados, devolvidos ou em análise ficam bloqueados.",
       },
       {
         titulo: "Resposta a vazamento",
         texto:
-          "Procedimento de contenção definido e equipe orientada para agir rápido.",
+          "Procedimento de contenção definido e brigada treinada para agir rápido.",
       },
       {
         titulo: "Controle de acesso",
@@ -362,77 +356,63 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
     ],
     servicos: [
       "Armazenagem paletizada",
-      "Separação por pedido",
-      "Separação fracionada",
+      "Separação personalizada por pedido",
       "Paletização e filmagem de carga",
-      "Inventário periódico",
-      "Entrega com a frota RC",
+      "Inventários cíclicos, rotativos e gerais",
+      "Entrega com a frota RC (opcional)",
     ],
     grupo: {
-      titulo: "Da indústria ao ponto de venda",
+      titulo: "Do fornecedor à linha de produção",
       texto:
-        "Saneante tem giro alto e muitos destinos. Com armazenagem e transporte na mesma operação, a RC separa os pedidos e entrega com a frota própria, com o mesmo registro de lote do galpão até o cliente.",
+        "Matéria-prima parada na fábrica ocupa área que poderia produzir. Com armazenagem e transporte na mesma operação, a RC guarda o insumo e pode levá-lo até a linha com a frota própria, com o mesmo registro de lote.",
     },
     faq: [
       {
-        q: "Que tipos de saneante vocês armazenam?",
-        a: "Produtos de limpeza doméstica e profissional, desinfetantes, água sanitária, alvejantes e desinfestantes domissanitários. Cada item é avaliado pela FDS antes do primeiro recebimento.",
+        q: "Vocês já armazenam matéria-prima de saneantes?",
+        a: "A operação de saneantes está em processo de regularização. O comercial informa o prazo e avalia cada insumo antes do primeiro recebimento.",
       },
       {
-        q: "O saneante fica junto de outros produtos?",
-        a: "Não. Saneantes ficam em área própria, sem dividir corredor com alimento ou cosmético, e produtos incompatíveis entre si também são separados.",
-      },
-      {
-        q: "Preciso enviar a FDS dos produtos?",
-        a: "Sim. É com ela que definimos a área e a compatibilidade de cada item.",
+        q: "Vocês armazenam saneante pronto?",
+        a: "Não. A RC armazena somente matéria-prima; produto acabado não faz parte do escopo.",
       },
       {
         q: "O que acontece se uma embalagem vazar?",
         a: "Seguimos o procedimento de contenção: isolamos a área, contemos o produto e segregamos os volumes afetados. Você é avisado para decidir o destino da mercadoria.",
       },
       {
-        q: "Vocês separam pedidos para vários clientes?",
-        a: "Sim. A separação é feita por pedido, com conferência de volumes e paletização para o transporte.",
-      },
-      {
-        q: "Vocês entregam em distribuidores e redes de varejo?",
-        a: "Sim. Depois da separação, a carga segue na frota da RC Transportes até distribuidor, atacado ou varejo, com a mesma rastreabilidade do armazém. Se preferir usar outra transportadora, também atendemos.",
+        q: "Como funciona a separação?",
+        a: "É personalizada: cada cliente tem uma forma de separar, e a RC segue a solicitação de cada pedido.",
       },
     ],
     guia: {
-      titulo: "Como armazenar saneantes corretamente",
+      titulo: "Como armazenar matérias-primas de saneantes",
       intro:
-        "Saneante parece carga simples, mas mistura errada e embalagem danificada causam acidente e prejuízo. Estes são os cuidados básicos.",
+        "Insumo de saneante parece carga simples, mas mistura errada e embalagem danificada causam acidente e prejuízo. Estes são os cuidados básicos.",
       blocos: [
         {
-          titulo: "Leia a FDS e o rótulo",
+          titulo: "Leia a ficha de segurança",
           texto:
-            "A ficha de segurança diz como armazenar, o que não pode ficar perto e o que fazer em caso de vazamento. O rótulo traz o lote e a validade que precisam ser controlados.",
+            "A ficha de segurança diz como armazenar, o que não pode ficar perto e o que fazer em caso de vazamento.",
         },
         {
           titulo: "Nunca junte cloro com ácido",
           texto:
-            "Produto à base de cloro em contato com ácido libera gás tóxico. Por isso a separação por compatibilidade vale também para o estoque, não só para o uso.",
-        },
-        {
-          titulo: "Mantenha longe de alimentos e cosméticos",
-          texto:
-            "Saneante deve ter área própria. Um vazamento perto de alimento ou cosmético contamina carga que não tem como ser recuperada.",
+            "Insumo à base de cloro em contato com ácido libera gás tóxico. Por isso a separação por compatibilidade vale também para o estoque.",
         },
         {
           titulo: "Respeite o empilhamento",
           texto:
-            "Galões e bombonas deformam quando empilhados além do limite indicado na caixa. Embalagem amassada vaza, e vazamento vira perda e risco.",
+            "Bombonas e tambores deformam quando empilhados além do limite. Embalagem amassada vaza, e vazamento vira perda e risco.",
         },
         {
           titulo: "Controle a validade",
           texto:
-            "Desinfetante e água sanitária perdem eficácia com o tempo. Saída pela regra FEFO evita produto vencido parado no estoque.",
+            "Ativos desinfetantes perdem eficácia com o tempo. Saída pela regra FEFO evita insumo vencido parado no estoque.",
         },
         {
           titulo: "Quando vale terceirizar",
           texto:
-            "Saneante ocupa muito espaço e tem giro alto. Um armazém preparado assume a área, a segregação e a separação dos pedidos, e a indústria foca em produzir e vender.",
+            "Matéria-prima ocupa espaço que poderia ser produção. Um armazém preparado assume a área, a segregação e a separação, e a indústria foca em produzir.",
         },
       ],
     },
@@ -440,95 +420,89 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
   correlatos: {
     perfis: [
       {
-        titulo: "Distribuidoras de produtos para saúde",
+        titulo: "Fabricantes de produtos para saúde",
         texto:
-          "Estoque regularizado para atender hospitais, clínicas e laboratórios com rastreio por lote.",
+          "Matérias-primas e componentes fora da fábrica, liberados para a produção por pedido.",
       },
       {
-        titulo: "Fabricantes",
+        titulo: "Indústrias de descartáveis",
         texto:
-          "Produto acabado fora da fábrica, com expedição para distribuidores e clientes diretos.",
+          "Insumos para seringas, luvas, cateteres e curativos organizados por lote.",
       },
       {
-        titulo: "Importadoras",
+        titulo: "Importadoras de insumos",
         texto:
-          "Produto nacionalizado recebido com conferência de documentação, lote e validade.",
+          "Matéria-prima nacionalizada recebida com conferência de documentação, lote e validade.",
       },
       {
-        titulo: "Fornecedores de licitações",
+        titulo: "Fornecedores da indústria da saúde",
         texto:
-          "Estoque organizado para cumprir contratos públicos com prazo de entrega definido.",
+          "Estoque regional para abastecer fabricantes com rastreio por lote.",
       },
     ],
     produtos: [
       {
-        grupo: "Material médico-hospitalar",
+        grupo: "Polímeros grau médico",
         itens:
-          "Seringas, agulhas, cateteres, luvas de procedimento, gazes, curativos e materiais descartáveis.",
+          "Resinas e compostos plásticos usados na fabricação de dispositivos médicos.",
       },
       {
-        grupo: "Equipamentos e instrumentais",
+        grupo: "Látex e elastômeros",
         itens:
-          "Equipamentos médicos embalados, instrumentais cirúrgicos e acessórios.",
+          "Matérias-primas para luvas, cateteres, tubos e vedações de uso médico.",
       },
       {
-        grupo: "Produtos para diagnóstico",
+        grupo: "Componentes e insumos",
         itens:
-          "Kits e materiais de diagnóstico, armazenados conforme a condição exigida pelo fabricante.",
+          "Tecidos, não tecidos, adesivos e componentes para curativos e materiais descartáveis.",
       },
       {
-        grupo: "Materiais especiais",
+        grupo: "Insumos para diagnóstico",
         itens:
-          "Órteses, próteses e materiais especiais (OPME), com controle por lote ou número de série.",
+          "Reagentes e materiais usados na fabricação de produtos para diagnóstico, conforme a condição do fabricante.",
       },
     ],
     requisitos: [
       {
         exigencia:
-          "Armazenar produto para saúde exige Autorização de Funcionamento (AFE) da ANVISA e licença sanitária local.",
+          "Armazenagem ligada a produtos para saúde exige Autorização de Funcionamento (AFE) da ANVISA.",
         comoAtendemos:
-          "Operação licenciada pela ANVISA, com documentação disponível para auditoria de cliente.",
+          "AFE em processo de regularização, com farmacêutico responsável técnico já na operação e documentação disponível para auditoria de cliente.",
       },
       {
         exigencia:
-          "Cada produto precisa ser rastreável por lote ou número de série, para recolhimento e tecnovigilância.",
+          "Cada lote de matéria-prima precisa ser rastreável até o produto fabricado.",
         comoAtendemos:
-          "O WMS registra lote, número de série quando houver, validade e posição de cada item.",
+          "O WMS Senior registra lote, validade e posição de cada item.",
       },
       {
         exigencia:
           "O fabricante define as condições de armazenagem, como temperatura e umidade.",
         comoAtendemos:
-          "A área é escolhida conforme a exigência do fabricante. Temos galpões com e sem climatização.",
+          "A área é escolhida conforme a exigência do fabricante. A área climatizada está em processo de regularização junto à ANVISA.",
       },
       {
         exigencia:
-          "Produto avariado, devolvido ou recolhido deve ficar separado do estoque liberado.",
+          "Insumo avariado, devolvido ou em análise deve ficar separado do estoque liberado.",
         comoAtendemos:
-          "Área de segregação para itens avariados, devolvidos ou em análise, com bloqueio no sistema.",
+          "Área de bloqueio para itens avariados, devolvidos ou em análise, com bloqueio no sistema.",
       },
       {
-        exigencia:
-          "Embalagem estéril violada torna o produto impróprio para uso.",
-        comoAtendemos:
-          "Conferência de integridade no recebimento e manuseio que protege a embalagem.",
-      },
-      {
-        exigencia: "Produto vencido não pode ser expedido.",
+        exigencia: "Matéria-prima vencida não pode ir para a produção.",
         comoAtendemos:
           "Saída pela regra FEFO e controle de validade por lote no sistema.",
       },
     ],
     passos: [
       {
-        titulo: "Cadastro dos produtos",
+        titulo: "Cadastro dos insumos",
         texto:
-          "Recebemos a relação de produtos com registro ou notificação na ANVISA e as condições exigidas pelo fabricante.",
+          "Recebemos a relação de matérias-primas e as condições de armazenagem exigidas pelo fabricante.",
       },
       {
         titulo: "Recebimento",
         texto:
-          "Conferência de nota, lote, série, validade e integridade da embalagem. Embalagem violada vai para segregação.",
+          "Conferência de nota, lote, validade e integridade da embalagem. Avaria é registrada e o volume vai para a área de bloqueio.",
       },
       {
         titulo: "Armazenagem",
@@ -536,26 +510,26 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
           "Estoque liberado separado do estoque bloqueado, com posição registrada no WMS.",
       },
       {
-        titulo: "Separação e expedição",
+        titulo: "Separação",
         texto:
-          "Separação por FEFO e conferência de lote e quantidade antes do carregamento.",
+          "Separação personalizada conforme a solicitação do cliente, por FEFO, com conferência de lote e quantidade.",
       },
       {
-        titulo: "Entrega pela frota RC",
+        titulo: "Entrega",
         texto:
-          "A carga segue na frota do grupo até hospitais, clínicas e distribuidores.",
+          "A carga segue na frota do grupo até a fábrica ou na transportadora que você indicar.",
       },
     ],
     condicoes: [
       {
         titulo: "Liberado e bloqueado",
         texto:
-          "Área separada para itens avariados, devolvidos ou em análise, sem risco de expedição por engano.",
+          "Área separada para itens avariados, devolvidos ou em análise, sem risco de envio por engano.",
       },
       {
         titulo: "Condição ambiental",
         texto:
-          "Área indicada conforme a exigência do fabricante, com opção climatizada.",
+          "Área indicada conforme a exigência do fabricante. Área climatizada em processo de regularização.",
       },
       {
         titulo: "Controle de acesso",
@@ -570,77 +544,64 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
     ],
     servicos: [
       "Armazenagem paletizada",
-      "Separação fracionada",
-      "Controle por lote e número de série",
-      "Etiquetagem",
-      "Inventário periódico",
-      "Entrega com a frota RC",
+      "Separação personalizada por pedido",
+      "Controle por lote",
+      "Etiquetagem e reetiquetagem",
+      "Inventários cíclicos, rotativos e gerais",
+      "Entrega com a frota RC (opcional)",
     ],
     grupo: {
-      titulo: "Até o hospital sem trocar de mão",
+      titulo: "Insumo na linha sem trocar de mão",
       texto:
-        "Produto para saúde precisa chegar íntegro e rastreável. Com armazenagem e transporte na mesma operação, a RC separa, confere e entrega com a frota própria, sem repassar a carga para outra empresa no meio do caminho.",
+        "Matéria-prima de produto para saúde precisa chegar íntegra e rastreável. Com armazenagem e transporte na mesma operação, a RC guarda, confere e pode entregar na fábrica com a frota própria.",
     },
     faq: [
       {
-        q: "Quais produtos para saúde vocês armazenam?",
-        a: "Material médico-hospitalar, equipamentos e instrumentais, produtos para diagnóstico e materiais especiais. Cada item é avaliado conforme o registro e as condições exigidas pelo fabricante.",
+        q: "Vocês armazenam produto para saúde pronto?",
+        a: "Não. A RC armazena somente matérias-primas e componentes para a fabricação de produtos para saúde.",
       },
       {
-        q: "Vocês controlam por número de série?",
-        a: "Sim. Além do lote, o WMS registra o número de série dos itens que exigem esse controle.",
+        q: "O que acontece com insumo avariado ou devolvido?",
+        a: "Ele vai para a área de bloqueio e fica bloqueado no sistema até você decidir o destino. Não há risco de ser enviado por engano.",
       },
       {
-        q: "O que acontece com produto avariado ou devolvido?",
-        a: "Ele vai para uma área de segregação e fica bloqueado no sistema até você decidir o destino. Não há risco de ser expedido por engano.",
-      },
-      {
-        q: "Como funciona o controle de temperatura?",
-        a: "Depende do produto. Temos galpões com e sem climatização e indicamos a área conforme a exigência do fabricante.",
+        q: "Vocês têm área climatizada?",
+        a: "A área climatizada com registro de temperatura está em processo de regularização junto à ANVISA. O comercial informa o prazo e avalia se o seu insumo precisa dela.",
       },
       {
         q: "Vocês recebem auditoria de cliente?",
         a: "Sim. Os registros da operação e as licenças ficam disponíveis, e a visita pode ser agendada com o comercial.",
       },
-      {
-        q: "A entrega em hospitais e clínicas também pode ser feita pela RC?",
-        a: "Pode. A frota da RC Transportes leva do galpão até hospital, clínica ou distribuidor, e o lote segue rastreado até a entrega. Se preferir usar outra transportadora, também atendemos.",
-      },
     ],
     guia: {
-      titulo: "Como armazenar produtos para saúde corretamente",
+      titulo: "Como armazenar matérias-primas para produtos de saúde",
       intro:
-        "Correlato mal armazenado pode chegar ao paciente fora da condição de uso. Estes são os cuidados que a regulação e o bom senso pedem.",
+        "Insumo mal armazenado compromete o produto antes mesmo de ele ser fabricado. Estes são os cuidados básicos.",
       blocos: [
         {
           titulo: "Respeite o que o fabricante indica",
           texto:
-            "Temperatura, umidade, empilhamento e proteção contra luz vêm do fabricante. O armazém precisa ter área compatível com essas condições.",
+            "Temperatura, umidade, empilhamento e proteção contra luz vêm da ficha técnica. O armazém precisa ter área compatível com essas condições.",
         },
         {
-          titulo: "Rastreie por lote e série",
+          titulo: "Rastreie cada lote",
           texto:
-            "Em um recolhimento ou alerta de tecnovigilância, é preciso saber onde está cada unidade. Sem registro de lote e série no recebimento, isso vira uma busca manual.",
+            "Se um lote de matéria-prima apresentar problema, é preciso saber onde está cada volume. Isso só é possível com o lote registrado no recebimento.",
         },
         {
           titulo: "Separe liberado de bloqueado",
           texto:
-            "Produto avariado, devolvido ou em análise não pode ficar misturado ao estoque liberado. A separação deve ser física e também no sistema.",
-        },
-        {
-          titulo: "Proteja a embalagem estéril",
-          texto:
-            "Embalagem furada ou úmida compromete a esterilidade. Manuseio cuidadoso e conferência na entrada evitam que o problema só apareça no hospital.",
+            "Insumo avariado, devolvido ou em análise não pode ficar misturado ao estoque liberado. A separação deve ser física e também no sistema.",
         },
         {
           titulo: "Controle a validade",
           texto:
-            "Muitos correlatos têm validade ligada à esterilização. Saída pela regra FEFO garante que o lote mais antigo saia primeiro.",
+            "Polímeros, látex e reagentes têm prazo de uso. Saída pela regra FEFO garante que o lote mais antigo vá primeiro para a produção.",
         },
         {
           titulo: "Quando vale terceirizar",
           texto:
-            "Manter estoque regularizado exige licença, procedimentos e equipe treinada. Um armazém licenciado já tem essa estrutura, e a empresa foca em vender e atender.",
+            "Estoque de insumo ocupa área que poderia ser produção. Um armazém preparado assume espaço, controle e documentação.",
         },
       ],
     },
@@ -648,81 +609,81 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
   medicamentos: {
     perfis: [
       {
-        titulo: "Distribuidoras de medicamentos",
+        titulo: "Indústrias farmacêuticas",
         texto:
-          "Estoque regularizado com separação por pedido para farmácias, hospitais e redes.",
+          "Insumos farmacêuticos fora da fábrica, liberados para a produção conforme cada pedido.",
       },
       {
-        titulo: "Laboratórios e indústrias",
+        titulo: "Distribuidoras de insumos farmacêuticos",
         texto:
-          "Produto acabado fora da fábrica, com expedição para distribuidores e clientes diretos.",
+          "Estoque de IFA e excipientes com separação personalizada para laboratórios e farmácias de manipulação.",
       },
       {
         titulo: "Importadoras",
         texto:
-          "Medicamento importado recebido com conferência de documentação, lote e validade.",
+          "Insumo importado recebido com conferência de documentação, lote e validade.",
       },
       {
-        titulo: "Fornecedores do setor público",
+        titulo: "Laboratórios terceirizados",
         texto:
-          "Estoque organizado para cumprir contratos e licitações com prazo de entrega definido.",
+          "Matéria-prima de vários clientes organizada por lote, sem ocupar área produtiva.",
       },
     ],
     produtos: [
       {
-        grupo: "Referência, genéricos e similares",
+        grupo: "Insumos farmacêuticos ativos (IFA)",
         itens:
-          "Medicamentos de prescrição em comprimidos, cápsulas, xaropes, pomadas e outras formas.",
+          "Princípios ativos usados na fabricação de medicamentos, armazenados por lote e validade.",
       },
       {
-        grupo: "Isentos de prescrição",
+        grupo: "Excipientes",
         itens:
-          "Analgésicos, antiácidos, vitaminas e demais medicamentos de venda livre.",
+          "Diluentes, aglutinantes, lubrificantes, conservantes e demais excipientes de formulação.",
       },
       {
-        grupo: "Uso hospitalar",
+        grupo: "Material de embalagem",
         itens:
-          "Soluções parenterais e medicamentos de uso hospitalar em temperatura ambiente controlada.",
+          "Frascos, blísteres, tampas e embalagens primárias e secundárias para a indústria farmacêutica.",
       },
       {
-        grupo: "Controlados",
+        grupo: "Insumos controlados",
         itens:
-          "Medicamentos da Portaria 344 ficam em área restrita própria. Veja a página de medicamentos controlados.",
+          "Substâncias sujeitas a controle especial têm página própria: a Autorização Especial está em processo de regularização.",
       },
     ],
     requisitos: [
       {
         exigencia:
-          "Armazenar medicamento exige AFE da ANVISA, licença sanitária e farmacêutico responsável técnico.",
+          "Armazenar insumo farmacêutico exige AFE da ANVISA e farmacêutico responsável técnico.",
         comoAtendemos:
-          "Operação licenciada pela ANVISA, com farmacêutico responsável técnico.",
+          "Farmacêutico responsável técnico já na operação. A AFE está em processo de regularização junto à ANVISA.",
       },
       {
         exigencia:
-          "As Boas Práticas de Distribuição e Armazenagem (RDC 653/2022) pedem procedimentos escritos para cada etapa.",
+          "As Boas Práticas (RDC 430/2020) pedem procedimentos escritos para cada etapa.",
         comoAtendemos:
           "Recebimento, armazenagem e expedição com procedimentos documentados e registro de cada operação.",
       },
       {
         exigencia:
-          "A maioria dos medicamentos deve ficar entre 15 °C e 30 °C, com temperatura monitorada e registrada.",
+          "A maioria dos insumos deve ficar em faixa de temperatura controlada, com registro.",
         comoAtendemos:
-          "Registro de temperatura na área de medicamentos, com histórico disponível para auditoria.",
+          "A área com temperatura registrada está em processo de regularização junto à ANVISA.",
       },
       {
         exigencia:
-          "Recebimento e expedição devem ser separados, e produto em quarentena, reprovado ou devolvido fica bloqueado.",
+          "Insumo em quarentena, reprovado ou devolvido fica bloqueado.",
         comoAtendemos:
-          "Recebimento separado da expedição e segregação física e no sistema para itens bloqueados.",
+          "Avaria registrada no recebimento e área de bloqueio, com segregação física e no sistema.",
       },
       {
         exigencia:
-          "Cada lote precisa ser rastreável para um eventual recolhimento (recall).",
+          "Cada lote de insumo precisa ser rastreável até o medicamento fabricado.",
         comoAtendemos:
-          "O WMS registra lote, validade e posição. Em um recolhimento, o lote é localizado e bloqueado.",
+          "O WMS Senior registra lote, validade e posição. Se um lote precisar ser recolhido, ele é localizado e bloqueado.",
       },
       {
-        exigencia: "Medicamento vencido não pode ser expedido.",
+        exigencia: "Insumo vencido não pode ir para a produção.",
         comoAtendemos:
           "Saída pela regra FEFO e controle de validade por lote no sistema.",
       },
@@ -731,44 +692,44 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       {
         titulo: "Qualificação",
         texto:
-          "Conferimos a documentação da sua empresa e as condições de armazenagem de cada produto antes do primeiro recebimento.",
+          "Conferimos a documentação da sua empresa e as condições de armazenagem de cada insumo antes do primeiro recebimento.",
       },
       {
         titulo: "Recebimento",
         texto:
-          "Conferência de nota, lote, validade e integridade, em área separada da expedição.",
+          "Conferência de nota, lote, validade e integridade, com avaria registrada já na entrada.",
       },
       {
         titulo: "Armazenagem",
         texto:
-          "Posição na área de medicamentos, com temperatura registrada e itens bloqueados segregados.",
+          "Posição definida por insumo, com itens bloqueados segregados e registrados no WMS.",
       },
       {
-        titulo: "Separação e expedição",
+        titulo: "Separação",
         texto:
-          "Separação por FEFO e conferência de lote e quantidade antes do carregamento.",
+          "Separação personalizada conforme a solicitação do cliente, por FEFO, com conferência de lote e quantidade.",
       },
       {
-        titulo: "Entrega pela frota RC",
+        titulo: "Entrega",
         texto:
-          "A carga segue na frota do grupo até farmácias, hospitais e distribuidores.",
+          "A carga segue na frota do grupo até a fábrica ou na transportadora que você indicar.",
       },
     ],
     condicoes: [
       {
-        titulo: "Área de medicamentos",
+        titulo: "Área própria",
         texto:
-          "Espaço próprio, sem dividir corredor com carga química ou de outra natureza.",
+          "Insumo farmacêutico sem dividir corredor com carga química de risco.",
       },
       {
-        titulo: "Temperatura registrada",
+        titulo: "Farmacêutico RT",
         texto:
-          "Monitoramento da área com histórico disponível para o cliente e para a fiscalização.",
+          "Farmacêutico responsável técnico acompanhando a operação.",
       },
       {
         titulo: "Quarentena e bloqueio",
         texto:
-          "Itens reprovados, devolvidos ou recolhidos ficam separados e bloqueados no sistema.",
+          "Itens reprovados, devolvidos ou em análise ficam separados e bloqueados no sistema.",
       },
       {
         titulo: "Acesso restrito",
@@ -778,77 +739,68 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
     ],
     servicos: [
       "Armazenagem paletizada",
-      "Separação fracionada por pedido",
+      "Separação personalizada por pedido",
       "Conferência de lote na saída",
       "Gestão de devoluções",
-      "Inventário periódico",
-      "Entrega com a frota RC",
+      "Inventários cíclicos, rotativos e gerais",
+      "Entrega com a frota RC (opcional)",
     ],
     grupo: {
-      titulo: "Rastreabilidade que não quebra na entrega",
+      titulo: "Rastreabilidade do fornecedor à fábrica",
       texto:
-        "Em medicamento, cada troca de responsável é um ponto a mais para documentar e auditar. Na RC o mesmo grupo guarda e entrega: a carga sai do galpão na frota própria, com o registro de lote do recebimento até o destino.",
+        "Em insumo farmacêutico, cada troca de responsável é um ponto a mais para documentar e auditar. Na RC o mesmo grupo guarda e pode entregar: a carga sai do galpão na frota própria, com o registro de lote do recebimento até a fábrica.",
     },
     faq: [
       {
+        q: "Vocês armazenam medicamento pronto?",
+        a: "Não. A RC armazena somente insumos farmacêuticos: princípios ativos, excipientes e material de embalagem.",
+      },
+      {
         q: "A armazenagem segue alguma norma da ANVISA?",
-        a: "Sim. Seguimos as Boas Práticas de Distribuição e Armazenagem de medicamentos (RDC 653/2022), com procedimentos documentados para cada etapa.",
+        a: "Sim. Seguimos as Boas Práticas da RDC 430/2020, com procedimentos documentados para cada etapa. A AFE está em processo de regularização.",
       },
       {
         q: "A operação tem farmacêutico responsável?",
-        a: "Sim. A armazenagem de medicamentos conta com farmacêutico responsável técnico, como exige a legislação.",
+        a: "Sim. A operação conta com farmacêutico responsável técnico.",
       },
       {
         q: "Como é feito o controle de temperatura?",
-        a: "A área de medicamentos tem temperatura monitorada e registrada, e o histórico fica disponível para auditoria.",
+        a: "A área com temperatura monitorada e registrada está em processo de regularização junto à ANVISA. O comercial informa o prazo.",
       },
       {
-        q: "Como funciona em caso de recall?",
-        a: "O WMS mostra onde está cada volume do lote. O lote é bloqueado, separado e tratado conforme a orientação da sua empresa.",
-      },
-      {
-        q: "Vocês armazenam medicamentos controlados?",
-        a: "Sim, em área restrita própria. Os detalhes estão na página de armazenagem de medicamentos controlados.",
-      },
-      {
-        q: "Quem responde pelo medicamento entre o galpão e o destino?",
-        a: "Pode ser a própria RC. A carga sai na frota da RC Transportes, então a cadeia de custódia não troca de empresa no caminho, o que simplifica a documentação exigida pela RDC 653/2022. Se preferir usar outra transportadora, também atendemos.",
+        q: "Vocês armazenam insumos controlados?",
+        a: "A Autorização Especial para controlados está em processo de regularização. Os detalhes estão na página de insumos controlados.",
       },
     ],
     guia: {
-      titulo: "Como armazenar medicamentos corretamente",
+      titulo: "Como armazenar insumos farmacêuticos corretamente",
       intro:
-        "Medicamento exige mais controle que qualquer outra carga. Estes são os pontos que a regulação cobra e que fazem diferença na prática.",
+        "Insumo farmacêutico exige o mesmo rigor do medicamento que ele vai virar. Estes são os pontos que a regulação cobra.",
       blocos: [
         {
           titulo: "Controle e registre a temperatura",
           texto:
-            "A maioria dos medicamentos deve ficar entre 15 °C e 30 °C. Não basta estar dentro da faixa: é preciso ter o registro para provar isso numa auditoria.",
+            "Cada insumo tem a sua faixa de temperatura. Não basta estar dentro da faixa: é preciso ter o registro para provar isso numa auditoria.",
         },
         {
           titulo: "Separe liberado de bloqueado",
           texto:
-            "Produto em quarentena, reprovado, devolvido ou recolhido não pode ficar misturado ao estoque liberado. A separação deve ser física e também no sistema.",
+            "Insumo em quarentena, reprovado ou devolvido não pode ficar misturado ao estoque liberado. A separação deve ser física e também no sistema.",
         },
         {
           titulo: "Rastreie cada lote",
           texto:
-            "Em um recolhimento, a empresa precisa saber onde está cada caixa do lote. Isso só é possível com o lote registrado no recebimento e em cada movimentação.",
+            "Se um lote de insumo apresentar desvio, a indústria precisa saber onde está cada volume. Isso só é possível com o lote registrado em cada movimentação.",
         },
         {
           titulo: "Use a regra FEFO",
           texto:
-            "O lote que vence primeiro deve sair primeiro. Isso evita perda por vencimento e reclamação de cliente que recebeu produto com validade curta.",
-        },
-        {
-          titulo: "Documente os procedimentos",
-          texto:
-            "As Boas Práticas pedem procedimentos escritos para recebimento, armazenagem, expedição, devolução e limpeza, além de equipe treinada neles.",
+            "O lote que vence primeiro deve sair primeiro. Isso evita perda por vencimento e insumo com validade curta na linha de produção.",
         },
         {
           titulo: "Quando vale terceirizar",
           texto:
-            "Manter uma área própria dentro das Boas Práticas exige licença, farmacêutico, procedimentos e controle de temperatura. Um armazém licenciado já tem essa estrutura pronta.",
+            "Manter uma área própria dentro das Boas Práticas exige licença, farmacêutico, procedimentos e controle de temperatura. Um armazém especializado divide essa estrutura entre vários clientes.",
         },
       ],
     },
@@ -858,58 +810,48 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       {
         titulo: "Indústrias farmacêuticas",
         texto:
-          "Controlados fora da fábrica, em área restrita e com a documentação em dia.",
+          "Insumos controlados fora da fábrica, em área restrita e com a documentação em dia.",
       },
       {
-        titulo: "Distribuidoras",
+        titulo: "Distribuidoras de insumos",
         texto:
-          "Estoque de controlados separado do medicamento comum, com registro de cada movimentação.",
+          "Estoque de substâncias controladas separado do insumo comum, com registro de cada movimentação.",
       },
       {
         titulo: "Importadoras",
         texto:
-          "Recebimento de controlado importado com conferência de documentação e quantidade.",
-      },
-      {
-        titulo: "Fornecedores de hospitais",
-        texto:
-          "Estoque organizado para abastecer hospitais e redes com rastreio por lote.",
+          "Recebimento de insumo controlado importado com conferência de documentação e quantidade.",
       },
     ],
     produtos: [
       {
-        grupo: "Psicotrópicos",
+        grupo: "Substâncias psicotrópicas",
         itens:
-          "Ansiolíticos, hipnóticos e demais medicamentos psicotrópicos das listas da Portaria SVS/MS 344/98.",
+          "Princípios ativos psicotrópicos sujeitos a controle especial, usados na fabricação de medicamentos.",
       },
       {
-        grupo: "Entorpecentes",
+        grupo: "Substâncias entorpecentes",
         itens:
-          "Analgésicos opioides e demais entorpecentes sujeitos a controle especial.",
+          "Insumos entorpecentes sujeitos a controle especial.",
       },
       {
-        grupo: "Outras substâncias controladas",
+        grupo: "Precursores",
         itens:
-          "Antidepressivos, anticonvulsivantes, retinoides e demais itens de controle especial.",
-      },
-      {
-        grupo: "Insumos e precursores",
-        itens:
-          "Substâncias que também exigem controle da Polícia Federal, com entrada e saída registradas por lote.",
+          "Substâncias que também exigem controle da Polícia Federal e da Polícia Civil, com entrada e saída registradas por lote.",
       },
     ],
     requisitos: [
       {
         exigencia:
-          "A Portaria SVS/MS 344/98 exige Autorização Especial (AE) da ANVISA para armazenar substâncias e medicamentos controlados.",
+          "Armazenar substâncias controladas exige Autorização Especial (AE) da ANVISA.",
         comoAtendemos:
-          "Operação com as autorizações exigidas para controlados, disponíveis para auditoria.",
+          "AE em processo de regularização, com farmacêutico responsável técnico já na operação.",
       },
       {
         exigencia:
-          "Alguns insumos e precursores também são controlados pela Polícia Federal.",
+          "Insumos e precursores controlados exigem licença da Polícia Federal e da Polícia Civil.",
         comoAtendemos:
-          "Licença da Polícia Federal vigente para os itens que exigem.",
+          "Licenças da Polícia Federal e da Polícia Civil vigentes.",
       },
       {
         exigencia:
@@ -925,22 +867,16 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       },
       {
         exigencia:
-          "Também valem as Boas Práticas de Distribuição e Armazenagem de medicamentos.",
-        comoAtendemos:
-          "Os mesmos controles da área de medicamentos: temperatura registrada, FEFO e segregação de bloqueados.",
-      },
-      {
-        exigencia:
           "Divergência de estoque precisa ser investigada e comunicada.",
         comoAtendemos:
-          "Inventário frequente da área restrita e tratamento imediato de qualquer divergência.",
+          "Inventário da área restrita e tratamento imediato de qualquer divergência.",
       },
     ],
     passos: [
       {
         titulo: "Validação documental",
         texto:
-          "Antes do primeiro recebimento conferimos as autorizações da sua empresa e a relação de produtos.",
+          "Antes do primeiro recebimento conferimos as autorizações da sua empresa e a relação de insumos.",
       },
       {
         titulo: "Recebimento controlado",
@@ -950,7 +886,7 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       {
         titulo: "Guarda em área restrita",
         texto:
-          "O produto vai direto para a área trancada, separado de qualquer medicamento comum.",
+          "O insumo vai direto para a área trancada, separado de qualquer insumo comum.",
       },
       {
         titulo: "Expedição conferida",
@@ -958,9 +894,9 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
           "Separação por FEFO, conferência de lote e quantidade e registro da saída com a documentação.",
       },
       {
-        titulo: "Entrega pela frota RC",
+        titulo: "Entrega",
         texto:
-          "A carga segue na frota do grupo, habilitada junto ao Conselho Regional de Farmácia para esse transporte.",
+          "A carga segue na frota do grupo ou na transportadora habilitada que você indicar.",
       },
     ],
     condicoes: [
@@ -980,9 +916,9 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
           "Câmeras e ronda contínua no galpão, todos os dias.",
       },
       {
-        titulo: "Inventário frequente",
+        titulo: "Inventário",
         texto:
-          "Contagem periódica da área restrita, com divergência tratada na hora.",
+          "Contagem da área restrita, com divergência tratada na hora.",
       },
     ],
     servicos: [
@@ -990,18 +926,22 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       "Separação por pedido",
       "Conferência de lote e quantidade",
       "Registro de movimentação por lote",
-      "Inventário periódico",
-      "Entrega com a frota RC",
+      "Inventários cíclicos, rotativos e gerais",
+      "Entrega com a frota RC (opcional)",
     ],
     grupo: {
       titulo: "Menos pontos de contato, menos risco",
       texto:
-        "Com controlado, cada troca de mão é um ponto de risco e de documentação. Na RC a carga sai da área restrita direto na frota do grupo, habilitada junto ao Conselho Regional de Farmácia, sem passar por outra empresa no caminho.",
+        "Com controlado, cada troca de mão é um ponto de risco e de documentação. Na RC a carga pode sair da área restrita direto na frota do grupo, sem passar por outra empresa no caminho.",
     },
     faq: [
       {
-        q: "Quais listas da Portaria 344 vocês armazenam?",
-        a: "Avaliamos conforme a relação de produtos e as autorizações da sua empresa. Envie a lista para o comercial que respondemos caso a caso.",
+        q: "Vocês já armazenam insumos controlados?",
+        a: "A Autorização Especial da ANVISA está em processo de regularização. Envie a relação de insumos para o comercial, que informa o prazo e avalia caso a caso.",
+      },
+      {
+        q: "Vocês armazenam medicamento controlado pronto?",
+        a: "Não. A RC armazena somente matéria-prima: insumos e substâncias controladas usadas na fabricação.",
       },
       {
         q: "Quem tem acesso à área restrita?",
@@ -1009,30 +949,22 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       },
       {
         q: "Que documentos a minha empresa precisa ter?",
-        a: "As autorizações da ANVISA para a sua atividade com controlados e a licença sanitária. Conferimos tudo antes do primeiro recebimento.",
+        a: "As autorizações da ANVISA para a sua atividade com controlados e, quando o insumo exigir, as licenças da Polícia Federal e da Polícia Civil. Conferimos tudo antes do primeiro recebimento.",
       },
       {
         q: "Como a movimentação é registrada?",
         a: "Cada entrada e saída é registrada por lote e conferida com a documentação, o que facilita a sua prestação de contas.",
       },
-      {
-        q: "O controlado fica junto do medicamento comum?",
-        a: "Não. Controlados ficam em área própria e trancada, separada da área de medicamentos comuns.",
-      },
-      {
-        q: "A transportadora precisa de habilitação para levar controlado?",
-        a: "Precisa. A frota da RC Transportes é habilitada junto ao Conselho Regional de Farmácia para esse transporte, então o controlado sai do galpão sem trocar de empresa no caminho.",
-      },
     ],
     guia: {
-      titulo: "Como armazenar medicamentos controlados corretamente",
+      titulo: "Como armazenar insumos controlados corretamente",
       intro:
-        "Controlado tem as regras do medicamento comum e mais algumas. Estes são os pontos que não podem falhar.",
+        "Insumo controlado tem as regras do insumo comum e mais algumas. Estes são os pontos que não podem falhar.",
       blocos: [
         {
           titulo: "Autorização antes de tudo",
           texto:
-            "Quem armazena controlado precisa das autorizações específicas da ANVISA, e alguns insumos exigem também licença da Polícia Federal. Sem isso a operação é irregular desde o primeiro dia.",
+            "Quem armazena controlado precisa das autorizações específicas da ANVISA, e alguns insumos exigem também licença da Polícia Federal e da Polícia Civil. Sem isso a operação é irregular desde o primeiro dia.",
         },
         {
           titulo: "Local exclusivo e trancado",
@@ -1050,14 +982,9 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
             "Com controlado, qualquer diferença de estoque precisa ser explicada. Contagem frequente encontra o problema cedo.",
         },
         {
-          titulo: "Mantenha os cuidados do medicamento comum",
-          texto:
-            "Temperatura registrada, regra FEFO e segregação de itens bloqueados continuam valendo dentro da área restrita.",
-        },
-        {
           titulo: "Quando vale terceirizar",
           texto:
-            "Montar e manter uma área de controlados exige autorização, estrutura física e rotina de controle. Um armazém que já opera com controlados assume essa responsabilidade.",
+            "Montar e manter uma área de controlados exige autorização, estrutura física e rotina de controle. Um armazém especializado concentra essa estrutura e a rotina de auditoria.",
         },
       ],
     },
@@ -1067,12 +994,12 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       {
         titulo: "Indústria química",
         texto:
-          "Matéria-prima e produto acabado fora da fábrica, sem ocupar área produtiva com estoque de risco.",
+          "Matéria-prima fora da fábrica, sem ocupar área produtiva com estoque de risco.",
       },
       {
         titulo: "Distribuidoras de químicos",
         texto:
-          "Estoque próximo da capital e do interior de SP, com saída fracionada para vários clientes no mesmo dia.",
+          "Estoque de matéria-prima próximo da capital e do interior de SP, com separação personalizada por pedido.",
       },
       {
         titulo: "Importadoras",
@@ -1087,9 +1014,9 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
     ],
     produtos: [
       {
-        grupo: "Classe 3 · Líquidos inflamáveis",
+        grupo: "Classe 6 · Substâncias tóxicas",
         itens:
-          "Solventes como acetona, tolueno e xileno, álcoois, thinners, tintas, vernizes e resinas à base de solvente.",
+          "Defensivos, intermediários de síntese e demais substâncias tóxicas, conforme a FDS de cada produto.",
       },
       {
         grupo: "Classe 8 · Corrosivos",
@@ -1097,9 +1024,9 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
           "Ácidos (sulfúrico, clorídrico, fosfórico), bases como soda cáustica e hidróxido de potássio, desincrustantes e limpadores industriais.",
       },
       {
-        grupo: "Controlados pela Polícia Federal",
+        grupo: "Classe 9 · Substâncias perigosas diversas",
         itens:
-          "Produtos químicos sujeitos a controle e fiscalização da Polícia Federal, com entrada e saída registradas por lote.",
+          "Produtos perigosos ao meio ambiente e demais itens da classe 9, avaliados pela FDS antes do recebimento.",
       },
       {
         grupo: "Químicos da mesma cadeia",
@@ -1110,39 +1037,39 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
     requisitos: [
       {
         exigencia:
-          "Armazenar produto químico perigoso em São Paulo exige licenciamento ambiental na CETESB.",
+          "Substâncias com controle ambiental federal exigem cadastro e licença no IBAMA.",
         comoAtendemos:
-          "Operação com registro CETESB vigente para a atividade de armazenagem.",
+          "Licenciamento IBAMA vigente para a operação.",
       },
       {
         exigencia:
-          "Quem guarda produto químico controlado precisa de licença da Polícia Federal (Lei 10.357/2001).",
+          "Quem guarda produto químico controlado precisa de licença da Polícia Federal e da Polícia Civil.",
         comoAtendemos:
-          "Licença da Polícia Federal vigente e controle de entradas e saídas por lote, pronto para fiscalização.",
+          "Licenças da Polícia Federal e da Polícia Civil vigentes, com entrada e saída registradas por lote.",
       },
       {
         exigencia:
           "O galpão precisa de AVCB compatível com a carga de incêndio e com o tipo de produto armazenado.",
         comoAtendemos:
-          "AVCB vigente e plano de atendimento a emergências (PAE) com equipe treinada.",
+          "AVCB vigente, plano de atendimento a emergências (PAE), brigada treinada e procedimento de contenção de vazamento.",
       },
       {
         exigencia:
-          "Produtos incompatíveis não podem ficar próximos. Inflamáveis seguem a ABNT NBR 17505 e a tabela de incompatibilidade da ficha de segurança.",
+          "Produtos incompatíveis não podem ficar próximos, conforme a tabela de incompatibilidade da ficha de segurança.",
         comoAtendemos:
-          "Áreas separadas por classe de risco, definidas antes da entrada do produto. Ácido não divide corredor com inflamável.",
+          "Áreas separadas por classe de risco, definidas antes da entrada do produto. Tóxico não divide corredor com corrosivo.",
       },
       {
         exigencia:
           "Cada produto precisa de Ficha com Dados de Segurança (FDS, a antiga FISPQ), conforme a ABNT NBR 14725.",
         comoAtendemos:
-          "A FDS é recebida e arquivada na entrada de cada item, disponível para a equipe e para a fiscalização.",
+          "A FDS de cada item é arquivada na entrada e fica disponível durante todo o período armazenado.",
       },
       {
         exigencia:
           "Lote e validade precisam ser rastreáveis para auditoria e para um eventual recall.",
         comoAtendemos:
-          "O WMS registra lote, posição e validade de cada volume. A saída segue a regra FEFO.",
+          "O WMS Senior registra lote, posição e validade de cada volume. A saída segue a regra FEFO.",
       },
     ],
     passos: [
@@ -1154,7 +1081,7 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       {
         titulo: "Recebimento na doca",
         texto:
-          "Conferência de nota, lote, rotulagem e integridade das embalagens. Embalagem avariada não entra no estoque.",
+          "Conferência de nota, lote, rotulagem e integridade das embalagens. Avaria é registrada e o volume vai para a área de bloqueio.",
       },
       {
         titulo: "Armazenagem segregada",
@@ -1167,9 +1094,9 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
           "Separação por FEFO, conferência de saída e carregamento com a documentação de transporte de produto perigoso.",
       },
       {
-        titulo: "Entrega pela frota RC",
+        titulo: "Entrega",
         texto:
-          "A carga segue na frota do grupo, com motoristas habilitados para produto perigoso, até o destino final.",
+          "A carga segue na frota do grupo ou na transportadora que você indicar, até o destino final.",
       },
     ],
     condicoes: [
@@ -1191,26 +1118,26 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       {
         titulo: "Plano de emergência",
         texto:
-          "PAE documentado, equipe treinada e procedimento definido para vazamento ou incêndio.",
+          "PAE documentado, brigada treinada e procedimento definido para vazamento ou incêndio.",
       },
     ],
     servicos: [
       "Armazenagem paletizada",
-      "Separação fracionada por pedido",
+      "Separação por pedido",
       "Etiquetagem e reetiquetagem",
-      "Inventário periódico",
+      "Inventários cíclicos, rotativos e gerais",
       "Conferência de FDS e rotulagem",
-      "Transporte com a frota RC",
+      "Transporte com a frota RC (opcional)",
     ],
     grupo: {
       titulo: "Do galpão ao cliente sem trocar de responsável",
       texto:
-        "Produto perigoso é onde a troca de fornecedor mais pesa: documentação, responsabilidade e rastreio se perdem no meio do caminho. Na RC a carga sai do armazém direto na frota da RC Transportes, que tem certificação SASSMAQ para transporte de produtos químicos. Um contrato, uma equipe e o mesmo registro de lote do recebimento à entrega.",
+        "Produto perigoso é onde a troca de fornecedor mais pesa: documentação, responsabilidade e rastreio se perdem no meio do caminho. Na RC a carga pode sair do armazém direto na frota da RC Transportes. Um contrato, uma equipe e o mesmo registro de lote do recebimento à entrega.",
     },
     faq: [
       {
         q: "Quais classes de produto perigoso vocês armazenam?",
-        a: "Trabalhamos com líquidos inflamáveis (classe 3) e corrosivos (classe 8), além de químicos sem classificação de risco da mesma cadeia. Para outras classes avaliamos caso a caso a partir da ficha de segurança.",
+        a: "Classes 6 (tóxicos), 8 (corrosivos) e 9 (perigosos diversos), além de químicos sem classificação de risco da mesma cadeia. A área de inflamáveis (classe 3) está em processo de regularização.",
       },
       {
         q: "Preciso enviar a ficha de segurança (FDS) antes de fechar?",
@@ -1218,7 +1145,7 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       },
       {
         q: "Vocês armazenam produto controlado pela Polícia Federal?",
-        a: "Sim. A RC mantém licença da Polícia Federal vigente e registra entrada e saída de cada lote, o que facilita a prestação de contas da sua empresa junto ao órgão.",
+        a: "Sim. A RC tem licenças da Polícia Federal e da Polícia Civil e registra entrada e saída de cada lote, o que facilita a prestação de contas da sua empresa.",
       },
       {
         q: "Como vocês evitam contato entre produtos incompatíveis?",
@@ -1226,11 +1153,11 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       },
       {
         q: "O que acontece em caso de vazamento?",
-        a: "Seguimos o plano de atendimento a emergências (PAE): isolamento da área, contenção do produto e acionamento dos responsáveis. A equipe é treinada para esse procedimento.",
+        a: "Seguimos o plano de atendimento a emergências (PAE) e o procedimento de contenção de vazamento: isolamento da área, contenção do produto e acionamento dos responsáveis. A brigada é treinada para esse procedimento.",
       },
       {
-        q: "Quem transporta produto perigoso precisa de certificação?",
-        a: "Sim. A frota da RC Transportes tem SASSMAQ e motoristas habilitados para produto perigoso, então a carga vai do galpão até o seu cliente sem trocar de fornecedor. Se preferir usar outra transportadora, também atendemos.",
+        q: "Posso usar a minha transportadora?",
+        a: "Pode. A carga sai na transportadora que você indicar ou, se preferir, na frota da RC Transportes, sem trocar de fornecedor no caminho.",
       },
       {
         q: "Vocês atendem pessoa física?",
@@ -1290,7 +1217,7 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       {
         titulo: "Distribuidoras de resinas",
         texto:
-          "Estoque regional com saída fracionada por tambor, balde ou IBC.",
+          "Estoque regional com separação personalizada, do jeito que cada cliente pede.",
       },
       {
         titulo: "Pisos e compósitos",
@@ -1323,12 +1250,6 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
     requisitos: [
       {
         exigencia:
-          "Armazenar produto químico em São Paulo exige licenciamento ambiental na CETESB.",
-        comoAtendemos:
-          "Operação com registro CETESB vigente para a atividade de armazenagem.",
-      },
-      {
-        exigencia:
           "Substâncias com controle ambiental federal exigem cadastro e licença no IBAMA.",
         comoAtendemos:
           "Licenciamento IBAMA vigente para os insumos que exigem.",
@@ -1337,7 +1258,7 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
         exigencia:
           "Resina com solvente costuma ser inflamável, e endurecedor à base de amina costuma ser corrosivo.",
         comoAtendemos:
-          "Posição definida pela classe de risco da FDS, com inflamáveis e corrosivos separados.",
+          "Posição definida pela classe de risco da FDS. Resinas inflamáveis dependem da área de inflamáveis, em processo de regularização.",
       },
       {
         exigencia:
@@ -1355,7 +1276,7 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
         exigencia:
           "Cada produto precisa de Ficha com Dados de Segurança (FDS).",
         comoAtendemos:
-          "A FDS é arquivada na entrada de cada item e fica disponível para a equipe e a fiscalização.",
+          "A FDS de cada item é arquivada na entrada e fica disponível durante todo o período armazenado.",
       },
     ],
     passos: [
@@ -1377,19 +1298,19 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       {
         titulo: "Separação",
         texto:
-          "Separação por FEFO, inclusive fracionada por volume, com conferência de saída.",
+          "Separação personalizada conforme a solicitação do cliente, seguindo FEFO, com conferência de saída.",
       },
       {
         titulo: "Entrega pela frota RC",
         texto:
-          "A carga segue na frota do grupo, certificada em SASSMAQ para transporte de produtos químicos.",
+          "A carga segue na frota do grupo ou na transportadora que você indicar.",
       },
     ],
     condicoes: [
       {
         titulo: "Segregação por classe",
         texto:
-          "Inflamáveis e corrosivos em áreas separadas, definidas antes da entrada do produto.",
+          "Cada classe de risco em área própria, definida antes da entrada do produto.",
       },
       {
         titulo: "Área seca e coberta",
@@ -1399,7 +1320,7 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       {
         titulo: "Plano de emergência",
         texto:
-          "PAE documentado e procedimento de contenção para vazamento.",
+          "PAE documentado, brigada treinada e procedimento de contenção para vazamento.",
       },
       {
         titulo: "Controle de acesso",
@@ -1409,15 +1330,15 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
     ],
     servicos: [
       "Armazenagem de tambores, baldes e IBCs",
-      "Separação fracionada",
-      "Etiquetagem de lote",
-      "Inventário periódico",
-      "Entrega com a frota RC",
+      "Separação por pedido",
+      "Etiquetagem e reetiquetagem",
+      "Inventários cíclicos, rotativos e gerais",
+      "Entrega com a frota RC (opcional)",
     ],
     grupo: {
       titulo: "Químico industrial com um responsável só",
       texto:
-        "Resina e endurecedor precisam chegar juntos, íntegros e dentro da validade. Na RC a carga sai do galpão direto na frota da RC Transportes, certificada em SASSMAQ, com o mesmo registro de lote do recebimento à entrega.",
+        "Resina e endurecedor precisam chegar juntos, íntegros e dentro da validade. Na RC a carga pode sair do galpão direto na frota da RC Transportes, com o mesmo registro de lote do recebimento à entrega.",
     },
     faq: [
       {
@@ -1434,15 +1355,15 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       },
       {
         q: "E a temperatura? Algumas resinas cristalizam.",
-        a: "Indicamos a área conforme a ficha técnica. Temos galpões com e sem climatização.",
+        a: "Indicamos a área conforme a ficha técnica. A área climatizada está em processo de regularização junto à ANVISA.",
       },
       {
-        q: "Vocês fazem saída fracionada?",
-        a: "Sim. A separação pode ser por volume, como tambor ou balde, conforme o pedido.",
+        q: "Como funciona a separação?",
+        a: "É personalizada: cada cliente tem uma forma de separar, e a RC segue a solicitação de cada pedido.",
       },
       {
         q: "Resina classificada como perigosa pode sair na frota da RC?",
-        a: "Pode. A frota da RC Transportes é certificada em SASSMAQ, a avaliação que a indústria química exige de quem transporta esse tipo de carga. Se preferir usar outra transportadora, também atendemos.",
+        a: "Pode. A frota da RC Transportes leva do galpão até o destino. Se preferir usar outra transportadora, também atendemos.",
       },
     ],
     guia: {
@@ -1493,7 +1414,7 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       {
         titulo: "Artefatos de borracha",
         texto:
-          "Vedações, mangueiras e correias: matéria-prima organizada por lote e liberada por ordem de produção.",
+          "Vedações, mangueiras e correias: matéria-prima organizada por lote e liberada por pedido.",
       },
       {
         titulo: "Autopeças",
@@ -1503,7 +1424,7 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       {
         titulo: "Distribuidoras",
         texto:
-          "Estoque regional de matérias-primas para borracha e plástico, com saída fracionada.",
+          "Estoque regional de matérias-primas para borracha e plástico, com separação personalizada por pedido.",
       },
     ],
     produtos: [
@@ -1529,12 +1450,6 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       },
     ],
     requisitos: [
-      {
-        exigencia:
-          "Armazenar insumo químico em São Paulo exige licenciamento ambiental na CETESB.",
-        comoAtendemos:
-          "Operação com registro CETESB vigente para a atividade de armazenagem.",
-      },
       {
         exigencia:
           "Parte desses insumos exige cadastro e licença no IBAMA.",
@@ -1583,14 +1498,14 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
           "Negro de fumo em área própria e borrachas protegidas de calor e luz, com posição no WMS.",
       },
       {
-        titulo: "Separação por ordem de produção",
+        titulo: "Separação por pedido",
         texto:
-          "Separação seguindo FEFO e a programação da fábrica, com conferência de saída.",
+          "Separação por pedido ou solicitação de venda, seguindo FEFO, com conferência de saída.",
       },
       {
-        titulo: "Entrega pela frota RC",
+        titulo: "Entrega",
         texto:
-          "A carga segue na frota do grupo até a fábrica, na janela combinada.",
+          "A carga segue na frota do grupo até a fábrica, na janela combinada, ou na transportadora que você indicar.",
       },
     ],
     condicoes: [
@@ -1617,15 +1532,15 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
     ],
     servicos: [
       "Armazenagem de fardos, big bags e sacaria",
-      "Separação por ordem de produção",
+      "Separação por pedido",
       "Paletização e filmagem",
-      "Inventário periódico",
-      "Entrega com a frota RC",
+      "Inventários cíclicos, rotativos e gerais",
+      "Entrega com a frota RC (opcional)",
     ],
     grupo: {
       titulo: "Matéria-prima no ritmo da produção",
       texto:
-        "Fábrica de borracha consome volume alto e não pode parar por falta de insumo. Com armazenagem e transporte no mesmo grupo, a RC separa pela programação e entrega com a frota própria, sem intermediário.",
+        "Fábrica de borracha consome volume alto e não pode parar por falta de insumo. Com armazenagem e transporte no mesmo grupo, a RC separa cada pedido e pode entregar com a frota própria, sem intermediário.",
     },
     faq: [
       {
@@ -1645,8 +1560,8 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
         a: "Pode perder com calor, luz e ozônio. Por isso fica em área coberta, sem sol direto e longe de fontes de calor.",
       },
       {
-        q: "Vocês separam pela programação da fábrica?",
-        a: "Sim. A separação pode seguir a ordem de produção, sempre respeitando a regra FEFO.",
+        q: "Como funciona a separação?",
+        a: "Por pedido ou solicitação de venda, sempre respeitando a regra FEFO, com conferência na saída.",
       },
       {
         q: "Fardo e big bag saem do galpão direto para a fábrica?",
@@ -1711,7 +1626,7 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       {
         titulo: "Distribuidoras de especialidades",
         texto:
-          "Muitos itens diferentes num único armazém, com saída fracionada e pedidos consolidados.",
+          "Muitos itens diferentes num único armazém, com separação personalizada e pedidos consolidados.",
       },
     ],
     produtos: [
@@ -1728,7 +1643,7 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       {
         grupo: "Agentes de vulcanização",
         itens:
-          "Aceleradores, enxofre, óxido de zinco e ativadores para a indústria de borracha.",
+          "Aceleradores, óxido de zinco e ativadores para a indústria de borracha.",
       },
       {
         grupo: "Pigmentos industriais",
@@ -1739,19 +1654,19 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
     requisitos: [
       {
         exigencia:
-          "Armazenar produto químico em São Paulo exige licenciamento ambiental na CETESB.",
+          "Substâncias com controle ambiental federal exigem cadastro e licença no IBAMA.",
         comoAtendemos:
-          "Operação com registro CETESB vigente para a atividade de armazenagem.",
+          "Licenciamento IBAMA vigente para os aditivos que exigem.",
       },
       {
         exigencia:
           "Cada aditivo precisa de Ficha com Dados de Segurança (FDS).",
         comoAtendemos:
-          "A FDS é arquivada na entrada de cada item e fica disponível durante todo o período armazenado.",
+          "A FDS de cada item é arquivada na entrada e fica disponível durante todo o período armazenado.",
       },
       {
         exigencia:
-          "Aditivos podem reagir entre si. O enxofre, por exemplo, é um sólido inflamável.",
+          "Aditivos podem reagir entre si, e alguns são incompatíveis com oxidantes.",
         comoAtendemos:
           "Posição definida por compatibilidade química, conforme a FDS, e não por espaço livre.",
       },
@@ -1791,9 +1706,9 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
           "Posição definida pela química do produto, em área seca e coberta.",
       },
       {
-        titulo: "Separação fracionada",
+        titulo: "Separação personalizada",
         texto:
-          "Separação por saco ou volume, com vários aditivos consolidados no mesmo pedido.",
+          "Separação do jeito que cada cliente pede, com vários aditivos consolidados no mesmo pedido.",
       },
       {
         titulo: "Entrega pela frota RC",
@@ -1825,11 +1740,11 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
     ],
     servicos: [
       "Armazenagem de sacaria e big bag",
-      "Separação fracionada",
+      "Separação personalizada",
       "Consolidação de vários aditivos no mesmo pedido",
-      "Etiquetagem de lote",
-      "Inventário periódico",
-      "Entrega com a frota RC",
+      "Etiquetagem e reetiquetagem",
+      "Inventários cíclicos, rotativos e gerais",
+      "Entrega com a frota RC (opcional)",
     ],
     grupo: {
       titulo: "Vários aditivos, uma entrega",
@@ -1843,7 +1758,7 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       },
       {
         q: "Enxofre pode ser armazenado?",
-        a: "Sim. Por ser sólido inflamável, ele fica em posição definida pela FDS, separado dos itens incompatíveis.",
+        a: "Enxofre é sólido inflamável e depende da área de inflamáveis, que está em processo de regularização. Fale com o comercial para saber o prazo.",
       },
       {
         q: "O pigmento não contamina outras cargas?",
@@ -1855,11 +1770,11 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
       },
       {
         q: "Vocês juntam vários aditivos no mesmo pedido?",
-        a: "Sim. Separamos de forma fracionada e consolidamos os itens numa entrega só.",
+        a: "Sim. A separação segue a solicitação de cada cliente e os itens são consolidados numa entrega só.",
       },
       {
         q: "Quem leva o aditivo do galpão até a fábrica?",
-        a: "Pode ser a própria RC. A carga sai na frota da RC Transportes, com a FISPQ de cada produto disponível, sem passar por outra empresa no caminho. Se preferir usar outra transportadora, também atendemos.",
+        a: "Pode ser a própria RC. A carga sai na frota da RC Transportes, sem passar por outra empresa no caminho. Se preferir usar outra transportadora, também atendemos.",
       },
     ],
     guia: {
@@ -1880,7 +1795,7 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
         {
           titulo: "Respeite a compatibilidade",
           texto:
-            "Enxofre é inflamável, e alguns aditivos reagem com oxidantes. Posicionar pela química, e não pelo espaço livre, evita acidente.",
+            "Alguns aditivos são inflamáveis, e outros reagem com oxidantes. Posicionar pela química, e não pelo espaço livre, evita acidente.",
         },
         {
           titulo: "Controle os pós",
@@ -1896,423 +1811,6 @@ export const SEGMENT_DETAILS: Partial<Record<SegmentId, SegmentDetail>> = {
           titulo: "Quando vale terceirizar",
           texto:
             "Muitos itens pequenos ocupam espaço e dão trabalho de controle. Um armazém preparado organiza tudo e entrega consolidado.",
-        },
-      ],
-    },
-  },
-  "equipamentos-ti": {
-    requisitosCuidados: true,
-    perfis: [
-      {
-        titulo: "Integradoras de TI e automação",
-        texto:
-          "Equipamento guardado entre a compra e a instalação, organizado por projeto.",
-      },
-      {
-        titulo: "Revendas e distribuidores",
-        texto:
-          "Estoque seguro para atender clientes em São Paulo, Jundiaí e interior.",
-      },
-      {
-        titulo: "Projetos de implantação",
-        texto:
-          "Data center, telecom e automação industrial: itens do projeto reunidos até a data da obra.",
-      },
-      {
-        titulo: "Fabricantes de gabinetes",
-        texto:
-          "Racks e painéis prontos aguardando expedição, sem ocupar a fábrica.",
-      },
-    ],
-    produtos: [
-      {
-        grupo: "Racks e gabinetes",
-        itens:
-          "Racks para servidor e rede, armários modulares e gabinetes metálicos.",
-      },
-      {
-        grupo: "Painéis e quadros",
-        itens:
-          "Painéis de comando, quadros elétricos e componentes de automação embalados.",
-      },
-      {
-        grupo: "Infraestrutura de rede",
-        itens:
-          "Equipamentos de rede embalados, bandejas, organizadores, patch panels e cabeamento.",
-      },
-      {
-        grupo: "Itens de projeto",
-        itens:
-          "Materiais diversos de uma mesma implantação, reunidos e identificados por obra.",
-      },
-    ],
-    requisitos: [
-      {
-        exigencia:
-          "Racks e painéis são pesados e têm centro de gravidade alto.",
-        comoAtendemos:
-          "Movimentação com equipamento adequado e equipe treinada, sem tombar ou arrastar.",
-      },
-      {
-        exigencia:
-          "Umidade e poeira danificam componentes eletrônicos.",
-        comoAtendemos:
-          "Área seca e coberta, longe de produto químico, com a embalagem original preservada.",
-      },
-      {
-        exigencia: "Equipamento de alto valor exige segurança.",
-        comoAtendemos:
-          "Controle de acesso por área e monitoramento 24h do galpão.",
-      },
-      {
-        exigencia:
-          "Avaria precisa ser identificada na entrada, não no dia da instalação.",
-        comoAtendemos:
-          "Conferência visual das embalagens no recebimento, com registro de qualquer dano.",
-      },
-      {
-        exigencia:
-          "Um projeto tem muitos itens diferentes para o mesmo destino.",
-        comoAtendemos:
-          "Controle por item e por projeto no WMS, com separação por obra ou cliente.",
-      },
-      {
-        exigencia:
-          "Entrega em obra exige janela definida e cuidado na descarga.",
-        comoAtendemos:
-          "Entrega programada com a frota RC, no dia combinado com o cliente final.",
-      },
-    ],
-    passos: [
-      {
-        titulo: "Planejamento",
-        texto:
-          "Recebemos a lista de itens com dimensões e pesos para planejar a área e a movimentação.",
-      },
-      {
-        titulo: "Recebimento",
-        texto:
-          "Conferência de volumes e embalagens, com registro de qualquer avaria na entrada.",
-      },
-      {
-        titulo: "Armazenagem",
-        texto:
-          "Posição em área seca, organizada por projeto ou cliente e registrada no WMS.",
-      },
-      {
-        titulo: "Separação por projeto",
-        texto:
-          "Os itens de cada obra são reunidos e conferidos antes do carregamento.",
-      },
-      {
-        titulo: "Entrega programada",
-        texto:
-          "A frota RC entrega na obra ou no cliente, na data combinada.",
-      },
-    ],
-    condicoes: [
-      {
-        titulo: "Área seca e limpa",
-        texto:
-          "Sem umidade, poeira ou proximidade com produto químico.",
-      },
-      {
-        titulo: "Movimentação técnica",
-        texto:
-          "Equipamento e equipe preparados para carga pesada e sensível.",
-      },
-      {
-        titulo: "Controle de acesso",
-        texto:
-          "Entrada restrita e registrada por área.",
-      },
-      {
-        titulo: "Monitoramento 24h",
-        texto:
-          "Câmeras e ronda contínua no galpão e na expedição.",
-      },
-    ],
-    servicos: [
-      "Armazenagem paletizada e blocada",
-      "Separação por projeto ou obra",
-      "Consolidação de carga",
-      "Registro de avarias no recebimento",
-      "Inventário periódico",
-      "Entrega programada com a frota RC",
-    ],
-    grupo: {
-      titulo: "Do estoque à obra no dia marcado",
-      texto:
-        "Em implantação, o equipamento precisa chegar completo e na data da obra. Com armazenagem e transporte no mesmo grupo, a RC reúne os itens do projeto e entrega com a frota própria, sem depender de outra transportadora.",
-    },
-    faq: [
-      {
-        q: "Que tipo de equipamento vocês armazenam?",
-        a: "Racks, gabinetes, painéis de comando, quadros elétricos, infraestrutura de rede e itens de projetos de implantação.",
-      },
-      {
-        q: "A área é seca?",
-        a: "Sim. Equipamento de TI fica em área seca e coberta, longe de produto químico.",
-      },
-      {
-        q: "Vocês organizam por projeto?",
-        a: "Sim. O WMS controla os itens por projeto ou cliente, e a separação é feita por obra.",
-      },
-      {
-        q: "E se o equipamento chegar avariado?",
-        a: "As embalagens são conferidas no recebimento e qualquer dano é registrado e comunicado na hora.",
-      },
-      {
-        q: "A carga tem seguro?",
-        a: "Sim, a carga armazenada conta com cobertura de seguro. As condições variam por tipo de produto e são tratadas com o comercial.",
-      },
-      {
-        q: "Vocês entregam na obra?",
-        a: "Sim. A frota RC entrega na obra ou no cliente final, na data combinada.",
-      },
-    ],
-    guia: {
-      titulo: "Como armazenar equipamentos de TI e infraestrutura",
-      intro:
-        "Equipamento de TI não é carga perigosa, mas é cara e sensível. Estes cuidados evitam avaria e atraso na implantação.",
-      blocos: [
-        {
-          titulo: "Mantenha a embalagem original",
-          texto:
-            "A embalagem do fabricante protege contra impacto, poeira e umidade. Abrir antes da hora aumenta o risco de dano.",
-        },
-        {
-          titulo: "Local seco e sem poeira",
-          texto:
-            "Umidade oxida contatos e poeira entra nos componentes. O estoque deve ser coberto, seco e longe de produto químico.",
-        },
-        {
-          titulo: "Cuidado na movimentação",
-          texto:
-            "Racks e painéis tombam com facilidade. Equipamento adequado e equipe treinada evitam acidente e avaria.",
-        },
-        {
-          titulo: "Organize por projeto",
-          texto:
-            "Quando os itens de uma obra ficam espalhados, falta peça no dia da instalação. Controle por projeto resolve isso.",
-        },
-        {
-          titulo: "Confira na entrada",
-          texto:
-            "Avaria descoberta na obra vira discussão com fornecedor e atraso. Conferir e registrar no recebimento protege quem contratou.",
-        },
-        {
-          titulo: "Quando vale terceirizar",
-          texto:
-            "Guardar equipamento no escritório ou na obra é arriscado. Um armazém seguro mantém tudo protegido e entrega quando o projeto precisa.",
-        },
-      ],
-    },
-  },
-  alimenticios: {
-    perfis: [
-      {
-        titulo: "Indústrias de alimentos",
-        texto:
-          "Produto seco fora da fábrica, pronto para expedição a distribuidores e redes.",
-      },
-      {
-        titulo: "Distribuidoras e atacadistas",
-        texto:
-          "Estoque regional com separação por pedido para varejo e food service.",
-      },
-      {
-        titulo: "Importadoras",
-        texto:
-          "Alimento importado recebido com conferência de lote, validade e rotulagem.",
-      },
-      {
-        titulo: "Fornecedores de ingredientes",
-        texto:
-          "Ingredientes industriais guardados e entregues conforme a produção do cliente.",
-      },
-    ],
-    produtos: [
-      {
-        grupo: "Mercearia seca",
-        itens:
-          "Grãos, farinhas, massas, açúcar, enlatados e demais produtos de prateleira.",
-      },
-      {
-        grupo: "Bebidas",
-        itens:
-          "Bebidas que não exigem refrigeração, em caixas e fardos.",
-      },
-      {
-        grupo: "Ingredientes industriais",
-        itens:
-          "Amidos, açúcares, proteínas e outros ingredientes secos para a indústria.",
-      },
-      {
-        grupo: "Embalagens para alimentos",
-        itens:
-          "Embalagens e materiais que entram em contato com alimento, guardados com o mesmo cuidado.",
-      },
-    ],
-    requisitos: [
-      {
-        exigencia:
-          "Armazenar alimento exige licença sanitária da Vigilância Sanitária local.",
-        comoAtendemos:
-          "Operação com licença sanitária para armazenagem de alimentos.",
-      },
-      {
-        exigencia:
-          "Alimento não pode ficar junto de produto químico, saneante ou carga de risco.",
-        comoAtendemos:
-          "Área exclusiva, fisicamente separada de qualquer carga química.",
-      },
-      {
-        exigencia:
-          "O local precisa de controle de pragas e rotina de limpeza.",
-        comoAtendemos:
-          "Controle integrado de pragas e cronograma de limpeza da área.",
-      },
-      {
-        exigencia:
-          "Produto deve ficar sobre palete, afastado do piso e das paredes.",
-        comoAtendemos:
-          "Armazenagem paletizada, com afastamento das paredes e corredores livres.",
-      },
-      {
-        exigencia: "Validade curta exige giro correto do estoque.",
-        comoAtendemos:
-          "Saída pela regra FEFO: o lote que vence primeiro sai primeiro.",
-      },
-      {
-        exigencia:
-          "Lote precisa ser rastreável para um eventual recolhimento.",
-        comoAtendemos:
-          "O WMS registra lote, validade e posição de cada volume.",
-      },
-    ],
-    passos: [
-      {
-        titulo: "Cadastro dos produtos",
-        texto:
-          "Recebemos a relação de produtos com validade, empilhamento máximo e condições de armazenagem.",
-      },
-      {
-        titulo: "Recebimento",
-        texto:
-          "Conferência de nota, lote, validade e embalagem. Caixa úmida, amassada ou com sinal de praga não entra.",
-      },
-      {
-        titulo: "Armazenagem em área exclusiva",
-        texto:
-          "Posição na área de alimentos, longe de qualquer carga química, registrada no WMS.",
-      },
-      {
-        titulo: "Separação por pedido",
-        texto:
-          "Separação seguindo FEFO, com conferência de lote e quantidade.",
-      },
-      {
-        titulo: "Entrega pela frota RC",
-        texto:
-          "A carga segue na frota do grupo até distribuidores, redes e clientes.",
-      },
-    ],
-    condicoes: [
-      {
-        titulo: "Área exclusiva",
-        texto:
-          "Separada fisicamente de químicos, saneantes e cargas de risco.",
-      },
-      {
-        titulo: "Limpeza e controle de pragas",
-        texto:
-          "Rotina de limpeza e controle integrado de pragas na área de alimentos.",
-      },
-      {
-        titulo: "Carga seca protegida",
-        texto:
-          "Área coberta, longe de umidade e sol direto.",
-      },
-      {
-        titulo: "Controle de acesso",
-        texto:
-          "Entrada registrada por área e monitoramento 24h.",
-      },
-    ],
-    servicos: [
-      "Armazenagem paletizada",
-      "Separação por pedido",
-      "Separação fracionada por caixa",
-      "Controle de validade por lote",
-      "Inventário periódico",
-      "Entrega com a frota RC",
-    ],
-    grupo: {
-      titulo: "Guardar e entregar com um contrato só",
-      texto:
-        "Alimento tem validade e muitos destinos. Com armazenagem e transporte no mesmo grupo, a RC separa os pedidos e entrega com a frota própria, com o mesmo registro de lote do galpão até o cliente.",
-    },
-    faq: [
-      {
-        q: "Que tipos de alimento vocês armazenam?",
-        a: "Carga seca: mercearia, bebidas sem refrigeração, ingredientes industriais e embalagens para alimentos. Produtos refrigerados e congelados não fazem parte da operação.",
-      },
-      {
-        q: "O alimento fica perto de produto químico?",
-        a: "Não. A área de alimentos é exclusiva e fisicamente separada de químicos, saneantes e qualquer carga de risco.",
-      },
-      {
-        q: "Existe controle de pragas?",
-        a: "Sim. A área tem controle integrado de pragas e rotina de limpeza.",
-      },
-      {
-        q: "Como é o controle de validade?",
-        a: "O WMS registra lote e validade de cada volume, e a saída segue a regra FEFO.",
-      },
-      {
-        q: "Vocês separam pedidos por caixa?",
-        a: "Sim. A separação pode ser por palete ou fracionada por caixa, conforme o pedido.",
-      },
-      {
-        q: "Vocês entregam em supermercados e centros de distribuição?",
-        a: "Sim. A frota da RC Transportes leva do galpão até supermercado, atacado ou centro de distribuição, na data combinada com cada cliente. Se preferir usar outra transportadora, também atendemos.",
-      },
-    ],
-    guia: {
-      titulo: "Como armazenar alimentos corretamente em estoque",
-      intro:
-        "Alimento mal armazenado vira perda por vencimento, praga ou contaminação. Estes cuidados valem para qualquer estoque de carga seca.",
-      blocos: [
-        {
-          titulo: "Mantenha longe de químicos",
-          texto:
-            "Alimento não divide espaço com saneante, produto químico ou carga de risco. A separação deve ser física, não só uma faixa no chão.",
-        },
-        {
-          titulo: "Use palete e afaste das paredes",
-          texto:
-            "Produto direto no piso absorve umidade e dificulta a limpeza. Palete e afastamento das paredes facilitam a inspeção e o controle de pragas.",
-        },
-        {
-          titulo: "Limpeza e controle de pragas",
-          texto:
-            "Rotina de limpeza e controle integrado de pragas são exigência sanitária e evitam perda de lotes inteiros.",
-        },
-        {
-          titulo: "Giro pela regra FEFO",
-          texto:
-            "O lote que vence primeiro deve sair primeiro. Controle em sistema evita produto vencido esquecido no fundo do estoque.",
-        },
-        {
-          titulo: "Cuidado com umidade e calor",
-          texto:
-            "Farinha, açúcar e grãos absorvem umidade e atraem pragas. Área coberta, seca e sem sol direto preserva a qualidade.",
-        },
-        {
-          titulo: "Quando vale terceirizar",
-          texto:
-            "Estoque de alimento exige licença, limpeza, controle de pragas e giro correto. Um armazém preparado assume essa rotina e entrega conforme a demanda.",
         },
       ],
     },

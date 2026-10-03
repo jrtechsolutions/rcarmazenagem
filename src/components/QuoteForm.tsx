@@ -232,6 +232,10 @@ export function QuoteForm({ tipoCarga = "" }: { tipoCarga?: string }) {
         <fieldset className="grid gap-2 text-[13px]">
           <legend className="mb-1.5 font-medium text-texto">
             Precisa de temperatura controlada?
+            <span className="mt-0.5 block text-[12px] font-normal text-mono-ink">
+              A área climatizada está em processo de regularização junto à
+              ANVISA.
+            </span>
           </legend>
           {TEMPERATURAS.map((t) => (
             <label
@@ -268,11 +272,12 @@ export function QuoteForm({ tipoCarga = "" }: { tipoCarga?: string }) {
             Quero que a RC também transporte
             {values.transporte ? (
               <span className="mt-1 block text-[12.5px] text-verde-escuro">
-                Padrão da operação: galpão e frota no mesmo fluxo.
+                Galpão e frota no mesmo fluxo, sem troca de fornecedor.
               </span>
             ) : (
               <span className="mt-1 block text-[12.5px] text-mono-ink">
-                Sem transporte, a carga chega ao galpão por conta do cliente.
+                Sem problema: a carga pode chegar e sair pela transportadora que
+                você indicar.
               </span>
             )}
           </span>

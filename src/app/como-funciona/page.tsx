@@ -4,7 +4,12 @@ import { CrossLink } from "@/components/CrossLink";
 import { CtaBand } from "@/components/CtaBand";
 import { CutawayFlow } from "@/components/CutawayFlow";
 import { RevealSection } from "@/components/RevealSection";
-import { COMO_FUNCIONA_INTRO, FLOW_TECH, PASSOS } from "@/lib/site";
+import {
+  COMO_FUNCIONA_INTRO,
+  FLOW_TECH,
+  PASSOS,
+  SERVICOS,
+} from "@/lib/site";
 import { IconCheck, IconNested, IconWarehouse } from "@/components/Icons";
 
 export const metadata: Metadata = {
@@ -75,6 +80,27 @@ export default function ComoFuncionaPage() {
 
       <RevealSection className="sec-compact" alt>
         <div className="shell">
+          <p className="sec-label">Serviços</p>
+          <h2 className="sec-title compliance-sec-title">
+            O que a operação faz além de guardar
+          </h2>
+          <ul className="servicos-grid">
+            {SERVICOS.map((s) => (
+              <li key={s.titulo}>
+                <h3>{s.titulo}</h3>
+                <p>{s.texto}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="servicos-note">
+            Atendimento exclusivo para empresas com CNPJ. Recebimento em horário
+            comercial.
+          </p>
+        </div>
+      </RevealSection>
+
+      <RevealSection className="sec-compact">
+        <div className="shell">
           <p className="sec-label">O que sustenta o fluxo</p>
           <h2 className="sec-title compliance-sec-title">
             Sistema, regra de saída e segregação
@@ -96,7 +122,7 @@ export default function ComoFuncionaPage() {
         </div>
       </RevealSection>
 
-      <RevealSection className="sec-compact">
+      <RevealSection className="sec-compact" alt>
         <CrossLink compact />
       </RevealSection>
 

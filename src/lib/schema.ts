@@ -49,31 +49,23 @@ export function organizationJsonLd() {
       },
       {
         "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Armazenagem de saneantes" },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Armazenagem de correlatos" },
-      },
-      {
-        "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Armazenagem de medicamentos",
+          name: "Armazenagem de matérias-primas para correlatos",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Armazenagem de medicamentos controlados",
+          name: "Armazenagem de insumos farmacêuticos",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Armazenagem de produtos controlados e químicos perigosos",
+          name: "Armazenagem de matérias-primas químicas perigosas",
         },
       },
       {
@@ -97,37 +89,19 @@ export function organizationJsonLd() {
           name: "Armazenagem de aditivos e especialidades químicas",
         },
       },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Armazenagem de equipamentos e gabinetes de TI",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Armazenagem de produtos alimentícios",
-        },
-      },
     ],
     hasCredential: [
       {
         "@type": "EducationalOccupationalCredential",
-        credentialCategory: "Licença ANVISA",
+        credentialCategory: "Polícia Federal",
       },
       {
         "@type": "EducationalOccupationalCredential",
-        credentialCategory: "CETESB",
+        credentialCategory: "Polícia Civil",
       },
       {
         "@type": "EducationalOccupationalCredential",
         credentialCategory: "IBAMA",
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        credentialCategory: "Polícia Federal",
       },
       {
         "@type": "EducationalOccupationalCredential",

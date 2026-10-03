@@ -75,10 +75,10 @@ export const NAV = [
 export const SEGMENTOS = [
   {
     id: "cosmeticos",
-    nome: "Matérias-primas cosméticas",
+    nome: "Cosméticos",
     descricao:
-      "Bases, óleos, essências e ativos com o mesmo cuidado documental do produto acabado.",
-    cert: "ANVISA",
+      "Bases, óleos, essências e ativos da indústria cosmética, com controle por lote e validade.",
+    cert: "Rastreio por lote",
     icon: "lipstick" as const,
     image: "/segmentos/cosmeticos.jpg",
     href: "/armazenagem-materias-primas-cosmeticos",
@@ -86,18 +86,17 @@ export const SEGMENTOS = [
   {
     id: "saneantes",
     nome: "Saneantes",
-    descricao: "Estocagem compatível com produto de risco controlado.",
-    cert: "AVCB",
+    descricao: "Tensoativos e ativos de desinfecção. Operação em processo de regularização.",
+    cert: "Em regularização",
     icon: "spray" as const,
     image: "/segmentos/saneantes.jpg",
     href: "/armazenagem-saneantes",
-    risco: "Risco I e II",
   },
   {
     id: "correlatos",
     nome: "Correlatos",
-    descricao: "Cobertura para linhas regulamentadas pela ANVISA.",
-    cert: "ANVISA",
+    descricao: "Polímeros grau médico, látex e componentes, com rastreio por lote e estoque bloqueado separado.",
+    cert: "Rastreio por lote",
     icon: "stethoscope" as const,
     image: "/segmentos/correlatos.jpg",
     href: "/armazenagem-correlatos",
@@ -105,8 +104,8 @@ export const SEGMENTOS = [
   {
     id: "medicamentos",
     nome: "Medicamentos",
-    descricao: "Cadeia de custódia rastreável conforme RDC 653/2022.",
-    cert: "ANVISA",
+    descricao: "Princípios ativos, excipientes e embalagens, com processo conforme a RDC 430/2020.",
+    cert: "Farmacêutico RT",
     icon: "capsule" as const,
     image: "/segmentos/medicamentos.jpg",
     href: "/armazenagem-medicamentos",
@@ -115,30 +114,30 @@ export const SEGMENTOS = [
     id: "medicamentos-controlados",
     nome: "Medicamentos controlados",
     descricao:
-      "Psicotrópico e entorpecente com área restrita e licenciamento Polícia Federal.",
-    cert: "Polícia Federal",
+      "Área restrita com acesso registrado. Autorização Especial da ANVISA em processo de regularização.",
+    cert: "Polícia Federal e Civil",
     icon: "shield" as const,
     image: "/segmentos/medicamentos-controlados.jpg",
     href: "/armazenagem-medicamentos-controlados",
-    risco: "Portaria 344",
+    risco: "Em regularização",
   },
   {
     id: "quimicos",
-    nome: "Químicos perigosos",
+    nome: "Químicos",
     descricao:
-      "Material classificado com CETESB, FISPQ e segregação por classe de risco.",
-    cert: "CETESB",
+      "Tóxicos, corrosivos e diversos como matéria-prima, com segregação por classe de risco e brigada treinada.",
+    cert: "Polícia Federal",
     icon: "hazard" as const,
     image: "/segmentos/quimicos.jpg",
     href: "/armazenagem-produtos-quimicos-perigosos",
-    risco: "Classe 3/8",
+    risco: "Classes 6, 8 e 9",
   },
   {
     id: "resinas",
     nome: "Resinas e química industrial",
     descricao:
       "Resina epóxi, poliuretano e endurecedor com controle de classe e validade.",
-    cert: "CETESB · IBAMA",
+    cert: "IBAMA",
     icon: "flask" as const,
     image: "/segmentos/resinas.jpg",
     href: "/armazenagem-resinas-quimica-industrial",
@@ -157,31 +156,11 @@ export const SEGMENTOS = [
     id: "aditivos",
     nome: "Aditivos e especialidades",
     descricao:
-      "Cargas minerais, antioxidantes e aceleradores, cada um com FISPQ disponível.",
-    cert: "CETESB",
+      "Cargas minerais, antioxidantes e aceleradores, com controle por lote e separação personalizada.",
+    cert: "Rastreio por lote",
     icon: "drop" as const,
     image: "/segmentos/aditivos.jpg",
     href: "/armazenagem-aditivos-especialidades-quimicas",
-  },
-  {
-    id: "equipamentos-ti",
-    nome: "Equipamentos de TI",
-    descricao:
-      "Racks, gabinetes e infraestrutura com manuseio técnico e controle de acesso.",
-    cert: "Controle de acesso",
-    icon: "server" as const,
-    image: "/segmentos/equipamentos-ti.jpg",
-    href: "/armazenagem-equipamentos-ti",
-  },
-  {
-    id: "alimenticios",
-    nome: "Alimentícios",
-    descricao:
-      "Produto alimentício em área exclusiva, separado de químico ou risco.",
-    cert: "Área exclusiva",
-    icon: "package" as const,
-    image: "/segmentos/alimenticios.jpg",
-    href: "/armazenagem-alimenticios",
   },
 ] as const;
 
@@ -279,18 +258,18 @@ export const PASSOS = [
     n: "3",
     key: "expedicao",
     titulo: "Expedição",
-    texto: "Separação, liberação e saída já na frota RC, com rastreio.",
+    texto: "Separação por pedido, conferência e saída na frota RC ou na transportadora que você indicar.",
     video: "/assets-visuais/fluxo-expedicao.mp4",
     legend:
-      "Separação, conferência de saída e carregamento na frota própria. A rastreabilidade não quebra na troca de fornecedor.",
+      "Separação por pedido, conferência de saída e carregamento. Na frota RC, a rastreabilidade não quebra na troca de fornecedor.",
     detalhe:
-      "Separação, conferência de saída e carregamento na frota própria. A rastreabilidade não quebra na troca de fornecedor: é a mesma operação.",
+      "Separação por pedido ou solicitação de venda, conferência de saída e carregamento. A carga pode seguir na frota RC, sem trocar de fornecedor no meio, ou na transportadora que você indicar.",
   },
 ] as const;
 
 /** Intro da página Como funciona — fluxo no galpão + continuidade do grupo. */
 export const COMO_FUNCIONA_INTRO =
-  "Recebimento, estocagem e expedição sob a mesma operação. Se a carga precisa seguir, ela sai do nosso galpão para a frota RC — sem trocar de fornecedor no meio.";
+  "Recebimento, estocagem e expedição sob a mesma operação. Se a carga precisa seguir, ela pode sair do nosso galpão direto para a frota RC — sem trocar de fornecedor no meio — ou na transportadora que você preferir.";
 
 /** Ponte leve Grupo RC (não substitui Quem somos). */
 export const COMO_FUNCIONA_PILARES = [
@@ -318,8 +297,8 @@ export const COMO_FUNCIONA_PILARES = [
 
 export const FLOW_TECH = [
   {
-    title: "WMS com rastreio por lote",
-    text: "Sistema que registra posição, entrada e saída de cada lote. Nada se move sem ficar registrado.",
+    title: "WMS Senior com rastreio por lote",
+    text: "Sistema Senior registra posição, lote, validade, entrada e saída. Nada se move sem ficar registrado.",
     icon: "nested" as const,
   },
   {
@@ -342,9 +321,9 @@ export const BENEFICIOS = [
     icon: "warehouse" as const,
   },
   {
-    titulo: "WMS e rastreio por lote",
+    titulo: "WMS Senior e rastreio por lote",
     texto:
-      "Cada posição de pallet é definida por tipo de produto e FEFO. Você sabe o que entrou, onde está e o que sai.",
+      "Cada posição de pallet é definida por tipo de produto e FEFO. Pelo Senior você acompanha o que entrou, onde está e o que sai.",
     icon: "nested" as const,
   },
   {
@@ -356,7 +335,7 @@ export const BENEFICIOS = [
   {
     titulo: "Compliance de carga regulada",
     texto:
-      "Processo para produto controlado, inflamável, hospitalar e correlato. Não é galpão genérico.",
+      "Processo para químico classificado, medicamento e correlato, com área de bloqueio para avariados. Não é galpão genérico.",
     icon: "rack" as const,
   },
 ] as const;
@@ -373,8 +352,8 @@ export const FEATURES_ESTRUTURA = [
     icon: "warehouse" as const,
   },
   {
-    titulo: "Sistema WMS",
-    texto: "Posição, lote e rotatividade (FEFO) no sistema, não na memória de quem opera.",
+    titulo: "WMS Senior",
+    texto: "Posição, lote, validade e saída FEFO no sistema, não na memória de quem opera.",
     icon: "nested" as const,
     proof: { label: "Detalhado em Compliance", href: "/compliance" },
   },
@@ -409,6 +388,47 @@ export const FOTOS_ESTRUTURA = [
   },
 ] as const;
 
+/** Fotos reais do galpão RC (sem geração por IA). */
+export const FOTOS_GALPAO = {
+  corredor: {
+    src: "/fotos-galpao/corredor-principal.jpg",
+    alt: "Corredor principal do galpão RC com porta-paletes carregados e pallets vazios empilhados",
+    label: "Corredor principal · porta-paletes por zona",
+  },
+  enderecamento: {
+    src: "/fotos-galpao/corredor-enderecamento.jpg",
+    alt: "Corredor de porta-paletes com placas de endereçamento J e I",
+    label: "Endereçamento por rua · posição no WMS",
+  },
+  doca: {
+    src: "/fotos-galpao/doca-expedicao.jpg",
+    alt: "Pallets filmados prontos para expedição em frente às portas de doca",
+    label: "Carga pronta na doca · expedição",
+  },
+  identidade: {
+    src: "/fotos-galpao/doca-identidade-rc.jpg",
+    alt: "Área de docas cobertas com a placa RC Transportes e Logística",
+    label: "Docas da operação RC",
+  },
+  extintor: {
+    src: "/fotos-galpao/seguranca-extintor.jpg",
+    alt: "Extintor e placa de equipamentos de segurança de uso obrigatório presos no porta-paletes",
+    label: "Extintor e EPI obrigatório sinalizados no rack",
+  },
+  placas: {
+    src: "/fotos-galpao/seguranca-placas.jpg",
+    alt: "Placas de proibido consumo de alimentos na área operacional e de segurança na área de expedição",
+    label: "Regras da área operacional sinalizadas",
+  },
+  estocagem: {
+    src: "/fotos-galpao/estocagem-reach-truck.jpg",
+    alt: "Empilhadeira retrátil parada no corredor de porta-paletes do galpão RC",
+    label: "Foto real · empilhadeira retrátil no corredor",
+  },
+} as const;
+
+export const STATUS_REGULARIZACAO = "Em processo de regularização";
+
 export const COMPLIANCE_INTRO =
   "Licenças sanitárias, ambientais e de segurança para produto regulado — com processo documentado ponta a ponta, pronto para auditoria.";
 
@@ -425,28 +445,8 @@ export const COMPLIANCE_PROOFS = [
     src: "/certificacoes/anvisa.png",
     alt: "Logo da ANVISA",
     texto:
-      "Produto sob vigilância sanitária entra e sai com rastreio e documentação pronta para auditoria.",
-  },
-  {
-    label: "ISO 9001",
-    src: "/certificacoes/iso-9001.png",
-    alt: "Logo ISO 9001:2015",
-    texto:
-      "Processos auditados e melhoria contínua — qualidade não depende de quem está no turno.",
-  },
-  {
-    label: "CETESB",
-    src: "/certificacoes/cetesb.png",
-    alt: "Logo da CETESB",
-    texto:
-      "Licenciamento ambiental estadual para armazenagem de produto químico em São Paulo.",
-  },
-  {
-    label: "IBAMA",
-    src: "/certificacoes/ibama.png",
-    alt: "Logo do IBAMA",
-    texto:
-      "Licenciamento federal para substâncias com controle ambiental.",
+      "AFE e Autorização Especial em processo de regularização, com farmacêutico responsável técnico já na operação.",
+    status: STATUS_REGULARIZACAO,
   },
   {
     label: "Polícia Federal",
@@ -454,6 +454,20 @@ export const COMPLIANCE_PROOFS = [
     alt: "Brasão da Polícia Federal",
     texto:
       "Operação habilitada para produto controlado, precursor ou de duplo uso.",
+  },
+  {
+    label: "Polícia Civil",
+    src: "/certificacoes/policia-civil-sp.png",
+    alt: "Brasão da Polícia Civil do Estado de São Paulo",
+    texto:
+      "Licença estadual para produto controlado, complementar à da Polícia Federal.",
+  },
+  {
+    label: "IBAMA",
+    src: "/certificacoes/ibama.png",
+    alt: "Logo do IBAMA",
+    texto:
+      "Licenciamento federal para substâncias com controle ambiental.",
   },
   {
     label: "AVCB",
@@ -494,18 +508,23 @@ export const COMPLIANCE_PROCESS = [
     step: "04",
     titulo: "Documentação sob demanda",
     texto:
-      "Licenças, FISPQ e registros disponíveis quando o cliente ou o órgão pedir.",
-    src: "/segmentos/medicamentos.jpg",
-    alt: "Produtos regulados armazenados com controle documental",
+      "Licenças e registros disponíveis quando o cliente ou o órgão pedir. Visitas e auditorias de cliente são bem-vindas.",
+    src: FOTOS_GALPAO.doca.src,
+    alt: FOTOS_GALPAO.doca.alt,
   },
 ] as const;
 
 export const COMPLIANCE_DESTAQUE: readonly ComplianceItem[] = [
   {
-    titulo: "PAE",
+    titulo: "PAE com brigada",
     texto:
-      "Plano de Atendimento a Emergências documentado para a operação do galpão.",
+      "Plano de Atendimento a Emergências com brigada treinada para a operação do galpão.",
     icon: "clipboard",
+  },
+  {
+    titulo: "Contenção de vazamento",
+    texto: "Procedimento definido para conter derramamento de produto químico.",
+    icon: "check",
   },
   {
     titulo: "Controle de Acesso",
@@ -513,20 +532,27 @@ export const COMPLIANCE_DESTAQUE: readonly ComplianceItem[] = [
     icon: "rack",
   },
   {
-    titulo: "Registro de Temperatura",
-    texto: "Monitoramento contínuo onde a carga exige controle térmico.",
-    icon: "nested",
+    titulo: "Área de bloqueio",
+    texto:
+      "Avaria separada já no recebimento. Itens avariados, devolvidos ou em análise ficam bloqueados.",
+    icon: "warehouse",
   },
   {
     titulo: "Auditoria de Lote",
-    texto: "Rastreabilidade completa por lote armazenado.",
-    icon: "check",
+    texto: "Lote, validade e posição registrados no WMS Senior, com saída FEFO.",
+    icon: "nested",
   },
   {
-    titulo: "FISPQ por produto",
+    titulo: "FDS por produto",
     texto:
-      "Ficha de Segurança arquivada e disponível para cada item químico.",
+      "Ficha com Dados de Segurança arquivada e disponível para cada item químico, conforme a ABNT NBR 14725.",
     icon: "clipboard",
+  },
+  {
+    titulo: "Registro de Temperatura",
+    texto:
+      "Área climatizada com registro de temperatura em processo de regularização junto à ANVISA.",
+    icon: "nested",
   },
 ] as const;
 
@@ -535,50 +561,39 @@ export const COMPLIANCE_GROUPS = [
   {
     head: "Emergência",
     tone: "default" as const,
-    items: [COMPLIANCE_DESTAQUE[0]],
+    items: [COMPLIANCE_DESTAQUE[0], COMPLIANCE_DESTAQUE[1]],
   },
   {
     head: "Controle operacional",
     tone: "ops" as const,
     items: [
-      COMPLIANCE_DESTAQUE[1],
       COMPLIANCE_DESTAQUE[2],
       COMPLIANCE_DESTAQUE[3],
+      COMPLIANCE_DESTAQUE[4],
+      COMPLIANCE_DESTAQUE[6],
     ],
   },
   {
     head: "Documentação técnica",
     tone: "default" as const,
-    items: [COMPLIANCE_DESTAQUE[4]],
+    items: [COMPLIANCE_DESTAQUE[5]],
   },
 ] as const;
 
 export const CERTS_COMPLETAS = [
-  "ISO 9001",
-  "ANVISA",
-  "CETESB",
-  "Licenças da Polícia Federal, Exército, Governo Estadual e Prefeitura",
-  "AVCB",
-  "SASSMAQ",
-  "CRF (Conselho Regional de Farmácia)",
+  "Polícia Federal",
+  "Polícia Civil",
+  "AVCB (Corpo de Bombeiros)",
   "Licença Ambiental IBAMA",
+  "ANVISA (em processo de regularização)",
 ] as const;
 
 export const CERT_MARQUEE = [
   {
-    label: "ISO 9001",
-    src: "/certificacoes/iso-9001.png",
-    tip: "Norma internacional de gestão da qualidade: processos documentados e auditoria contínua em toda a operação.",
-  },
-  {
     label: "ANVISA",
     src: "/certificacoes/anvisa.png",
-    tip: "Habilitação da ANVISA para armazenagem de produtos sob vigilância sanitária.",
-  },
-  {
-    label: "CETESB",
-    src: "/certificacoes/cetesb.png",
-    tip: "Licenciamento ambiental estadual para armazenagem de produto químico em São Paulo.",
+    tip: "AFE e Autorização Especial da ANVISA em processo de regularização.",
+    status: STATUS_REGULARIZACAO,
   },
   {
     label: "IBAMA",
@@ -600,38 +615,28 @@ export const CERT_MARQUEE = [
     src: "/certificacoes/bombeiros.png",
     tip: "Auto de Vistoria do Corpo de Bombeiros, vigente para o galpão.",
   },
-  {
-    label: "SASSMAQ",
-    src: "/certificacoes/sassmaq.png",
-    tip: "Sistema de Avaliação de Saúde, Segurança, Meio Ambiente e Qualidade.",
-  },
-  {
-    label: "CRF",
-    src: "/certificacoes/crf-sp.png",
-    tip: "Conselho Regional de Farmácia: habilitação para operação com medicamentos.",
-  },
 ] as const;
 
 export const CERTIFICACOES = [
   {
-    label: "ISO 9001",
-    src: "/certificacoes/iso-9001.png",
-    alt: "Logo ISO 9001:2015",
-    text: "Gestão da qualidade auditada, com processos documentados em toda a operação.",
+    label: "Polícia Federal",
+    src: "/certificacoes/policia-federal.png",
+    alt: "Brasão da Polícia Federal",
+    text: "Licença para produto controlado, precursor ou de duplo uso.",
     featured: true,
   },
   {
-    label: "ANVISA",
-    src: "/certificacoes/anvisa.png",
-    alt: "Logo da ANVISA, Agência Nacional de Vigilância Sanitária",
-    text: "Habilitação para produtos sob vigilância sanitária, com rastreabilidade.",
+    label: "Polícia Civil",
+    src: "/certificacoes/policia-civil-sp.png",
+    alt: "Brasão da Polícia Civil do Estado de São Paulo",
+    text: "Licença estadual para produto controlado, complementar à da Polícia Federal.",
     featured: true,
   },
   {
-    label: "CETESB",
-    src: "/certificacoes/cetesb.png",
-    alt: "Logo da CETESB, Companhia Ambiental do Estado de São Paulo",
-    text: "Licenciamento ambiental estadual para produto químico em São Paulo.",
+    label: "AVCB",
+    src: "/certificacoes/bombeiros.png",
+    alt: "Emblema do Corpo de Bombeiros de São Paulo",
+    text: "Auto de Vistoria do Corpo de Bombeiros vigente para o galpão e operações de risco.",
     featured: true,
   },
   {
@@ -642,97 +647,71 @@ export const CERTIFICACOES = [
     featured: false,
   },
   {
-    label: "Polícia Federal",
-    src: "/certificacoes/policia-federal.png",
-    alt: "Brasão da Polícia Federal",
-    text: "Licença para produto controlado, precursor ou de duplo uso.",
+    label: "ANVISA",
+    src: "/certificacoes/anvisa.png",
+    alt: "Logo da ANVISA, Agência Nacional de Vigilância Sanitária",
+    text: "AFE e Autorização Especial em processo de regularização. Farmacêutico responsável técnico já na operação.",
     featured: false,
-  },
-  {
-    label: "Polícia Civil",
-    src: "/certificacoes/policia-civil-sp.png",
-    alt: "Brasão da Polícia Civil do Estado de São Paulo",
-    text: "Licenciamento estadual complementar à operação.",
-    featured: false,
-  },
-  {
-    label: "AVCB",
-    src: "/certificacoes/bombeiros.png",
-    alt: "Emblema do Corpo de Bombeiros de São Paulo",
-    text: "Auto de Vistoria vigente para o galpão e operações de risco.",
-    featured: false,
-  },
-  {
-    label: "SASSMAQ",
-    src: "/certificacoes/sassmaq.png",
-    alt: "Logo SASSMAQ",
-    text: "Avaliação de saúde, segurança, meio ambiente e qualidade.",
-    featured: false,
-  },
-  {
-    label: "CRF",
-    src: "/certificacoes/crf-sp.png",
-    alt: "Logo do Conselho Regional de Farmácia de São Paulo",
-    text: "Habilitação do CRF-SP para operação com medicamentos.",
-    featured: false,
+    status: STATUS_REGULARIZACAO,
   },
 ] as const;
 
 export const CERTS_COMPLEMENTARES = [
   {
-    label: "CETESB",
-    tip: "Companhia Ambiental do Estado de São Paulo, responsável por licenciar armazenagem de produto químico no estado.",
-  },
-  {
-    label: "Licenças da Polícia Federal, Exército, Governo Estadual e Prefeitura",
+    label: "Polícia Federal e Polícia Civil",
+    tip: "Licenças para armazenagem de produto controlado, precursor ou de duplo uso.",
   },
   {
     label: "AVCB",
     tip: "Auto de Vistoria do Corpo de Bombeiros. Certifica que a estrutura atende às exigências de segurança contra incêndio pra armazenagem de produto de risco.",
   },
   {
-    label: "SASSMAQ",
-    tip: "Sistema de Avaliação de Saúde, Segurança, Meio Ambiente e Qualidade, específico pro transporte de produtos químicos.",
-  },
-  {
-    label: "CRF",
-    tip: "Conselho Regional de Farmácia: habilitação necessária pra transportar medicamentos controlados.",
-  },
-  {
     label: "IBAMA",
-    tip: "Licença ambiental que autoriza o transporte de produtos que podem gerar impacto ambiental.",
+    tip: "Licença ambiental federal para substâncias com controle ambiental.",
   },
 ] as const;
 
 export const FAQ = [
   {
-    q: "A RC Armazém tem licença ambiental?",
-    a: "Sim. Registro na CETESB, órgão ambiental do estado de São Paulo responsável por licenciar armazenagem de produto químico.",
+    q: "Quais licenças a RC Armazém tem?",
+    a: "Polícia Federal, Polícia Civil, AVCB do Corpo de Bombeiros e licença ambiental do IBAMA. A habilitação ANVISA está em processo de regularização.",
     link: { href: "/compliance", label: "Ver todas as certificações →" },
   },
   {
     q: "Que tipos de produto vocês armazenam?",
-    a: "Matérias-primas cosméticas, saneantes, correlatos, medicamentos (incluindo controlados), produtos químicos perigosos, resinas, polímeros, aditivos, equipamentos de TI e alimentícios. Cada categoria tem processo de armazenagem próprio, não é um galpão genérico.",
+    a: "Somente matéria-prima: insumos cosméticos, matérias-primas para correlatos, insumos farmacêuticos, químicos (classes de risco 6, 8 e 9), resinas, polímeros e aditivos. Produto acabado não faz parte do escopo. Saneantes e insumos controlados estão em processo de regularização.",
   },
   {
-    q: "O transporte já sai incluso?",
-    a: "Sim. Sua carga sai do nosso galpão direto na frota RC, sem repasse pra outra transportadora. Um único responsável do recebimento até a entrega.",
+    q: "Atendem pessoa física?",
+    a: "Não. A RC Armazém atende somente empresas com CNPJ.",
+  },
+  {
+    q: "Que serviços estão inclusos além da armazenagem?",
+    a: "Separação por pedido ou solicitação de venda, etiquetagem e reetiquetagem, paletização e filmagem, inventários cíclicos, rotativos e gerais, consolidação de produtos num mesmo pedido, gestão de devoluções e registro de avarias no recebimento.",
+  },
+  {
+    q: "Preciso usar o transporte da RC?",
+    a: "Não. A carga pode sair na frota RC, sem repasse pra outra empresa e com um único responsável do recebimento até a entrega, ou na transportadora que você indicar.",
   },
   {
     q: "Como vocês rastreiam o que está armazenado?",
-    a: "Todo item entra no sistema WMS no recebimento, com posição, lote e validade registrados. Você acompanha o estoque sem precisar ligar pra conferir.",
+    a: "Todo item entra no WMS Senior no recebimento, com posição, lote e validade registrados, e a saída segue FEFO. Pelo Senior você acompanha estoque e pedidos, e a integração com o seu ERP também é feita por ele.",
   },
   {
-    q: "A armazenagem de medicamentos segue alguma norma específica da ANVISA?",
-    a: "Sim. Seguimos a RDC 653/2022, que estabelece boas práticas de distribuição, armazenagem e transporte de medicamentos.",
+    q: "A armazenagem de insumos farmacêuticos segue alguma norma da ANVISA?",
+    a: "Sim. O processo segue a RDC 430/2020, de boas práticas de distribuição e armazenagem, com farmacêutico responsável técnico. A AFE e a Autorização Especial da ANVISA estão em processo de regularização.",
   },
   {
-    q: "Como funciona o controle de temperatura?",
-    a: "Depende da área contratada: temos galpões com e sem climatização. Nosso time indica a opção certa pro seu produto.",
+    q: "Vocês têm área com temperatura controlada?",
+    a: "A área climatizada com registro de temperatura está em processo de regularização junto à ANVISA. Fale com o comercial para saber o prazo e se o seu produto precisa dela.",
   },
   {
-    q: "Existe seguro para a carga armazenada?",
-    a: "Sim, a carga conta com cobertura de seguro. As condições variam por tipo de produto, então isso fica a cargo do time comercial.",
+    q: "Existe seguro para a carga?",
+    a: "Sim. O seguro da carga armazenada no galpão e o do transporte são diferentes e têm condições próprias. O time comercial detalha as duas coberturas conforme o tipo de produto.",
+  },
+  {
+    q: "Qual o horário de recebimento? Posso visitar o galpão?",
+    a: "O recebimento funciona em horário comercial. Visitas e auditorias de cliente são bem-vindas: é só agendar com o time comercial.",
   },
   {
     q: "Qual o prazo mínimo de contrato?",
@@ -794,11 +773,38 @@ export const TRANSPORTE_ESCOPOS = [
 ] as const;
 
 export const SERVICOS_EXTRAS = [
-  { id: "picking", label: "Picking e fracionamento" },
-  { id: "etiquetagem", label: "Etiquetagem e rotulagem" },
-  { id: "kits", label: "Montagem de kits" },
+  { id: "picking", label: "Separação por pedido" },
+  { id: "etiquetagem", label: "Etiquetagem e reetiquetagem" },
+  { id: "consolidacao", label: "Consolidação de produtos no pedido" },
   { id: "paletizacao", label: "Paletização e filmagem" },
-  { id: "cross-docking", label: "Cross-docking" },
-  { id: "inventario", label: "Inventário periódico" },
-  { id: "reversa", label: "Logística reversa / devoluções" },
+  { id: "inventario", label: "Inventário cíclico, rotativo ou geral" },
+  { id: "reversa", label: "Gestão de devoluções" },
+] as const;
+
+/** Serviços confirmados pela operação (levantamento RC). */
+export const SERVICOS = [
+  {
+    titulo: "Separação por pedido",
+    texto: "Separação por pedido ou solicitação de venda, conferida antes da saída.",
+  },
+  {
+    titulo: "Etiquetagem e reetiquetagem",
+    texto: "Identificação de volumes e lotes na entrada ou conforme a exigência do destino.",
+  },
+  {
+    titulo: "Paletização e filmagem",
+    texto: "Carga montada e filmada no pallet, pronta para carregar.",
+  },
+  {
+    titulo: "Inventário",
+    texto: "Inventários cíclicos, rotativos e gerais, com divergência tratada no sistema.",
+  },
+  {
+    titulo: "Consolidação",
+    texto: "Vários produtos num mesmo pedido, montado sob medida para o seu cliente.",
+  },
+  {
+    titulo: "Devoluções e avarias",
+    texto: "Gestão de devoluções e registro de avarias já no recebimento, com área de bloqueio.",
+  },
 ] as const;

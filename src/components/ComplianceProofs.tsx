@@ -29,6 +29,9 @@ export function ComplianceProofs() {
             />
           </div>
           <h3>{item.label}</h3>
+          {"status" in item ? (
+            <span className="cert-status">{item.status}</span>
+          ) : null}
           <p>{item.texto}</p>
         </article>
       ))}

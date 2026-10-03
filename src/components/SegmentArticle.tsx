@@ -57,18 +57,18 @@ function SegmentBody({ id }: { id: SegmentId }) {
       return (
         <>
           <p>
-            Indústria e distribuidoras de saneantes e domissanitários armazenam
-            com a RC em galpão com <strong>AVCB</strong> vigente, adequado pra
-            produto de risco controlado.
+            A RC armazena <strong>matérias-primas para saneantes</strong>:
+            tensoativos, ativos de desinfecção e auxiliares de formulação. A
+            operação está <strong>em processo de regularização</strong>.
           </p>
           <p>
-            O saneante não fica no mesmo corredor de cosmético ou produto
-            químico incompatível. A segregação por classe de risco é parte do
-            desenho do galpão, não um ajuste feito depois.
+            O galpão já tem <strong>AVCB</strong> vigente, brigada treinada e
+            procedimento de contenção de vazamento. Insumo à base de cloro não
+            divide corredor com ácido.
           </p>
           <p>
-            Atendemos indústria e distribuidoras que precisam de armazenagem
-            certificada pra domissanitários e produtos de limpeza regulados.
+            Fale com o comercial para saber o prazo da regularização e avaliar
+            seus insumos.
           </p>
         </>
       );
@@ -76,18 +76,19 @@ function SegmentBody({ id }: { id: SegmentId }) {
       return (
         <>
           <p>
-            Distribuidoras de produtos correlatos contam com a RC Armazém pra
-            manter conformidade com a regulamentação da ANVISA do recebimento
-            até a expedição.
+            Fabricantes de produtos para saúde armazenam com a RC as{" "}
+            <strong>matérias-primas e componentes</strong> da produção:
+            polímeros grau médico, látex, não tecidos, adesivos e insumos para
+            diagnóstico.
           </p>
           <p>
-            Cada correlato armazenado tem posição rastreada no WMS, com
-            auditoria de lote disponível. Não é um depósito genérico que também
-            guarda correlato, é uma operação desenhada pra esse tipo de produto.
+            Cada insumo tem posição rastreada no WMS Senior, com auditoria de
+            lote disponível e farmacêutico responsável técnico na operação. A
+            AFE da ANVISA está <strong>em processo de regularização</strong>.
           </p>
           <p>
-            Atendemos distribuidoras e indústria de correlatos que precisam de
-            armazenagem regulamentada.
+            Produto para saúde pronto não faz parte do escopo: a RC armazena
+            somente matéria-prima.
           </p>
         </>
       );
@@ -95,18 +96,20 @@ function SegmentBody({ id }: { id: SegmentId }) {
       return (
         <>
           <p>
-            Farmácias, distribuidoras e laboratórios armazenam medicamentos com a
-            RC sem perder rastreabilidade entre o recebimento e a expedição.
+            Indústrias farmacêuticas e distribuidoras armazenam com a RC os{" "}
+            <strong>insumos farmacêuticos</strong>: princípios ativos (IFA),
+            excipientes e material de embalagem, sem perder rastreabilidade
+            entre o recebimento e a fábrica.
           </p>
           <p>
-            A operação segue a <strong>RDC 653/2022</strong> da ANVISA, com área
-            de recebimento separada da expedição e regra de rotatividade (FEFO)
-            aplicada por lote.
+            A operação segue a <strong>RDC 430/2020</strong> da ANVISA, com
+            farmacêutico responsável técnico, área de bloqueio e regra de
+            rotatividade (FEFO) aplicada por lote. A AFE está em processo de
+            regularização.
           </p>
           <p>
-            Pra medicamento controlado (psicotrópico, entorpecente), ver a
-            página específica de <strong>Medicamentos Controlados</strong>, com
-            exigência adicional de licenciamento.
+            Medicamento pronto não faz parte do escopo. Pra substância
+            controlada, ver a página de <strong>Insumos Controlados</strong>.
           </p>
         </>
       );
@@ -114,20 +117,20 @@ function SegmentBody({ id }: { id: SegmentId }) {
       return (
         <>
           <p>
-            Medicamento controlado, psicotrópico, entorpecente ou precursor, não
-            armazena junto com medicamento comum. A RC Armazém mantém área
+            Insumo controlado, seja substância psicotrópica, entorpecente ou
+            precursor, não fica junto com insumo comum. A RC Armazém mantém área
             restrita própria, com controle de acesso reforçado.
           </p>
           <p>
-            Além da RDC 653/2022 da ANVISA, essa categoria exige licenciamento
-            junto à <strong>Polícia Federal</strong>, conforme a Portaria SVS/MS
-            344/98. A RC mantém essa habilitação vigente pra operar com esse
-            tipo de produto.
+            Além das Boas Práticas da ANVISA, essa categoria exige licenciamento
+            junto à <strong>Polícia Federal e à Polícia Civil</strong>, que a RC
+            tem vigente. A Autorização Especial da ANVISA está em processo de
+            regularização.
           </p>
           <p>
-            Atendemos distribuidoras e farmácias que precisam de armazenagem de
-            medicamento controlado com documentação completa, não um depósito
-            comum com controle extra improvisado.
+            Atendemos indústrias e distribuidoras que precisam armazenar
+            matéria-prima controlada com documentação completa. Medicamento
+            pronto não faz parte do escopo.
           </p>
         </>
       );
@@ -135,15 +138,16 @@ function SegmentBody({ id }: { id: SegmentId }) {
       return (
         <>
           <p>
-            Indústria e distribuidoras de produto químico perigoso ou controlado
-            armazenam com a RC em instalação preparada e autorizada
-            especificamente pra esse tipo de material classificado.
+            Indústria e distribuidoras armazenam com a RC{" "}
+            <strong>matérias-primas químicas</strong> das classes de risco 6, 8
+            e 9, em instalação preparada pra esse tipo de material classificado.
           </p>
           <p>
-            A operação mantém registro <strong>CETESB</strong> e, quando
-            aplicável, licenciamento junto à Polícia Federal pra produto de
-            duplo uso ou precursor químico. Cada item tem{" "}
-            <Tooltip term="documentação (FISPQ)" tip={TIPS.fispq} /> disponível.
+            A operação tem licenças da <strong>Polícia Federal</strong> e da{" "}
+            <strong>Polícia Civil</strong>, AVCB, brigada treinada e
+            procedimento de contenção de vazamento. A{" "}
+            <Tooltip term="ficha de segurança (FDS)" tip={TIPS.fispq} /> de
+            cada produto fica arquivada durante todo o período armazenado.
           </p>
           <p>
             A segregação por classe de risco é física, não só documental.
@@ -161,9 +165,8 @@ function SegmentBody({ id }: { id: SegmentId }) {
           </p>
           <p>
             Esses insumos têm prazo de validade e sensibilidade de armazenagem
-            específica. A posição no galpão considera isso, com registro CETESB
-            e licenciamento <strong>IBAMA</strong> pra substância de controle
-            ambiental.
+            específica. A posição no galpão considera isso, com licenciamento{" "}
+            <strong>IBAMA</strong> pra substância de controle ambiental.
           </p>
           <p>
             Atendemos indústria que precisa de insumo industrial disponível sem
@@ -200,55 +203,14 @@ function SegmentBody({ id }: { id: SegmentId }) {
             especialidade que exigem controle próprio de classe.
           </p>
           <p>
-            Cada aditivo tem{" "}
-            <Tooltip term="documentação (FISPQ)" tip={TIPS.fispq} /> disponível
-            durante todo o período armazenado, com posição definida por
-            compatibilidade química, não por conveniência de espaço.
+            Cada aditivo tem posição definida por compatibilidade química, não
+            por conveniência de espaço, com licenciamento <strong>IBAMA</strong>{" "}
+            para os itens que exigem.
           </p>
           <p>
             Atendemos indústria que trabalha com múltiplas especialidades
             químicas e precisa de um único fornecedor de armazenagem pra todas
             elas.
-          </p>
-        </>
-      );
-    case "equipamentos-ti":
-      return (
-        <>
-          <p>
-            Empresas de TI e integradoras de automação armazenam com a RC
-            armários modulares, racks pra servidor e rede, gabinetes metálicos,
-            painéis de comando e componentes de infraestrutura.
-          </p>
-          <p>
-            Essa categoria não envolve produto químico ou regulado por vigilância
-            sanitária. O cuidado aqui é <strong>manuseio técnico</strong>{" "}
-            (evitar avaria em equipamento sensível) e controle de acesso rígido,
-            já que costuma ser ativo de alto valor.
-          </p>
-          <p>
-            Atendemos empresa de TI, integradora e revenda que precisa de espaço
-            seguro pra equipamento parado entre a compra e a instalação.
-          </p>
-        </>
-      );
-    case "alimenticios":
-      return (
-        <>
-          <p>
-            Distribuidoras e indústria alimentícia armazenam com a RC em área
-            exclusiva pra produto alimentício, fisicamente separada de produto
-            químico, saneante ou qualquer categoria de risco.
-          </p>
-          <p>
-            O controle de lote e validade segue a mesma lógica de FEFO já
-            aplicada aos outros segmentos regulados, registrada no{" "}
-            <Tooltip term="WMS" tip={TIPS.wms} />.
-          </p>
-          <p>
-            Atendemos distribuidoras e indústria de alimentos que precisam de
-            armazenagem com rastreabilidade, sem dividir espaço com produto
-            incompatível.
           </p>
         </>
       );

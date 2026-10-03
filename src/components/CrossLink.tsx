@@ -13,9 +13,9 @@ export function CrossLink({ compact }: Props) {
             Armazenagem e transporte, numa só operação
           </h2>
           <p>
-            Sua carga sai do nosso galpão direto na nossa frota. Você não
-            coordena dois fornecedores, não perde rastreabilidade na troca, não
-            paga por uma intermediação a mais.
+            Se quiser, sua carga sai do nosso galpão direto na frota RC. Você
+            não coordena dois fornecedores, não perde rastreabilidade na troca,
+            não paga por uma intermediação a mais.
           </p>
         </div>
         <a

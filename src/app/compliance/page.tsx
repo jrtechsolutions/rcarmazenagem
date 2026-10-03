@@ -6,12 +6,18 @@ import { ComplianceProofs } from "@/components/ComplianceProofs";
 import { ComplianceSeal } from "@/components/ComplianceSeal";
 import { CtaBand } from "@/components/CtaBand";
 import { RevealSection } from "@/components/RevealSection";
-import { COMPLIANCE_INTRO, COMPLIANCE_PROOFS } from "@/lib/site";
+import {
+  COMPLIANCE_INTRO,
+  COMPLIANCE_PROOFS,
+  FOTOS_GALPAO,
+} from "@/lib/site";
+
+const { extintor, placas } = FOTOS_GALPAO;
 
 export const metadata: Metadata = {
   title: "Compliance e Certificações",
   description:
-    "Licença ANVISA, registro CETESB, IBAMA, Polícia Federal e AVCB. Veja as certificações da operação de armazenagem regulada.",
+    "Licenças da Polícia Federal, Polícia Civil, Corpo de Bombeiros (AVCB) e IBAMA, com ANVISA em processo de regularização. Veja as licenças da operação de armazenagem regulada.",
 };
 
 export default function CompliancePage() {
@@ -28,12 +34,14 @@ export default function CompliancePage() {
             <p>{COMPLIANCE_INTRO}</p>
             <ul className="compliance-hero__stats">
               <li>
-                <strong>{COMPLIANCE_PROOFS.length}+</strong>
-                <span>licenças em evidência</span>
+                <strong>
+                  {COMPLIANCE_PROOFS.filter((p) => !("status" in p)).length}
+                </strong>
+                <span>licenças vigentes</span>
               </li>
               <li>
-                <strong>ISO 9001</strong>
-                <span>gestão auditada</span>
+                <strong>24h</strong>
+                <span>monitoramento do galpão</span>
               </li>
               <li>
                 <strong>Ponta a ponta</strong>
@@ -71,6 +79,30 @@ export default function CompliancePage() {
           <h2 className="sec-title compliance-sec-title">
             Emergência, acesso e documentação técnica
           </h2>
+          <div className="proof-photos">
+            <div className="proof-photos__copy">
+              <h3>Evidência no chão do galpão</h3>
+              <p>
+                Fotos reais da operação: extintor e sinalização de EPI
+                obrigatório presos no rack, regras da área operacional
+                sinalizadas na expedição.
+              </p>
+            </div>
+            {[extintor, placas].map((foto) => (
+              <div key={foto.src} className="sp-item">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={foto.src}
+                  alt={foto.alt}
+                  width={340}
+                  height={400}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span className="lbl">{foto.label}</span>
+              </div>
+            ))}
+          </div>
           <ComplianceGroups />
         </div>
       </RevealSection>

@@ -30,6 +30,16 @@ const nextConfig: NextConfig = {
         destination: "/armazenagem-produtos-quimicos-perigosos",
         permanent: true,
       },
+      {
+        source: "/armazenagem-equipamentos-ti",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/armazenagem-alimenticios",
+        destination: "/",
+        permanent: true,
+      },
     ];
   },
   async headers() {

@@ -62,6 +62,9 @@ export function CertWall() {
                   />
                 </div>
                 <p className="cert-flip__title">{item.label}</p>
+                {"status" in item ? (
+                  <span className="cert-status">{item.status}</span>
+                ) : null}
               </div>
               <div className="cert-flip__face cert-flip__back">
                 <p className="cert-flip__title cert-flip__title--sm">

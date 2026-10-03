@@ -385,6 +385,16 @@ button.btn {
   z-index: 1;
 }
 
+.hero-cinematic__poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  z-index: 0;
+}
+
 .hero-cinematic__content {
   width: 100%;
   padding-top: calc(var(--hero-header) + 1.25rem);
@@ -459,7 +469,8 @@ button.btn {
     align-items: flex-end;
   }
 
-  .hero-cinematic__video {
+  .hero-cinematic__video,
+  .hero-cinematic__poster {
     object-position: center 40%;
   }
 
@@ -1334,6 +1345,21 @@ button.btn {
   }
 }
 
+.cert-status {
+  display: inline-block;
+  margin: 6px 0 4px;
+  padding: 3px 9px;
+  border-radius: 100px;
+  background: #fdf3e2;
+  border: 1px solid #f0d7a8;
+  color: #8a5a10;
+  font-family: var(--font-ibm-plex-mono), "IBM Plex Mono", monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .cert-line {
   margin-top: 16px;
   font-size: 12.5px;
@@ -1607,6 +1633,89 @@ button.btn {
   padding: 3px 8px;
   border-radius: 100px;
   width: fit-content;
+}
+
+/* Estrutura: corredor alto + endereçamento + doca (fotos reais, ortogonais) */
+.support-photos--trio {
+  grid-template-columns: 1fr 1.15fr;
+  grid-template-rows: 240px 240px;
+}
+
+.support-photos--trio .sp-item.sp-main {
+  grid-row: 1 / span 2;
+  height: auto;
+}
+
+.support-photos--trio .sp-main img {
+  object-position: center 60%;
+}
+
+.support-photos--trio .sp-enderecamento img {
+  object-position: center 65%;
+}
+
+.support-photos--trio .sp-doca img {
+  object-position: center 40%;
+}
+
+@media (max-width: 600px) {
+  .support-photos--trio {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+
+  .support-photos--trio .sp-item.sp-main {
+    grid-row: auto;
+    height: 340px;
+  }
+
+  .support-photos--trio .sp-enderecamento,
+  .support-photos--trio .sp-doca {
+    height: 200px;
+  }
+}
+
+/* Fotos de prova (compliance): evidência real no chão do galpão */
+.proof-photos {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px 280px;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.proof-photos__copy {
+  padding-left: 16px;
+  border-left: 3px solid var(--verde);
+}
+
+.proof-photos__copy h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--verde-escuro);
+}
+
+.proof-photos__copy p {
+  margin: 0;
+  max-width: 440px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--mono-ink);
+}
+
+.proof-photos .sp-item {
+  aspect-ratio: 4 / 5;
+}
+
+@media (max-width: 900px) {
+  .proof-photos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .proof-photos__copy {
+    grid-column: 1 / -1;
+  }
 }
 
 /* —— Header: badge Grupo RC + CTA Orçamento —— */
@@ -4094,6 +4203,30 @@ button.btn {
   line-height: 1.45;
 }
 
+.video-step-still {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.video-step-still img {
+  width: 72px;
+  height: 96px;
+  flex-shrink: 0;
+  object-fit: cover;
+  object-position: center 70%;
+  border-radius: 8px;
+  display: block;
+}
+
+.video-step-still span {
+  font-family: var(--font-ibm-plex-mono), "IBM Plex Mono", monospace;
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: var(--mono-ink);
+}
+
 .video-step-progress {
   display: block;
   height: 2px;
@@ -4313,6 +4446,56 @@ button.btn {
   margin: 8px 0 0;
   padding-top: 8px;
   border-top: 1px dashed var(--borda);
+}
+
+/* —— Serviços inclusos (Como funciona) —— */
+.servicos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.servicos-grid li {
+  padding: 16px 18px;
+  border: 1px solid var(--borda);
+  border-left: 3px solid var(--verde);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.servicos-grid h3 {
+  margin: 0 0 6px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--verde-escuro);
+}
+
+.servicos-grid p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--mono-ink);
+}
+
+.servicos-note {
+  margin: 14px 0 0;
+  font-size: 12.5px;
+  color: var(--mono-ink);
+}
+
+@media (max-width: 900px) {
+  .servicos-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .servicos-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* —— Depoimentos (avaliações 5★ do Google) —— */

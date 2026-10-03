@@ -4,13 +4,19 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { IconCheck, IconNested, IconWarehouse } from "@/components/Icons";
 import { onVisibleOnce } from "@/lib/onVisibleOnce";
-import { FLOW_TECH, PASSOS } from "@/lib/site";
+import { FLOW_TECH, FOTOS_GALPAO, PASSOS } from "@/lib/site";
 
 const TECH_ICONS = {
   nested: IconNested,
   check: IconCheck,
   warehouse: IconWarehouse,
 } as const;
+
+const STEP_STILLS: Partial<
+  Record<(typeof PASSOS)[number]["key"], { src: string; alt: string; label: string }>
+> = {
+  estocagem: FOTOS_GALPAO.estocagem,
+};
 
 type Props = {
   /** Home: teaser com 1 vídeo. Página: etapas interativas + tech grid. */
@@ -154,6 +160,7 @@ function FullVideoFlow() {
         <div className="video-flow-steps">
           {PASSOS.map((passo, idx) => {
             const active = idx === current;
+            const still = STEP_STILLS[passo.key];
             return (
               <button
                 key={passo.key}
@@ -168,6 +175,20 @@ function FullVideoFlow() {
                 <span className="video-step-text">
                   <h5>{passo.titulo}</h5>
                   <p>{active ? passo.detalhe : passo.texto}</p>
+                  {active && still ? (
+                    <span className="video-step-still">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={still.src}
+                        alt={still.alt}
+                        width={768}
+                        height={1024}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <span>{still.label}</span>
+                    </span>
+                  ) : null}
                   {active ? (
                     <span className="video-step-progress">
                       <span

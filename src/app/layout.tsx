@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     template: "%s | RC Armazém",
   },
   description:
-    "Armazenagem de matérias-primas cosméticas, saneantes, correlatos, medicamentos, químicos, alimentícios e equipamentos de TI. Licença ANVISA, CETESB e sistema WMS.",
+    "Armazenagem de matérias-primas para empresas: cosméticos, correlatos, insumos farmacêuticos, químicos, resinas, polímeros e aditivos. Licenças Polícia Federal, Civil, AVCB e IBAMA, WMS Senior e rastreio por lote.",
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png" }],
     apple: "/apple-icon.png",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     title: "Armazenagem de Produtos Regulados em SP | RC Armazém",
     description:
-      "Armazenagem de matérias-primas cosméticas, saneantes, correlatos, medicamentos, químicos, alimentícios e equipamentos de TI. Licença ANVISA, CETESB e sistema WMS.",
+      "Armazenagem de matérias-primas para empresas: cosméticos, correlatos, insumos farmacêuticos, químicos, resinas, polímeros e aditivos. Licenças Polícia Federal, Civil, AVCB e IBAMA, WMS Senior e rastreio por lote.",
     images: ["/assets-visuais/hero-cinematic-poster.jpg"],
   },
 };

@@ -7,9 +7,7 @@ export type SegmentSlug =
   | "armazenagem-produtos-quimicos-perigosos"
   | "armazenagem-resinas-quimica-industrial"
   | "armazenagem-polimeros-borrachas-carbono"
-  | "armazenagem-aditivos-especialidades-quimicas"
-  | "armazenagem-equipamentos-ti"
-  | "armazenagem-alimenticios";
+  | "armazenagem-aditivos-especialidades-quimicas";
 
 export type SegmentId =
   | "cosmeticos"
@@ -20,9 +18,7 @@ export type SegmentId =
   | "quimicos"
   | "resinas"
   | "polimeros"
-  | "aditivos"
-  | "equipamentos-ti"
-  | "alimenticios";
+  | "aditivos";
 
 export type SegmentRef = {
   label: string;
@@ -58,43 +54,37 @@ export const TIPS = {
   anvisa:
     "Agência reguladora responsável pela vigilância sanitária de produtos regulados.",
   wms: "Warehouse Management System. Sistema que registra posição, entrada e saída de cada lote armazenado.",
-  cetesb:
-    "Companhia Ambiental do Estado de São Paulo, responsável por licenciar armazenagem de produto químico no estado.",
   fispq:
-    "Ficha de Informação de Segurança de Produto Químico, disponível pra cada item armazenado.",
+    "Ficha com Dados de Segurança (FDS, antiga FISPQ), conforme a ABNT NBR 14725. Fica arquivada por produto durante todo o período armazenado.",
   avcb: "Auto de Vistoria do Corpo de Bombeiros. Certifica que a estrutura atende às exigências de segurança contra incêndio.",
   ibama:
     "Instituto Brasileiro do Meio Ambiente, licencia substâncias com controle ambiental federal.",
   policiaFederal:
-    "Órgão responsável por licenciar armazenagem de produto controlado, psicotrópico ou de duplo uso.",
+    "Órgãos que licenciam e fiscalizam a armazenagem de produto controlado, psicotrópico ou de duplo uso.",
 } as const;
 
 export const SEGMENT_PAGES: readonly SegmentPage[] = [
   {
     slug: "armazenagem-materias-primas-cosmeticos",
     id: "cosmeticos",
-    eyebrow: "Matérias-primas cosméticas",
+    eyebrow: "Cosméticos",
     h1: "Armazenagem de matérias-primas cosméticas em São Paulo e Jundiaí.",
-    lead: "Bases, óleos, essências, ativos e embalagens com licença ANVISA, controle por lote e entrega na linha de produção pela frota RC.",
+    lead: "Bases, óleos, essências, ativos e embalagens com controle por lote no WMS Senior, saída FEFO e entrega na linha de produção.",
     metaTitle: "Armazenagem de Matérias-Primas Cosméticas em SP",
     metaDescription:
-      "Armazém para matérias-primas, insumos e embalagens cosméticas com licença ANVISA, WMS por lote e FEFO. Unidades em São Paulo e Jundiaí.",
+      "Armazém para matérias-primas, insumos e embalagens cosméticas com WMS Senior por lote e FEFO. Unidades em São Paulo e Jundiaí.",
     serviceType: "Armazenagem de matérias-primas para cosméticos",
     serviceDescription:
-      "Armazenagem de matérias-primas, insumos e embalagens cosméticas com licença ANVISA e sistema WMS com rastreio por lote.",
-    hasCertification: "ANVISA",
+      "Armazenagem de matérias-primas, insumos e embalagens cosméticas com sistema WMS Senior e rastreio por lote.",
+    hasCertification: "Rastreio por lote",
     refs: [
       {
-        label: "ANVISA",
-        hint: "Certificação da operação",
-        tip: { term: "ANVISA", text: TIPS.anvisa },
-      },
-      { label: "Insumo e embalagem", hint: "Classes atendidas" },
-      {
-        label: "WMS por lote",
+        label: "WMS Senior",
         hint: "Controle de estoque",
-        tip: { term: "WMS por lote", text: TIPS.wms },
+        tip: { term: "WMS", text: TIPS.wms },
       },
+      { label: "Só matéria-prima", hint: "Escopo atendido" },
+      { label: "Lote e FEFO", hint: "Rastreio" },
     ],
     vocab: [
       "matérias-primas cosméticas",
@@ -104,7 +94,7 @@ export const SEGMENT_PAGES: readonly SegmentPage[] = [
     related: [
       {
         href: "/armazenagem-saneantes",
-        title: "Armazenagem de saneantes",
+        title: "Saneantes",
         tag: "segmento",
       },
       {
@@ -118,36 +108,36 @@ export const SEGMENT_PAGES: readonly SegmentPage[] = [
         tag: "processo",
       },
     ],
-    trust: "Licença ANVISA verificável",
+    trust: "Rastreio por lote no WMS Senior",
     ctaTitle: "Orçamento de armazenagem de matérias-primas cosméticas",
   },
   {
     slug: "armazenagem-saneantes",
     id: "saneantes",
     eyebrow: "Saneantes",
-    h1: "Armazenagem de saneantes e domissanitários em São Paulo e Jundiaí.",
-    lead: "Área própria para produto de limpeza e desinfecção, com AVCB vigente, separação de incompatíveis e separação de pedidos para vários destinos.",
-    metaTitle: "Armazenagem de Saneantes em SP e Jundiaí",
+    h1: "Armazenagem de matérias-primas para saneantes em São Paulo e Jundiaí.",
+    lead: "Tensoativos, ativos de desinfecção e auxiliares de formulação, com AVCB vigente e separação de incompatíveis. Operação em processo de regularização.",
+    metaTitle: "Armazenagem de Matérias-Primas para Saneantes em SP",
     metaDescription:
-      "Armazém para saneantes e domissanitários com área segregada, AVCB vigente, FDS por produto e separação por pedido. Unidades em São Paulo e Jundiaí.",
-    serviceType: "Armazenagem de saneantes",
+      "Armazenagem de matérias-primas para saneantes em processo de regularização, com AVCB vigente, área segregada e separação personalizada. São Paulo e Jundiaí.",
+    serviceType: "Armazenagem de matérias-primas para saneantes",
     serviceDescription:
-      "Armazenagem de saneantes e domissanitários com segregação por classe de risco e AVCB vigente.",
+      "Armazenagem de matérias-primas para saneantes, em processo de regularização, com segregação por compatibilidade e AVCB vigente.",
     hasCertification: "AVCB",
     refs: [
       {
         label: "AVCB",
-        hint: "Certificação da operação",
+        hint: "Segurança do galpão",
         tip: { term: "AVCB", text: TIPS.avcb },
       },
-      { label: "Risco I e II", hint: "Classes atendidas" },
+      { label: "Em regularização", hint: "Status da operação" },
       { label: "Área segregada", hint: "Separação por classe" },
     ],
-    vocab: ["saneantes", "domissanitários", "risco controlado"],
+    vocab: ["matérias-primas para saneantes", "tensoativos", "insumos de limpeza"],
     related: [
       {
         href: "/armazenagem-correlatos",
-        title: "Armazenagem de correlatos",
+        title: "Correlatos",
         tag: "segmento",
       },
       {
@@ -161,36 +151,36 @@ export const SEGMENT_PAGES: readonly SegmentPage[] = [
         tag: "estrutura",
       },
     ],
-    trust: "AVCB verificável",
-    ctaTitle: "Orçamento de armazenagem de saneantes",
+    trust: "Regularização em andamento",
+    ctaTitle: "Orçamento de armazenagem de matérias-primas para saneantes",
   },
   {
     slug: "armazenagem-correlatos",
     id: "correlatos",
     eyebrow: "Correlatos",
-    h1: "Armazenagem de correlatos e produtos para saúde em São Paulo e Jundiaí.",
-    lead: "Material médico-hospitalar, equipamentos e diagnóstico com licença ANVISA, rastreio por lote e série e estoque bloqueado separado do liberado.",
-    metaTitle: "Armazenagem de Correlatos ANVISA em SP e Jundiaí",
+    h1: "Armazenagem de matérias-primas para correlatos em São Paulo e Jundiaí.",
+    lead: "Polímeros grau médico, látex, componentes e insumos para produtos de saúde, com rastreio por lote, farmacêutico responsável técnico e estoque bloqueado separado.",
+    metaTitle: "Armazenagem de Matérias-Primas para Correlatos em SP",
     metaDescription:
-      "Armazém para correlatos e produtos para saúde com licença ANVISA, rastreio por lote e número de série e auditoria disponível. São Paulo e Jundiaí.",
-    serviceType: "Armazenagem de correlatos",
+      "Armazém para matérias-primas e componentes de produtos para saúde com rastreio por lote e farmacêutico RT. AFE em regularização. São Paulo e Jundiaí.",
+    serviceType: "Armazenagem de matérias-primas para correlatos",
     serviceDescription:
-      "Armazenagem de correlatos regulamentados pela ANVISA, com rastreio por lote e auditoria de lote disponível.",
-    hasCertification: "ANVISA",
+      "Armazenagem de matérias-primas e componentes para produtos de saúde, com rastreio por lote e farmacêutico responsável técnico.",
+    hasCertification: "Rastreio por lote",
     refs: [
       {
         label: "ANVISA",
-        hint: "Certificação da operação",
+        hint: "AFE em regularização",
         tip: { term: "ANVISA", text: TIPS.anvisa },
       },
-      { label: "Correlatos", hint: "Classes atendidas" },
+      { label: "Farmacêutico RT", hint: "Responsável técnico" },
       { label: "Rastreio por lote", hint: "Documentação exigida" },
     ],
-    vocab: ["correlatos", "regulamentação ANVISA", "auditoria de lote"],
+    vocab: ["matérias-primas para correlatos", "polímeros grau médico", "auditoria de lote"],
     related: [
       {
         href: "/armazenagem-medicamentos",
-        title: "Armazenagem de medicamentos",
+        title: "Medicamentos",
         tag: "segmento",
       },
       {
@@ -204,27 +194,27 @@ export const SEGMENT_PAGES: readonly SegmentPage[] = [
         tag: "processo",
       },
     ],
-    trust: "Regulamentação ANVISA verificável",
-    ctaTitle: "Orçamento de armazenagem de correlatos",
+    trust: "Auditoria de lote disponível",
+    ctaTitle: "Orçamento de armazenagem de matérias-primas para correlatos",
   },
   {
     slug: "armazenagem-medicamentos",
     id: "medicamentos",
-    eyebrow: "Medicamentos · Geral",
-    h1: "Armazenagem de medicamentos em São Paulo e Jundiaí.",
-    lead: "Boas Práticas de Armazenagem da ANVISA, temperatura registrada, rastreio por lote e entrega pela frota RC, do recebimento ao destino.",
-    metaTitle: "Armazenagem de Medicamentos em SP e Jundiaí",
+    eyebrow: "Medicamentos",
+    h1: "Armazenagem de insumos farmacêuticos em São Paulo e Jundiaí.",
+    lead: "Princípios ativos, excipientes e material de embalagem com Boas Práticas da RDC 430/2020, farmacêutico responsável técnico e rastreio por lote.",
+    metaTitle: "Armazenagem de Insumos Farmacêuticos em SP e Jundiaí",
     metaDescription:
-      "Armazém para medicamentos com licença ANVISA, Boas Práticas (RDC 653/2022), temperatura registrada, WMS por lote e FEFO. São Paulo e Jundiaí.",
-    serviceType: "Armazenagem de medicamentos",
+      "Armazém para IFA, excipientes e embalagens farmacêuticas com Boas Práticas (RDC 430/2020), farmacêutico RT e WMS Senior. AFE em regularização. SP e Jundiaí.",
+    serviceType: "Armazenagem de insumos farmacêuticos",
     serviceDescription:
-      "Armazenagem de medicamentos com licença ANVISA, RDC 653/2022 e sistema WMS com rastreio por lote.",
-    hasCertification: "ANVISA",
+      "Armazenagem de insumos farmacêuticos conforme a RDC 430/2020, com farmacêutico responsável técnico e sistema WMS Senior com rastreio por lote.",
+    hasCertification: "Farmacêutico responsável técnico",
     refs: [
-      { label: "RDC 653/2022", hint: "Norma aplicada" },
+      { label: "RDC 430/2020", hint: "Norma aplicada" },
       {
         label: "ANVISA",
-        hint: "Certificação da operação",
+        hint: "AFE em regularização",
         tip: { term: "ANVISA", text: TIPS.anvisa },
       },
       {
@@ -233,7 +223,7 @@ export const SEGMENT_PAGES: readonly SegmentPage[] = [
         tip: { term: "WMS por lote", text: TIPS.wms },
       },
     ],
-    vocab: ["medicamentos", "RDC 653/2022", "FEFO"],
+    vocab: ["insumos farmacêuticos", "IFA", "RDC 430/2020"],
     related: [
       {
         href: "/armazenagem-medicamentos-controlados",
@@ -242,7 +232,7 @@ export const SEGMENT_PAGES: readonly SegmentPage[] = [
       },
       {
         href: "/armazenagem-correlatos",
-        title: "Armazenagem de correlatos",
+        title: "Correlatos",
         tag: "segmento",
       },
       {
@@ -251,40 +241,40 @@ export const SEGMENT_PAGES: readonly SegmentPage[] = [
         tag: "certificações",
       },
     ],
-    trust: "RDC 653/2022 aplicada",
-    ctaTitle: "Orçamento de armazenagem de medicamentos",
+    trust: "RDC 430/2020 aplicada",
+    ctaTitle: "Orçamento de armazenagem de insumos farmacêuticos",
   },
   {
     slug: "armazenagem-medicamentos-controlados",
     id: "medicamentos-controlados",
-    eyebrow: "Medicamentos · Controlados",
-    h1: "Armazenagem de medicamentos controlados em São Paulo e Jundiaí.",
-    lead: "Psicotrópicos e entorpecentes da Portaria 344 em área restrita e trancada, com acesso registrado e cada movimentação conferida.",
-    metaTitle: "Armazenagem de Medicamentos Controlados em SP",
+    eyebrow: "Medicamentos controlados",
+    h1: "Armazenagem de insumos controlados em São Paulo e Jundiaí.",
+    lead: "Substâncias psicotrópicas, entorpecentes e precursores em área restrita e trancada, com acesso registrado. Autorização Especial em processo de regularização.",
+    metaTitle: "Armazenagem de Insumos Controlados em SP e Jundiaí",
     metaDescription:
-      "Armazém para medicamentos controlados da Portaria 344 com área restrita, acesso registrado e movimentação por lote. São Paulo e Jundiaí.",
-    serviceType: "Armazenagem de medicamentos controlados",
+      "Armazenagem de insumos controlados com área restrita, acesso registrado e licenças da Polícia Federal e Civil. AE da ANVISA em regularização. SP e Jundiaí.",
+    serviceType: "Armazenagem de insumos controlados",
     serviceDescription:
-      "Armazenagem de medicamentos controlados, psicotrópicos e entorpecentes com licenciamento Polícia Federal, área restrita e ANVISA.",
-    hasCertification: "Polícia Federal",
+      "Armazenagem de insumos e substâncias controladas com área restrita, acesso registrado e licenças da Polícia Federal e Civil.",
+    hasCertification: "Polícia Federal e Civil",
     refs: [
       {
-        label: "Polícia Federal",
+        label: "Polícia Federal e Civil",
         hint: "Licenciamento adicional",
-        tip: { term: "Polícia Federal", text: TIPS.policiaFederal },
+        tip: { term: "Polícia Federal e Civil", text: TIPS.policiaFederal },
       },
       {
         label: "ANVISA",
-        hint: "Certificação da operação",
+        hint: "AE em regularização",
         tip: { term: "ANVISA", text: TIPS.anvisa },
       },
       { label: "Área restrita", hint: "Controle de acesso" },
     ],
-    vocab: ["medicamentos controlados", "psicotrópicos", "Portaria 344"],
+    vocab: ["insumos controlados", "substâncias psicotrópicas", "área restrita"],
     related: [
       {
         href: "/armazenagem-medicamentos",
-        title: "Armazenagem de medicamentos",
+        title: "Medicamentos",
         tag: "segmento",
       },
       {
@@ -298,42 +288,38 @@ export const SEGMENT_PAGES: readonly SegmentPage[] = [
         tag: "processo",
       },
     ],
-    trust: "Licenciamento Polícia Federal verificável",
-    ctaTitle: "Orçamento de armazenagem de medicamentos controlados",
+    trust: "Polícia Federal e Civil",
+    ctaTitle: "Orçamento de armazenagem de insumos controlados",
   },
   {
     slug: "armazenagem-produtos-quimicos-perigosos",
     id: "quimicos",
-    eyebrow: "Produtos controlados e perigosos",
-    h1: "Armazenagem de produtos químicos perigosos em São Paulo e Jundiaí.",
-    lead: "Galpão licenciado para material classificado, com segregação física por classe de risco, ficha de segurança de cada produto e saída direta na frota RC.",
+    eyebrow: "Químicos",
+    h1: "Armazenagem de matérias-primas químicas perigosas em São Paulo e Jundiaí.",
+    lead: "Matérias-primas das classes de risco 6, 8 e 9 com segregação física por classe, licenças da Polícia Federal e Civil, brigada treinada e saída na frota RC ou na sua transportadora.",
     metaTitle: "Armazenagem de Químicos Perigosos em SP e Jundiaí",
     metaDescription:
-      "Armazém licenciado para químicos perigosos e controlados: CETESB, Polícia Federal, AVCB e segregação por classe de risco. Unidades em São Paulo e Jundiaí.",
-    serviceType: "Armazenagem de produtos controlados e químicos perigosos",
+      "Armazém para químicos perigosos das classes 6, 8 e 9: Polícia Federal, Polícia Civil, AVCB e segregação por classe de risco. Unidades em São Paulo e Jundiaí.",
+    serviceType: "Armazenagem de produtos químicos perigosos",
     serviceDescription:
-      "Armazenagem de produtos controlados e químicos perigosos com registro CETESB, licenciamento Polícia Federal quando aplicável e FISPQ por produto.",
-    hasCertification: "CETESB",
+      "Armazenagem de produtos químicos perigosos das classes 6, 8 e 9 com licenças da Polícia Federal e Civil, AVCB e segregação por classe de risco.",
+    hasCertification: "Polícia Federal",
     refs: [
       {
-        label: "CETESB",
-        hint: "Certificação da operação",
-        tip: { term: "CETESB", text: TIPS.cetesb },
+        label: "Polícia Federal e Civil",
+        hint: "Licença da operação",
+        tip: { term: "Polícia Federal e Civil", text: TIPS.policiaFederal },
       },
+      { label: "Classes 6, 8 e 9", hint: "Classes atendidas" },
       {
-        label: "Polícia Federal",
-        hint: "Licenciamento adicional",
-        tip: { term: "Polícia Federal", text: TIPS.policiaFederal },
-      },
-      {
-        label: "FISPQ por produto",
-        hint: "Documentação exigida",
-        tip: { term: "FISPQ por produto", text: TIPS.fispq },
+        label: "AVCB",
+        hint: "Segurança do galpão",
+        tip: { term: "AVCB", text: TIPS.avcb },
       },
     ],
     vocab: [
       "produtos perigosos",
-      "produto controlado",
+      "classes 6, 8 e 9",
       "classificação de risco",
     ],
     related: [
@@ -353,9 +339,8 @@ export const SEGMENT_PAGES: readonly SegmentPage[] = [
         tag: "estrutura",
       },
     ],
-    trust: "Registro CETESB verificável",
-    ctaTitle:
-      "Orçamento de armazenagem de produtos controlados e perigosos",
+    trust: "Licenças Polícia Federal e Civil",
+    ctaTitle: "Orçamento de armazenagem de produtos químicos perigosos",
   },
   {
     slug: "armazenagem-resinas-quimica-industrial",
@@ -365,27 +350,23 @@ export const SEGMENT_PAGES: readonly SegmentPage[] = [
     lead: "Epóxi, poliuretano e endurecedores em tambores, baldes e IBCs, com segregação por classe de risco, área seca e controle de validade.",
     metaTitle: "Armazenagem de Resinas e Química Industrial em SP",
     metaDescription:
-      "Armazém para resinas epóxi, PU e endurecedores com CETESB, IBAMA, FDS por produto e segregação por classe de risco. São Paulo e Jundiaí.",
+      "Armazém para resinas epóxi, PU e endurecedores com IBAMA, AVCB e segregação por classe de risco. São Paulo e Jundiaí.",
     serviceType: "Armazenagem de insumos para resinas e química industrial",
     serviceDescription:
-      "Armazenagem de resinas epóxi, poliuretanos e endurecedores com registro CETESB, licenciamento IBAMA e FISPQ por produto.",
-    hasCertification: "CETESB",
+      "Armazenagem de resinas epóxi, poliuretanos e endurecedores com licenciamento IBAMA, AVCB e controle de validade por lote.",
+    hasCertification: "IBAMA",
     refs: [
-      {
-        label: "CETESB",
-        hint: "Certificação da operação",
-        tip: { term: "CETESB", text: TIPS.cetesb },
-      },
       {
         label: "IBAMA",
         hint: "Licenciamento ambiental",
         tip: { term: "IBAMA", text: TIPS.ibama },
       },
       {
-        label: "FISPQ por produto",
-        hint: "Documentação exigida",
-        tip: { term: "FISPQ por produto", text: TIPS.fispq },
+        label: "AVCB",
+        hint: "Segurança do galpão",
+        tip: { term: "AVCB", text: TIPS.avcb },
       },
+      { label: "Lote e validade", hint: "Rastreio" },
     ],
     vocab: ["resina epóxi", "poliuretano", "química industrial"],
     related: [
@@ -405,7 +386,7 @@ export const SEGMENT_PAGES: readonly SegmentPage[] = [
         tag: "certificações",
       },
     ],
-    trust: "Registro CETESB verificável",
+    trust: "Licenciamento IBAMA verificável",
     ctaTitle: "Orçamento de armazenagem de resinas e insumos industriais",
   },
   {
@@ -416,17 +397,13 @@ export const SEGMENT_PAGES: readonly SegmentPage[] = [
     lead: "Fardos, big bags e sacaria em área coberta, com negro de fumo isolado, empilhamento controlado e entrega na programação da fábrica.",
     metaTitle: "Armazenagem de Polímeros e Borrachas em SP",
     metaDescription:
-      "Armazém para borracha sintética, negro de fumo e polímeros com CETESB, IBAMA, área segregada e empilhamento controlado. São Paulo e Jundiaí.",
+      "Armazém para borracha sintética, negro de fumo e polímeros com IBAMA, área segregada e empilhamento controlado. São Paulo e Jundiaí.",
     serviceType: "Armazenagem de polímeros, borrachas e carbono",
     serviceDescription:
-      "Armazenagem de borracha sintética, negro de fumo e polímeros com registro CETESB, licenciamento IBAMA e área segregada.",
+      "Armazenagem de borracha sintética, negro de fumo e polímeros com licenciamento IBAMA e área segregada.",
     hasCertification: "IBAMA",
     refs: [
-      {
-        label: "CETESB",
-        hint: "Certificação da operação",
-        tip: { term: "CETESB", text: TIPS.cetesb },
-      },
+      { label: "Empilhamento controlado", hint: "Fardos e big bags" },
       {
         label: "IBAMA",
         hint: "Licenciamento ambiental",
@@ -463,22 +440,18 @@ export const SEGMENT_PAGES: readonly SegmentPage[] = [
     lead: "Cargas minerais, antioxidantes, aceleradores e pigmentos posicionados por compatibilidade química, em área seca e com saída consolidada.",
     metaTitle: "Armazenagem de Aditivos Químicos em SP e Jundiaí",
     metaDescription:
-      "Armazém para cargas minerais, aceleradores, antioxidantes e pigmentos com CETESB, FDS e separação fracionada. São Paulo e Jundiaí.",
+      "Armazém para cargas minerais, aceleradores, antioxidantes e pigmentos com IBAMA, rastreio por lote e separação personalizada. São Paulo e Jundiaí.",
     serviceType: "Armazenagem de aditivos e especialidades químicas",
     serviceDescription:
-      "Armazenagem de cargas minerais, antioxidantes, aceleradores e pigmentos industriais com registro CETESB e FISPQ por produto.",
-    hasCertification: "CETESB",
+      "Armazenagem de cargas minerais, antioxidantes, aceleradores e pigmentos industriais com licenciamento IBAMA e rastreio por lote.",
+    hasCertification: "IBAMA",
     refs: [
       {
-        label: "CETESB",
-        hint: "Certificação da operação",
-        tip: { term: "CETESB", text: TIPS.cetesb },
+        label: "IBAMA",
+        hint: "Licenciamento ambiental",
+        tip: { term: "IBAMA", text: TIPS.ibama },
       },
-      {
-        label: "FISPQ por produto",
-        hint: "Documentação exigida",
-        tip: { term: "FISPQ por produto", text: TIPS.fispq },
-      },
+      { label: "Separação personalizada", hint: "Por pedido" },
       { label: "Área segregada", hint: "Separação por classe" },
     ],
     vocab: [
@@ -503,95 +476,9 @@ export const SEGMENT_PAGES: readonly SegmentPage[] = [
         tag: "certificações",
       },
     ],
-    trust: "Registro CETESB verificável",
+    trust: "Licenciamento IBAMA verificável",
     ctaTitle:
       "Orçamento de armazenagem de aditivos e especialidades químicas",
-  },
-  {
-    slug: "armazenagem-equipamentos-ti",
-    id: "equipamentos-ti",
-    eyebrow: "Equipamentos de TI",
-    h1: "Armazenagem de equipamentos de TI em São Paulo e Jundiaí.",
-    lead: "Racks, gabinetes e painéis em área seca, com manuseio técnico, controle de acesso e entrega na obra na data combinada.",
-    metaTitle: "Armazenagem de Equipamentos de TI em SP e Jundiaí",
-    metaDescription:
-      "Armazém para racks, gabinetes e infraestrutura de TI com área seca, manuseio técnico, controle por projeto e entrega na obra. São Paulo e Jundiaí.",
-    serviceType: "Armazenagem de equipamentos e gabinetes de TI",
-    serviceDescription:
-      "Armazenagem de racks, gabinetes e infraestrutura de TI com manuseio técnico, área seca e controle de acesso rígido.",
-    hasCertification: "Controle de acesso",
-    refs: [
-      { label: "Controle de acesso", hint: "Segurança da operação" },
-      { label: "Manuseio técnico", hint: "Tipo de operação" },
-      { label: "Área seca", hint: "Ambiente de armazenagem" },
-    ],
-    vocab: [
-      "equipamentos de TI",
-      "racks de servidor",
-      "infraestrutura de automação",
-    ],
-    related: [
-      {
-        href: "/estrutura",
-        title: "Estrutura do galpão",
-        tag: "estrutura",
-      },
-      {
-        href: "/compliance",
-        title: "Compliance da operação",
-        tag: "certificações",
-      },
-      {
-        href: "/como-funciona",
-        title: "Como funciona o fluxo",
-        tag: "processo",
-      },
-    ],
-    trust: "Controle de acesso verificável",
-    ctaTitle: "Orçamento de armazenagem de equipamentos de TI",
-  },
-  {
-    slug: "armazenagem-alimenticios",
-    id: "alimenticios",
-    eyebrow: "Alimentícios",
-    h1: "Armazenagem de alimentos em São Paulo e Jundiaí.",
-    lead: "Carga seca em área exclusiva, separada de químicos, com controle de pragas, validade por lote e separação de pedidos.",
-    metaTitle: "Armazenagem de Alimentos em SP e Jundiaí",
-    metaDescription:
-      "Armazém para alimentos secos em área exclusiva, separada de químicos, com controle de pragas, WMS por lote e FEFO. São Paulo e Jundiaí.",
-    serviceType: "Armazenagem de produtos alimentícios",
-    serviceDescription:
-      "Armazenagem de produtos alimentícios em área exclusiva, com WMS por lote, FEFO e controle de acesso.",
-    hasCertification: "Área exclusiva",
-    refs: [
-      { label: "Área exclusiva", hint: "Separação por categoria" },
-      {
-        label: "WMS por lote",
-        hint: "Controle de validade",
-        tip: { term: "WMS por lote", text: TIPS.wms },
-      },
-      { label: "Controle de acesso", hint: "Segurança da operação" },
-    ],
-    vocab: ["produtos alimentícios", "FEFO", "área exclusiva"],
-    related: [
-      {
-        href: "/armazenagem-saneantes",
-        title: "Armazenagem de saneantes",
-        tag: "segmento",
-      },
-      {
-        href: "/compliance",
-        title: "Compliance da operação",
-        tag: "certificações",
-      },
-      {
-        href: "/estrutura",
-        title: "Estrutura do galpão",
-        tag: "estrutura",
-      },
-    ],
-    trust: "Área exclusiva verificável",
-    ctaTitle: "Orçamento de armazenagem de produtos alimentícios",
   },
 ] as const;
 

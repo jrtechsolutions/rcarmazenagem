@@ -8,25 +8,25 @@ import { CtaBand } from "@/components/CtaBand";
 import { GestaoIntegrada } from "@/components/GestaoIntegrada";
 import { GoogleUnitMaps } from "@/components/GoogleUnitMaps";
 import { RevealSection } from "@/components/RevealSection";
-import { SITE } from "@/lib/site";
+import { FOTOS_GALPAO, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Quem Somos",
   description:
-    "A RC Armazém é a extensão do Grupo RC pra armazenagem regulada: mesma rastreabilidade, ANVISA e CETESB, em São Paulo e Jundiaí.",
+    "A RC Armazém é a extensão do Grupo RC pra armazenagem regulada: mesma rastreabilidade, licenças da Polícia Federal e Civil, AVCB, IBAMA e WMS Senior, em São Paulo e Jundiaí.",
 };
 
 const AUDIENCIA = [
   {
     titulo: "Indústria cosmética",
     texto:
-      "Armazenagem com licença ANVISA e controle de acesso por área.",
+      "Matéria-prima com controle por lote e acesso registrado por área.",
     icon: "flask" as const,
   },
   {
     titulo: "Indústria química",
     texto:
-      "Registro CETESB, FISPQ por produto, segregação por classe de risco.",
+      "Licenças da Polícia Federal e Civil, classes de risco 6, 8 e 9 segregadas.",
     icon: "beaker" as const,
   },
   {
@@ -37,15 +37,15 @@ const AUDIENCIA = [
   {
     titulo: "Indústria de saneantes",
     texto:
-      "Domissanitários e produtos de risco controlado, área segregada.",
+      "Operação para domissanitários em processo de regularização.",
     icon: "flame" as const,
   },
 ] as const;
 
 const QS_STATS = [
   { value: String(SITE.founded), label: "Fundação do grupo" },
-  { value: "11", label: "Segmentos atendidos" },
-  { value: "ANVISA", label: "Licença sanitária" },
+  { value: "9", label: "Segmentos atendidos" },
+  { value: "WMS Senior", label: "Rastreio por lote" },
   { value: "SP + Jundiaí", label: "Bases próprias" },
 ] as const;
 
@@ -131,8 +131,11 @@ export default function QuemSomosPage() {
                 armazenamento.
               </p>
               <p>
-                Atendemos 11 segmentos com processo próprio, com licença ANVISA
-                e registro CETESB, em unidades próprias em São Paulo e Jundiaí.
+                Armazenamos matérias-primas de 9 segmentos com processo próprio, licenças
+                da Polícia Federal, Polícia Civil, Corpo de Bombeiros e IBAMA e
+                farmacêutico responsável técnico, em unidades próprias em São
+                Paulo e Jundiaí. A habilitação ANVISA está em processo de
+                regularização.
                 A frota continua sob a{" "}
                 <a
                   href={SITE.transportesUrl}
@@ -147,11 +150,11 @@ export default function QuemSomosPage() {
             </div>
             <div className="qs-photo clip-ortho">
               <Image
-                src="/assets-estrutura/estrutura-fachada.jpg"
-                alt="Fachada do galpão RC Armazém"
-                width={640}
-                height={400}
-                className="h-full w-full object-cover"
+                src={FOTOS_GALPAO.identidade.src}
+                alt={FOTOS_GALPAO.identidade.alt}
+                width={768}
+                height={500}
+                className="h-full w-full object-cover object-[30%_60%]"
               />
             </div>
           </div>
