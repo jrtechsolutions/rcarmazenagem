@@ -17,6 +17,8 @@ const csp = [
 ].join("; ");
 
 const nextConfig: NextConfig = {
+  // Pacote mínimo para rodar com Node no Plesk (`node server.js`)
+  output: "standalone",
   poweredByHeader: false,
   async redirects() {
     return [
