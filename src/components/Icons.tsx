@@ -120,6 +120,16 @@ export function IconInstagram({ className }: IconProps) {
   );
 }
 
+export function IconLinkedin({ className }: IconProps) {
+  return (
+    <svg {...stroke} className={className}>
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect width="4" height="12" x="2" y="9" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  );
+}
+
 export function IconFacebook({ className }: IconProps) {
   return (
     <svg {...stroke} className={className}>
@@ -270,6 +280,27 @@ export function IconServer({ className }: IconProps) {
   );
 }
 
+/** Lucide-style Cpu */
+export function IconChip({ className }: IconProps) {
+  return (
+    <svg {...stroke} className={className}>
+      <rect x="5" y="5" width="14" height="14" rx="2" />
+      <rect x="9" y="9" width="6" height="6" rx="1" />
+      <path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" />
+    </svg>
+  );
+}
+
+/** Lucide-style Apple */
+export function IconApple({ className }: IconProps) {
+  return (
+    <svg {...stroke} className={className}>
+      <path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z" />
+      <path d="M10 2c1 .5 2 2 2 5" />
+    </svg>
+  );
+}
+
 const MAP = {
   rack: IconRack,
   nested: IconNested,
@@ -286,6 +317,8 @@ const MAP = {
   capsule: IconCapsule,
   package: IconPackage,
   server: IconServer,
+  chip: IconChip,
+  apple: IconApple,
 } as const;
 
 export type SegmentIconName = keyof typeof MAP;

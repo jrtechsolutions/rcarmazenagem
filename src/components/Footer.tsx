@@ -1,85 +1,82 @@
+import Link from "next/link";
 import {
   IconFacebook,
   IconInstagram,
+  IconLinkedin,
   IconPhone,
   IconWhatsApp,
 } from "@/components/Icons";
-import Link from "next/link";
 import { ENDERECOS, SITE } from "@/lib/site";
 
-function IconLinkedin({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.75"
-      strokeLinecap="square"
-      strokeLinejoin="miter"
-      className={className}
-      aria-hidden
-    >
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
-      <rect width="4" height="12" x="2" y="9" />
-      <circle cx="4" cy="4" r="2" />
-    </svg>
-  );
-}
-
 const SOCIAL = [
-  { label: "Facebook", href: SITE.facebook, Icon: IconFacebook },
-  { label: "LinkedIn", href: SITE.linkedin, Icon: IconLinkedin },
-  { label: "Instagram", href: SITE.instagram, Icon: IconInstagram },
+  {
+    label: "Facebook",
+    href: SITE.facebook,
+    Icon: IconFacebook,
+  },
+  {
+    label: "LinkedIn",
+    href: SITE.linkedin,
+    Icon: IconLinkedin,
+  },
+  {
+    label: "Instagram",
+    href: SITE.instagram,
+    Icon: IconInstagram,
+  },
 ] as const;
 
-function formatCidadeLinha(e: (typeof ENDERECOS)[number]) {
-  const base = `${e.cidade} - ${e.uf} - CEP ${e.cep}`;
-  return e.extra ? `${base} - ${e.extra}` : base;
+const FOOTER_ENDERECOS = ENDERECOS.filter((e) =>
+  e.logradouro.includes("Juvenal Arantes"),
+).map((e) => ({
+  ...e,
+  tipo: "Galpão",
+}));
+
+function formatCidadeLinha(e: (typeof FOOTER_ENDERECOS)[number]) {
+  const extra = e.extra ? ` - ${e.extra}` : "";
+  return `${e.cidade} - ${e.uf} - CEP ${e.cep}${extra}`;
 }
 
 export function Footer() {
   return (
     <footer className="site-footer">
-      <div className="shell pt-10 pb-5">
+      <div className="shell pt-9 pb-5">
         <div className="foot-top">
-          <div className="foot-block">
-            <h6>Os endereços</h6>
-            <div className="foot-addr-grid">
-              {ENDERECOS.map((e) => (
-                <address key={`${e.logradouro}-${e.cep}`} className="foot-addr">
-                  <strong>{e.cidade}</strong>
-                  <p>{e.logradouro}</p>
-                  <p>{formatCidadeLinha(e)}</p>
-                </address>
+          <div className="foot-col foot-addresses">
+            <h6>Nossos endereços</h6>
+            <ul className="foot-address-list">
+              {FOOTER_ENDERECOS.map((e) => (
+                <li key={`${e.cidade}-${e.cep}-${e.logradouro}`}>
+                  <strong>
+                    {e.tipo} · {e.cidade}
+                  </strong>
+                  <span>{e.logradouro}</span>
+                  <span>{formatCidadeLinha(e)}</span>
+                </li>
               ))}
-            </div>
-          </div>
-
-          <div className="foot-block">
-            <h6>Telefones de contato</h6>
-            <p className="foot-sub">Fixo e WhatsApp</p>
-            <ul className="foot-phones">
-              <li>
-                <a href={SITE.phoneHref} className="foot-phone">
-                  <IconPhone />
-                  <span>{SITE.phone}</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={SITE.whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="foot-phone"
-                >
-                  <IconWhatsApp />
-                  <span>{SITE.whatsapp}</span>
-                </a>
-              </li>
             </ul>
           </div>
 
-          <div className="foot-block">
+          <div className="foot-col">
+            <h6>Telefones de contato</h6>
+            <p className="foot-col-hint">Fixo e WhatsApp</p>
+            <a href={SITE.phoneHref} className="foot-phone">
+              <IconPhone className="foot-phone-ic" />
+              {SITE.phone}
+            </a>
+            <a
+              href={SITE.whatsappHref}
+              className="foot-phone"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconWhatsApp className="foot-phone-ic" />
+              {SITE.whatsapp}
+            </a>
+          </div>
+
+          <div className="foot-col">
             <h6>Redes sociais</h6>
             <div className="foot-social">
               {SOCIAL.map(({ label, href, Icon }) => (
@@ -88,7 +85,7 @@ export function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="foot-social-btn"
+                  className="foot-social-link"
                   aria-label={label}
                 >
                   <Icon />
@@ -99,20 +96,20 @@ export function Footer() {
         </div>
 
         <div className="foot-bottom">
-          <a
-            href={SITE.developerUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="foot-dev"
-          >
-            Desenvolvido por {SITE.developerName}
-          </a>
-          <div className="foot-bottom-right">
-            <Link href="/politica-de-privacidade" className="foot-legal">
+          <div className="foot-bottom-left">
+            <a
+              href={SITE.developerUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="foot-dev"
+            >
+              Desenvolvido por {SITE.developerName}
+            </a>
+            <Link href="/politica-de-privacidade" className="foot-dev">
               Política de Privacidade
             </Link>
-            <span>Copyright © RC Transportes. (Lei 9610 de 19/02/1998)</span>
           </div>
+          <span>Copyright © {SITE.name}. (Lei 9610 de 19/02/1998)</span>
         </div>
       </div>
     </footer>

@@ -11,13 +11,13 @@ export const metadata: Metadata = {
 export default function PoliticaPrivacidadePage() {
   return (
     <>
-      <section className="pg-hero">
+      <section className="page-hero-simple">
         <div className="shell">
-          <p className="font-mono text-[11.5px] tracking-[0.08em] text-verde-escuro uppercase">
-            Legal
+          <p className="page-hero-simple__eyebrow">Legal</p>
+          <h1 className="page-hero-simple__title">Política de Privacidade</h1>
+          <p className="page-hero-simple__lead">
+            Última atualização: 23/09/2026
           </p>
-          <h1>Política de Privacidade</h1>
-          <p>Última atualização: 23/09/2026</p>
         </div>
       </section>
 

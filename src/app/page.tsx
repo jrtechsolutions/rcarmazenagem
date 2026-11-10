@@ -1,15 +1,69 @@
 import Link from "next/link";
-import { BentoGrid } from "@/components/BentoGrid";
 import { CertMarquee } from "@/components/CertMarquee";
 import { CrossLink } from "@/components/CrossLink";
-import { CutawayFlow } from "@/components/CutawayFlow";
+import { CtaBand } from "@/components/CtaBand";
 import { HeroCinematicVideo } from "@/components/HeroCinematicVideo";
+import { HomeCare } from "@/components/HomeCare";
+import { HomeDifferentials } from "@/components/HomeDifferentials";
 import { JsonLdScript } from "@/components/JsonLdScript";
 import { RevealSection } from "@/components/RevealSection";
+import { ScrollScene } from "@/components/ScrollScene";
 import { SegmentCarousel } from "@/components/SegmentCarousel";
-import { Testimonials } from "@/components/Testimonials";
+import { ServicesCarousel } from "@/components/ServicesCarousel";
+import { SplitMedia } from "@/components/SplitMedia";
+import { StatsBand } from "@/components/StatsBand";
+import { isSiteUnderConstruction } from "@/lib/construction";
 import { faqPageJsonLd } from "@/lib/schema";
-import { FAQ, SITE } from "@/lib/site";
+import { FAQ, FOTOS_ESTRUTURA, FOTOS_GALPAO, SERVICOS, SITE } from "@/lib/site";
+
+const UNDER_CONSTRUCTION = isSiteUnderConstruction();
+
+const HOME_STATS = [
+  {
+    value: "WMS",
+    label: "Controle de estoque",
+    hint: "Posição, lote e validade registrados no Senior.",
+  },
+  {
+    value: "SP + Jundiaí",
+    label: "Bases próprias",
+    hint: "Unidades para receber, guardar e expedir com o mesmo padrão.",
+  },
+  {
+    value: "24/7",
+    label: "Monitoramento do galpão",
+    hint: "Acesso e operação acompanhados de ponta a ponta.",
+  },
+  {
+    value: "8",
+    label: "Segmentos de expertise",
+    hint: "Processo próprio para cada categoria regulada.",
+  },
+] as const;
+
+const HIGHLIGHTS = [
+  "Base estruturada em São Paulo e Jundiaí",
+  "Recebimento em horário comercial",
+  "Armazenagem e transporte no mesmo grupo",
+] as const;
+
+const SERVICE_SLIDES = [
+  {
+    title: "Armazenagem regulada",
+    text: "Galpão com segregação por classe, WMS por lote e documentação pronta para auditoria.",
+  },
+  ...SERVICOS.map((s) => ({
+    title: s.titulo,
+    text: s.texto,
+  })),
+  {
+    title: "Transporte RC",
+    text: "Saída na frota do Grupo RC, com a mesma exigência documental do galpão.",
+    href: SITE.transportesUrl,
+    external: true,
+    cta: "Ver Transportes →",
+  },
+];
 
 export default function HomePage() {
   return (
@@ -26,90 +80,147 @@ export default function HomePage() {
         />
 
         <div className="hero-cinematic__content shell relative z-10 flex items-center">
-          <div className="hero-cinematic__copy max-w-[540px]">
-            <p className="font-mono text-[11.5px] tracking-[0.08em] text-white/75 uppercase">
-              Armazenagem regulada · desde {SITE.founded}
-            </p>
-            <h1 className="mt-3 font-display text-[clamp(28px,4.2vw,44px)] font-extrabold leading-[1.1] text-white">
-              Um grupo. Do galpão à entrega.
+          <div className="hero-cinematic__copy">
+            <p className="hero-eyebrow">Armazenagem regulada do Grupo RC</p>
+            <h1 className="font-display font-extrabold text-white">
+              Sua operação de armazenagem com{" "}
+              <span className="accent">mais controle e menos repasse</span>
             </h1>
-            <p className="mt-4 max-w-[420px] text-[15px] leading-relaxed text-white/85">
-              Sem repasse entre empresas. A mesma operação que guarda a carga
-              também organiza o transporte.
+            <p className="hero-lead">
+              Soluções de armazenagem para carga regulada, com rastreio por lote,
+              licenças vigentes e a mesma exigência documental da RC Transportes.
+              Um grupo do galpão à entrega.
             </p>
-            <Link
-              href="/estrutura"
-              className="btn mt-7 inline-block rounded-[9px] bg-ambar px-[22px] py-3 text-[13.5px] font-semibold shadow-[0_8px_24px_rgba(0,0,0,0.25)]"
-            >
-              Conhecer estrutura
-            </Link>
+            {UNDER_CONSTRUCTION ? null : (
+              <div className="hero-cinematic__actions">
+                <Link href="/orcamento" className="btn-pill btn-pill--solid">
+                  Fale com nosso time
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
       <CertMarquee />
 
-      <RevealSection>
+      <RevealSection className="sec-compact" stagger>
         <div className="shell">
-          <h2 className="font-mono text-[12px] tracking-[0.08em] text-mono-ink uppercase">
-            Como funciona
-          </h2>
-          <p className="mt-2 max-w-xl text-[14px] text-mono-ink">
-            Três etapas, um mesmo responsável do início ao fim.
-          </p>
-          <div className="mt-[18px]">
-            <CutawayFlow compact />
-          </div>
+          <StatsBand items={HOME_STATS} />
+          <ul className="home-highlights">
+            {HIGHLIGHTS.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </div>
       </RevealSection>
 
-      <RevealSection alt>
+      <SplitMedia
+        eyebrow="Sobre nós"
+        title="A extensão logística do seu negócio"
+        image={{
+          src: FOTOS_ESTRUTURA[0].src,
+          alt: FOTOS_ESTRUTURA[0].alt,
+        }}
+        cover={1.55}
+      >
+        <p>
+          A RC Armazém faz parte do Grupo RC para eliminar a complexidade de
+          guardar carga regulada com um fornecedor à parte. A mesma lógica de
+          rastreabilidade e documentação que você já conhece no transporte
+          agora cobre o galpão.
+        </p>
+        <p>
+          Operamos com segregação por zona, WMS Senior por lote e licenças da
+          Polícia Federal, Polícia Civil, Bombeiros e IBAMA. A habilitação
+          ANVISA está em processo de regularização.
+        </p>
+      </SplitMedia>
+
+      <RevealSection alt className="sec-compact">
         <div className="shell">
-          <div className="mb-6 max-w-2xl">
-            <p className="mb-2 font-mono text-[14px] tracking-[0.08em] text-mono-ink uppercase">
-              Segmentos
-            </p>
-            <h2 className="font-display text-[22px] font-extrabold">
-              Matéria-prima de 9 segmentos, com processo próprio pra cada um
+          <div className="mb-7 max-w-2xl">
+            <p className="sec-label">Serviços</p>
+            <h2 className="sec-title">
+              Soluções integradas para a sua cadeia de suprimentos
             </h2>
+            <p className="mt-2 text-[14.5px] text-mono-ink">
+              Do armazenamento à expedição, com serviços de manuseio no mesmo
+              padrão de compliance.
+            </p>
+          </div>
+          <ServicesCarousel items={SERVICE_SLIDES} />
+        </div>
+      </RevealSection>
+
+      <RevealSection className="sec-compact">
+        <div className="shell">
+          <div className="mb-7 max-w-2xl">
+            <p className="sec-label">Quem atendemos</p>
+            <h2 className="sec-title">
+              Expertise para o seu segmento e cuidado com a sua carga
+            </h2>
+            <p className="mt-2 text-[14.5px] text-mono-ink">
+              Cada operação é única. Adaptamos processo, segregação e
+              documentação às exigências do seu setor.
+            </p>
           </div>
           <SegmentCarousel />
         </div>
       </RevealSection>
 
-      <RevealSection>
+      <RevealSection alt className="sec-compact">
         <div className="shell">
-          <h2 className="mb-4 font-mono text-[12px] tracking-[0.08em] text-mono-ink uppercase">
-            FAQ
-          </h2>
-          <div className="divide-y divide-borda border-y border-borda">
+          <HomeCare />
+        </div>
+      </RevealSection>
+
+      <RevealSection className="sec-compact" stagger>
+        <div className="shell">
+          <div className="mb-7 max-w-2xl">
+            <p className="sec-label">Diferenciais</p>
+            <h2 className="sec-title">
+              O que otimiza a sua operação no galpão
+            </h2>
+            <p className="mt-2 text-[14.5px] text-mono-ink">
+              Controles e processos pensados para carga regulada, com o mesmo
+              rigor do transporte RC.
+            </p>
+          </div>
+          <HomeDifferentials />
+        </div>
+      </RevealSection>
+
+      <ScrollScene
+        image={{
+          src: FOTOS_GALPAO.corredor.src,
+          alt: FOTOS_GALPAO.corredor.alt,
+        }}
+        eyebrow="Estrutura"
+        title="Armazenagem estratégica, com fluxo bem organizado"
+        description="Corredores largos, endereçamento no WMS e segregação por classe. O processo fica registrado do recebimento à expedição."
+        height={0.82}
+        cover={1.5}
+      />
+
+      <RevealSection alt className="sec-compact">
+        <div className="shell">
+          <h2 className="sec-title mb-2">Perguntas frequentes</h2>
+          <p className="mb-5 max-w-xl text-[14.5px] text-mono-ink">
+            Licenças, escopo de produto, rastreio e visita ao galpão.
+          </p>
+          <div className="faq-fly">
             {FAQ.map((item) => (
-              <details key={item.q} className="group py-3.5">
-                <summary className="cursor-pointer list-none text-[14px] font-semibold marker:content-none">
+              <details key={item.q}>
+                <summary>
                   <span className="flex items-start justify-between gap-4">
                     {item.q}
-                    <span className="font-mono text-[12px] text-mono-ink group-open:hidden">
+                    <span className="font-mono text-[12px] text-mono-ink">
                       +
-                    </span>
-                    <span className="hidden font-mono text-[12px] text-mono-ink group-open:inline">
-                      −
                     </span>
                   </span>
                 </summary>
-                <p className="mt-2 max-w-[640px] text-[13.5px] text-mono-ink">
-                  {item.a}
-                  {"link" in item && item.link ? (
-                    <>
-                      {" "}
-                      <Link
-                        href={item.link.href}
-                        className="font-semibold text-verde-escuro"
-                      >
-                        {item.link.label}
-                      </Link>
-                    </>
-                  ) : null}
-                </p>
+                <p>{item.a}</p>
               </details>
             ))}
           </div>
@@ -126,35 +237,18 @@ export default function HomePage() {
         </div>
       </RevealSection>
 
-      <RevealSection alt>
-        <div className="shell">
-          <h2 className="mb-4 font-mono text-[12px] tracking-[0.08em] text-mono-ink uppercase">
-            Depoimentos
-          </h2>
-          <Testimonials />
-        </div>
-      </RevealSection>
-
-      <RevealSection>
-        <div className="shell">
-          <p className="mb-2 font-mono text-[12px] tracking-[0.08em] text-mono-ink uppercase">
-            Estrutura
-          </p>
-          <h2 className="font-display text-[22px] font-extrabold">
-            O galpão por trás da operação
-          </h2>
-          <p className="mt-2 mb-5 max-w-[640px] text-[14.5px] text-mono-ink">
-            Dimensionado pra produto regulado. Não é galpão genérico adaptado.
-            Corredores largos, sinalização de segurança em cada zona, e todo o
-            processo documentado do recebimento à expedição.
-          </p>
-          <BentoGrid href="/estrutura" />
-        </div>
-      </RevealSection>
-
-      <RevealSection alt>
+      <RevealSection className="sec-compact">
         <CrossLink compact />
       </RevealSection>
+
+      {UNDER_CONSTRUCTION ? null : (
+        <CtaBand
+          title="Pronto para reduzir a complexidade da sua armazenagem?"
+          description="A RC Armazém assume a guarda regulada para você focar no crescimento do negócio. Fale agora com o comercial."
+          cta="Solicitar orçamento"
+          href="/orcamento"
+        />
+      )}
     </>
   );
 }

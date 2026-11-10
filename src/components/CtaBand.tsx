@@ -6,17 +6,20 @@ type Props = {
   cta: string;
   href: string;
   external?: boolean;
+  description?: string;
 };
 
-export function CtaBand({ title, cta, href, external }: Props) {
-  const className =
-    "btn rounded-[9px] bg-ambar px-[18px] py-[11px] text-[13px] font-semibold whitespace-nowrap";
+export function CtaBand({ title, cta, href, external, description }: Props) {
+  const className = "btn-pill btn-pill--solid";
 
   return (
     <RevealSection>
       <div className="shell">
-        <div className="flex flex-wrap items-center justify-between gap-5 rounded-[14px] border border-[#CFE3D5] bg-[linear-gradient(120deg,#E7EFEA,#fff)] px-[26px] py-[22px]">
-          <b className="font-display text-[16px] font-bold">{title}</b>
+        <div className="cta-band-fly">
+          <div>
+            <h2>{title}</h2>
+            {description ? <p>{description}</p> : null}
+          </div>
           {external ? (
             <a
               href={href}

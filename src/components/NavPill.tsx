@@ -3,7 +3,57 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { isSiteUnderConstruction } from "@/lib/construction";
 import { NAV, SITE } from "@/lib/site";
+
+const UNDER_CONSTRUCTION = isSiteUnderConstruction();
+
+const CINEMATIC_PATHS = new Set([
+  "/",
+  "/estrutura",
+  "/quem-somos",
+  "/como-funciona",
+  "/compliance",
+  "/orcamento",
+  "/contato",
+]);
+
+function GroupBadge() {
+  return (
+    <a
+      href={SITE.transportesUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group-badge"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+        aria-hidden
+      >
+        <circle cx="8" cy="12" r="4.5" />
+        <circle cx="16" cy="12" r="4.5" opacity="0.55" />
+      </svg>
+      Parte do Grupo RC
+      <svg
+        className="arrow"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+        aria-hidden
+      >
+        <path d="M5 12h14M13 6l6 6-6 6" />
+      </svg>
+    </a>
+  );
+}
 
 function isActive(pathname: string, href: string) {
   if (href.startsWith("http")) return false;
@@ -14,6 +64,9 @@ export function NavPill() {
   const pathname = usePathname();
   const pillRef = useRef<HTMLDivElement>(null);
   const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const items = UNDER_CONSTRUCTION
+    ? NAV.filter((item) => "external" in item && item.external)
+    : NAV;
 
   const movePill = useCallback((el: HTMLElement | null) => {
     const pill = pillRef.current;
@@ -34,6 +87,7 @@ export function NavPill() {
   }, [movePill]);
 
   useEffect(() => {
+    if (items.length === 0) return;
     const id = requestAnimationFrame(() => moveToActive());
     const onResize = () => moveToActive();
     window.addEventListener("resize", onResize);
@@ -41,7 +95,9 @@ export function NavPill() {
       cancelAnimationFrame(id);
       window.removeEventListener("resize", onResize);
     };
-  }, [pathname, moveToActive]);
+  }, [pathname, moveToActive, items.length]);
+
+  if (items.length === 0) return null;
 
   return (
     <nav
@@ -50,7 +106,7 @@ export function NavPill() {
       aria-label="Principal"
     >
       <div className="nav-pill" ref={pillRef} aria-hidden />
-      {NAV.map((item, i) => {
+      {items.map((item, i) => {
         const active = isActive(pathname, item.href);
         const external = "external" in item && item.external;
         const shared = {
@@ -89,18 +145,11 @@ export function NavPill() {
 
 export function HeaderCta() {
   const pathname = usePathname();
-  const [heroVisible, setHeroVisible] = useState(
-    pathname === "/" || pathname === "/estrutura",
-  );
+  const isCinematic = CINEMATIC_PATHS.has(pathname);
+  const [overHero, setOverHero] = useState(true);
 
   useEffect(() => {
-    const cinematic = pathname === "/" || pathname === "/estrutura";
-    if (!cinematic) {
-      setHeroVisible(false);
-      return;
-    }
-
-    setHeroVisible(true);
+    if (UNDER_CONSTRUCTION || !isCinematic) return;
 
     let cancelled = false;
     let observer: IntersectionObserver | null = null;
@@ -117,7 +166,7 @@ export function HeaderCta() {
 
       observer = new IntersectionObserver(
         ([entry]) => {
-          if (!cancelled) setHeroVisible(entry.isIntersecting);
+          if (!cancelled) setOverHero(entry.isIntersecting);
         },
         { threshold: 0.3 },
       );
@@ -131,50 +180,23 @@ export function HeaderCta() {
       cancelAnimationFrame(raf);
       observer?.disconnect();
     };
-  }, [pathname]);
+  }, [pathname, isCinematic]);
+
+  const heroVisible = isCinematic && overHero;
 
   return (
     <div className="header-right hidden items-center gap-3.5 lg:flex">
-      <a
-        href={SITE.transportesUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group-badge"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="square"
-          strokeLinejoin="miter"
-          aria-hidden
+      <GroupBadge />
+      {UNDER_CONSTRUCTION ? null : (
+        <Link
+          href="/orcamento"
+          className={`header-cta${heroVisible ? " is-away" : ""}`}
+          aria-hidden={heroVisible}
+          tabIndex={heroVisible ? -1 : undefined}
         >
-          <circle cx="8" cy="12" r="4.5" />
-          <circle cx="16" cy="12" r="4.5" opacity="0.55" />
-        </svg>
-        Parte do Grupo RC
-        <svg
-          className="arrow"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.2"
-          strokeLinecap="square"
-          strokeLinejoin="miter"
-          aria-hidden
-        >
-          <path d="M5 12h14M13 6l6 6-6 6" />
-        </svg>
-      </a>
-      <Link
-        href="/orcamento"
-        className={`header-cta${heroVisible ? " is-away" : ""}`}
-        aria-hidden={heroVisible}
-        tabIndex={heroVisible ? -1 : undefined}
-      >
-        Orçamento
-      </Link>
+          Solicite um orçamento
+        </Link>
+      )}
     </div>
   );
 }

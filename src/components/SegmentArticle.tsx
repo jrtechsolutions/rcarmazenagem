@@ -20,7 +20,7 @@ import {
   type SegmentPage,
   type SegmentRef,
 } from "@/lib/seo-segmentos";
-import { SEGMENTOS, SITE } from "@/lib/site";
+import { SEGMENT_PAGE_IMAGES, SEGMENTOS, SITE } from "@/lib/site";
 
 function RefValue({ item }: { item: SegmentRef }): ReactNode {
   if (item.tip) {
@@ -230,8 +230,12 @@ export function SegmentArticle({ page }: { page: SegmentPage }) {
   const crumbs = segmentBreadcrumbs(page);
   const detail = getSegmentDetail(page.id);
   const segmento = SEGMENTOS.find((s) => s.id === page.id);
+  const segmentImage =
+    segmento?.image ?? SEGMENT_PAGE_IMAGES[page.id] ?? null;
   const faq = detail?.faq;
-  const orcamentoHref = `/orcamento?segmento=${page.id}`;
+  const orcamentoHref = SEGMENTOS.some((s) => s.id === page.id)
+    ? `/orcamento?segmento=${page.id}`
+    : "/orcamento";
 
   const anchors: [string, string][] = [["sobre", "Sobre"]];
   if (detail) {
@@ -267,17 +271,14 @@ export function SegmentArticle({ page }: { page: SegmentPage }) {
               <h1>{page.h1}</h1>
               <p className="seg-hero__lead">{page.lead}</p>
               <div className="seg-hero__cta">
-                <Link
-                  href={orcamentoHref}
-                  className="btn rounded-[9px] bg-ambar px-[20px] py-[11px] text-[13.5px] font-semibold"
-                >
+                <Link href={orcamentoHref} className="btn-pill btn-pill--solid">
                   Solicitar orçamento
                 </Link>
                 <a
                   href={SITE.whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="seg-btn-ghost"
+                  className="btn-pill btn-pill--outline-dark"
                 >
                   <IconWhatsApp />
                   Falar no WhatsApp
@@ -294,15 +295,15 @@ export function SegmentArticle({ page }: { page: SegmentPage }) {
                 ))}
               </ul>
             </div>
-            {segmento?.image ? (
+            {segmentImage ? (
               <figure className="seg-hero__media">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={segmento.image}
+                  src={segmentImage}
                   alt={`${page.serviceType} na RC Armazém`}
                   fetchPriority="high"
                 />
-                {"risco" in segmento && segmento.risco ? (
+                {segmento && "risco" in segmento && segmento.risco ? (
                   <figcaption>{segmento.risco}</figcaption>
                 ) : null}
               </figure>
@@ -518,7 +519,7 @@ export function SegmentArticle({ page }: { page: SegmentPage }) {
                 </b>
                 <Link
                   href={orcamentoHref}
-                  className="btn rounded-[9px] bg-ambar px-[18px] py-[11px] text-[13px] font-semibold whitespace-nowrap"
+                  className="btn-pill btn-pill--solid whitespace-nowrap"
                 >
                   Solicitar orçamento
                 </Link>
@@ -535,7 +536,7 @@ export function SegmentArticle({ page }: { page: SegmentPage }) {
               </p>
               <Link
                 href={orcamentoHref}
-                className="btn seg-side__btn rounded-[9px] bg-ambar text-[13px] font-semibold"
+                className="btn-pill btn-pill--solid seg-side__btn"
               >
                 Solicitar orçamento
               </Link>

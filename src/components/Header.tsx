@@ -6,9 +6,19 @@ import { useEffect, useState } from "react";
 import { LogoLockup } from "@/components/LogoLockup";
 import { HeaderCta, NavPill } from "@/components/NavPill";
 import { IconClose, IconMenu } from "@/components/Icons";
+import { isSiteUnderConstruction } from "@/lib/construction";
 import { NAV, SITE } from "@/lib/site";
 
-const CINEMATIC_PATHS = new Set(["/", "/estrutura"]);
+const UNDER_CONSTRUCTION = isSiteUnderConstruction();
+const CINEMATIC_PATHS = new Set([
+  "/",
+  "/estrutura",
+  "/quem-somos",
+  "/como-funciona",
+  "/compliance",
+  "/orcamento",
+  "/contato",
+]);
 
 function isCinematicPath(pathname: string) {
   return CINEMATIC_PATHS.has(pathname);
@@ -76,6 +86,9 @@ export function Header() {
   }, [isCinematicHero, pathname]);
 
   const transparent = isCinematicHero && overHero && !open;
+  const mobileNavItems = UNDER_CONSTRUCTION
+    ? NAV.filter((item) => "external" in item && item.external)
+    : NAV;
 
   return (
     <header
@@ -115,7 +128,7 @@ export function Header() {
           className="border-t border-borda bg-white lg:hidden"
         >
           <nav className="shell flex flex-col gap-1 py-4">
-            {NAV.map((item) => {
+            {mobileNavItems.map((item) => {
               const external = "external" in item && item.external;
               if (external) {
                 return (
@@ -172,9 +185,11 @@ export function Header() {
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </a>
-            <Link href="/orcamento" className="header-cta mt-2 text-center">
-              Orçamento
-            </Link>
+            {UNDER_CONSTRUCTION ? null : (
+              <Link href="/orcamento" className="header-cta mt-2 text-center">
+                Solicite um orçamento
+              </Link>
+            )}
           </nav>
         </div>
       ) : null}

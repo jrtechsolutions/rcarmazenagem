@@ -1,8 +1,22 @@
 import type { MetadataRoute } from "next";
+import { isSiteUnderConstruction } from "@/lib/construction";
 import { SEGMENT_PAGES } from "@/lib/seo-segmentos";
 import { SITE } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+
+  if (isSiteUnderConstruction()) {
+    return [
+      {
+        url: SITE.url,
+        lastModified: now,
+        changeFrequency: "weekly",
+        priority: 1,
+      },
+    ];
+  }
+
   const staticPaths = [
     "",
     "/estrutura",
@@ -13,8 +27,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/orcamento",
     "/politica-de-privacidade",
   ];
-
-  const now = new Date();
 
   const staticEntries = staticPaths.map((path) => ({
     url: `${SITE.url}${path}`,

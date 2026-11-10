@@ -2,7 +2,7 @@ export const SITE = {
   name: "RC Armazém",
   legalName: "RC Armazém",
   url: "https://rcarmazem.com.br",
-  transportesUrl: "https://rctransportes.netlify.app",
+  transportesUrl: "https://www.rctransportes.com.br",
   email: "cotacao@rctransportes.com.br",
   phone: "(11) 5521-8282",
   phoneHref: "tel:+551155218282",
@@ -14,7 +14,6 @@ export const SITE = {
     "https://www.linkedin.com/posts/transporterodoviaerrio-logaedstica-armazenagem-ugcPost-7373787098593648641-jgTe/",
   developerUrl: "https://www.jrtechnologysolutions.com.br/",
   developerName: "JR Technology Solutions",
-  founded: 2001,
 } as const;
 
 export const ENDERECOS = [
@@ -76,9 +75,8 @@ export const SEGMENTOS = [
   {
     id: "cosmeticos",
     nome: "Cosméticos",
-    descricao:
-      "Bases, óleos, essências e ativos da indústria cosmética, com controle por lote e validade.",
-    cert: "Rastreio por lote",
+    descricao: "Manuseio que evita avarias em embalagens sensíveis.",
+    cert: "ANVISA",
     icon: "lipstick" as const,
     image: "/segmentos/cosmeticos.jpg",
     href: "/armazenagem-materias-primas-cosmeticos",
@@ -86,83 +84,80 @@ export const SEGMENTOS = [
   {
     id: "saneantes",
     nome: "Saneantes",
-    descricao: "Tensoativos e ativos de desinfecção. Operação em processo de regularização.",
-    cert: "Em regularização",
+    descricao: "Operação compatível com produto de risco controlado.",
+    cert: "Bombeiros",
     icon: "spray" as const,
     image: "/segmentos/saneantes.jpg",
     href: "/armazenagem-saneantes",
+    risco: "Risco I e II",
   },
   {
     id: "correlatos",
     nome: "Correlatos",
-    descricao: "Polímeros grau médico, látex e componentes, com rastreio por lote e estoque bloqueado separado.",
-    cert: "Rastreio por lote",
+    descricao: "Cobertura para linhas regulamentadas pela ANVISA.",
+    cert: "ANVISA",
     icon: "stethoscope" as const,
     image: "/segmentos/correlatos.jpg",
     href: "/armazenagem-correlatos",
   },
   {
+    id: "quimicos",
+    nome: "Produtos Químicos Classificados (Perigosos)",
+    descricao:
+      "Produtos perigosos e controlados com rigor operacional, licenças ambientais e compromisso absoluto com a segurança.",
+    cert: "Polícia Federal",
+    icon: "flask" as const,
+    image: "/segmentos/quimicos.jpg",
+    href: "/armazenagem-produtos-quimicos-perigosos",
+  },
+  {
     id: "medicamentos",
-    nome: "Medicamentos",
-    descricao: "Princípios ativos, excipientes e embalagens, com processo conforme a RDC 430/2020.",
-    cert: "Farmacêutico RT",
+    nome: "Insumos Farmacêuticos e Medicamentos",
+    descricao:
+      "Cadeia de custódia rastreável do início ao fim, com insumos hospitalares e farmacêuticos.",
+    cert: "ANVISA · CRF",
     icon: "capsule" as const,
     image: "/segmentos/medicamentos.jpg",
     href: "/armazenagem-medicamentos",
   },
   {
-    id: "medicamentos-controlados",
-    nome: "Medicamentos controlados",
-    descricao:
-      "Área restrita com acesso registrado. Autorização Especial da ANVISA em processo de regularização.",
-    cert: "Polícia Federal e Civil",
-    icon: "shield" as const,
-    image: "/segmentos/medicamentos-controlados.jpg",
-    href: "/armazenagem-medicamentos-controlados",
-    risco: "Em regularização",
+    id: "alimentos",
+    nome: "Alimentos",
+    descricao: "Rigor sanitário na armazenagem de insumos e produtos acabados.",
+    cert: "ANVISA",
+    icon: "apple" as const,
+    image: "/segmentos/alimentos.jpg",
+    href: "/orcamento?segmento=alimentos",
   },
   {
-    id: "quimicos",
-    nome: "Químicos",
+    id: "eletronicos",
+    nome: "Eletroeletrônicos",
     descricao:
-      "Tóxicos, corrosivos e diversos como matéria-prima, com segregação por classe de risco e brigada treinada.",
-    cert: "Polícia Federal",
-    icon: "hazard" as const,
-    image: "/segmentos/quimicos.jpg",
-    href: "/armazenagem-produtos-quimicos-perigosos",
-    risco: "Classes 6, 8 e 9",
+      "Racks para data center e componentes de alta precisão, com proteção contra impacto e vibração.",
+    cert: "ISO 9001:2015",
+    icon: "chip" as const,
+    image: "/segmentos/eletronicos.jpg",
+    href: "/orcamento?segmento=eletronicos",
   },
   {
-    id: "resinas",
-    nome: "Resinas e química industrial",
+    id: "produtos-diversos",
+    nome: "Produtos Diversos",
     descricao:
-      "Resina epóxi, poliuretano e endurecedor com controle de classe e validade.",
-    cert: "IBAMA",
-    icon: "flask" as const,
-    image: "/segmentos/resinas.jpg",
-    href: "/armazenagem-resinas-quimica-industrial",
-  },
-  {
-    id: "polimeros",
-    nome: "Polímeros e borrachas",
-    descricao:
-      "Borracha sintética e negro de fumo com área segregada pra indústria de borracha e plástico.",
-    cert: "IBAMA",
+      "Não existe carga simples quando o compromisso é com a perfeição. Padrão de excelência de produtos regulados e sensíveis para todos os tipos de carga.",
+    cert: "ISO 9001:2015",
     icon: "package" as const,
-    image: "/segmentos/polimeros.jpg",
-    href: "/armazenagem-polimeros-borrachas-carbono",
-  },
-  {
-    id: "aditivos",
-    nome: "Aditivos e especialidades",
-    descricao:
-      "Cargas minerais, antioxidantes e aceleradores, com controle por lote e separação personalizada.",
-    cert: "Rastreio por lote",
-    icon: "drop" as const,
-    image: "/segmentos/aditivos.jpg",
-    href: "/armazenagem-aditivos-especialidades-quimicas",
+    image: "/segmentos/produtos-diversos.jpg",
+    href: "/orcamento?segmento=produtos-diversos",
   },
 ] as const;
+
+/** Imagens de páginas SEO que não entram no carrossel atual. */
+export const SEGMENT_PAGE_IMAGES: Record<string, string> = {
+  "medicamentos-controlados": "/segmentos/medicamentos-controlados.jpg",
+  resinas: "/segmentos/resinas.jpg",
+  polimeros: "/segmentos/polimeros.jpg",
+  aditivos: "/segmentos/aditivos.jpg",
+};
 
 /** `value` numérico dispara o contador; `null` mostra [ ] até o cliente confirmar. */
 export const NUMEROS: readonly {
@@ -269,7 +264,7 @@ export const PASSOS = [
 
 /** Intro da página Como funciona — fluxo no galpão + continuidade do grupo. */
 export const COMO_FUNCIONA_INTRO =
-  "Recebimento, estocagem e expedição sob a mesma operação. Se a carga precisa seguir, ela pode sair do nosso galpão direto para a frota RC — sem trocar de fornecedor no meio — ou na transportadora que você preferir.";
+  "Recebimento, estocagem e expedição sob a mesma operação. Se a carga precisa seguir, ela pode sair do nosso galpão direto para a frota RC, sem trocar de fornecedor no meio, ou na transportadora que você preferir.";
 
 /** Ponte leve Grupo RC (não substitui Quem somos). */
 export const COMO_FUNCIONA_PILARES = [
@@ -430,7 +425,7 @@ export const FOTOS_GALPAO = {
 export const STATUS_REGULARIZACAO = "Em processo de regularização";
 
 export const COMPLIANCE_INTRO =
-  "Licenças sanitárias, ambientais e de segurança para produto regulado — com processo documentado ponta a ponta, pronto para auditoria.";
+  "Licenças sanitárias, ambientais e de segurança para produto regulado, com processo documentado ponta a ponta, pronto para auditoria.";
 
 export type ComplianceItem = {
   titulo: string;
@@ -492,7 +487,7 @@ export const COMPLIANCE_PROCESS = [
     step: "02",
     titulo: "Armazenagem segregada",
     texto:
-      "Posição por tipo, risco e incompatibilidade — não é só ocupar vaga no rack.",
+      "Posição por tipo, risco e incompatibilidade. Não é só ocupar vaga no rack.",
     src: "/assets-estrutura/estrutura-corredor.jpg",
     alt: "Corredor de porta-paletes com racks",
   },
@@ -675,7 +670,6 @@ export const FAQ = [
   {
     q: "Quais licenças a RC Armazém tem?",
     a: "Polícia Federal, Polícia Civil, AVCB do Corpo de Bombeiros e licença ambiental do IBAMA. A habilitação ANVISA está em processo de regularização.",
-    link: { href: "/compliance", label: "Ver todas as certificações →" },
   },
   {
     q: "Que tipos de produto vocês armazenam?",

@@ -9,9 +9,18 @@ export function LogoLockup() {
     >
       <div className="logo-stage">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/assets-visuais/logo-simbolo.png" alt="" />
+        <img
+          className="logo-stage__symbol"
+          src="/assets-visuais/logo-simbolo.png"
+          alt=""
+        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className="logo-stage__full"
+          src="/assets-visuais/logo-completo.png"
+          alt=""
+        />
       </div>
-      <b className="wordmark">Armazém</b>
     </Link>
   );
 }

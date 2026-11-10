@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/PageHero";
+import { PageHeroMedia } from "@/components/PageHeroMedia";
 import { QuoteForm } from "@/components/QuoteForm";
 import { RevealSection } from "@/components/RevealSection";
-import { SEGMENTOS } from "@/lib/site";
+import { FOTOS_GALPAO, SEGMENTOS } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Orçamento",
@@ -22,18 +22,30 @@ export default async function OrcamentoPage({ searchParams }: Props) {
 
   return (
     <>
-      <PageHero
-        eyebrow="Orçamento"
-        title="Diga o tipo de produto e o volume estimado."
-        description="Retornamos com proposta de armazenagem. Transporte RC já vem marcado: desmarque só se a carga chegar por conta própria."
+      <PageHeroMedia
+        crumbs={[
+          { label: "Início", href: "/" },
+          { label: "Orçamento" },
+        ]}
+        eyebrow="Cotação"
+        title="Solicite um orçamento"
+        description="Diga o tipo de produto e o volume estimado. Retornamos com proposta de armazenagem. Transporte RC já vem marcado: desmarque só se a carga chegar por conta própria."
+        image={{
+          src: FOTOS_GALPAO.doca.src,
+          alt: FOTOS_GALPAO.doca.alt,
+        }}
+        align="center"
       />
-      <RevealSection alt>
-        <div className="shell">
-          <div className="mx-auto max-w-[640px] rounded-[16px] border border-borda bg-card p-5 sm:p-8">
-            <QuoteForm tipoCarga={tipoCarga} />
+
+      <div className="page-sheet">
+        <RevealSection className="sec-compact">
+          <div className="shell">
+            <div className="form-surface mx-auto max-w-[680px]">
+              <QuoteForm tipoCarga={tipoCarga} />
+            </div>
           </div>
-        </div>
-      </RevealSection>
+        </RevealSection>
+      </div>
     </>
   );
 }

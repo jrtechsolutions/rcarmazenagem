@@ -13,10 +13,10 @@ const POLITICA_GESTAO = [
 ] as const;
 
 const MISSAO =
-  "Nossa missão é armazenar produto regulado com qualidade, integridade e ética profissional — com o mesmo rigor documental que a carga exige na fábrica, respeitando o meio ambiente e tendo a segurança no trabalho como aliada.";
+  "Nossa missão é armazenar produto regulado com qualidade, integridade e ética profissional, com o mesmo rigor documental que a carga exige na fábrica, respeitando o meio ambiente e tendo a segurança no trabalho como aliada.";
 
 const VISAO =
-  "A RC Armazém tem como objetivo ser referência em armazenagem regulada, pelo aprimoramento constante da equipe e dos processos logísticos — extensão natural de quem já confia na RC no transporte.";
+  "A RC Armazém tem como objetivo ser referência em armazenagem regulada, pelo aprimoramento constante da equipe e dos processos logísticos, extensão natural de quem já confia na RC no transporte.";
 
 const VALORES = [
   "Ética",

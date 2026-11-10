@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import { Archivo, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { ConstructionBanner } from "@/components/ConstructionBanner";
 import { CookieBanner, GoogleAnalytics } from "@/components/CookieBanner";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
+import { isSiteUnderConstruction } from "@/lib/construction";
 import { SITE } from "@/lib/site";
 import "./globals.css";
+
+const underConstruction = isSiteUnderConstruction();
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -37,6 +41,9 @@ export const metadata: Metadata = {
   },
   description:
     "Armazenagem de matérias-primas para empresas: cosméticos, correlatos, insumos farmacêuticos, químicos, resinas, polímeros e aditivos. Licenças Polícia Federal, Civil, AVCB e IBAMA, WMS Senior e rastreio por lote.",
+  ...(underConstruction
+    ? { robots: { index: false, follow: false } }
+    : {}),
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png" }],
     apple: "/apple-icon.png",
@@ -58,7 +65,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="pt-BR"
       className={`${archivo.variable} ${ibmSans.variable} ${ibmMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-fundo font-sans text-texto">
+      <body
+        className={[
+          "flex min-h-full flex-col bg-fundo font-sans text-texto",
+          underConstruction ? "is-under-construction" : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
+        <ConstructionBanner />
         <JsonLd />
         <Header />
         <main className="flex-1 bg-white">{children}</main>

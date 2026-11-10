@@ -6,10 +6,17 @@ type Props = {
   children: ReactNode;
   className?: string;
   alt?: boolean;
+  /** Stagger .reveal-child elements inside when section enters view. */
+  stagger?: boolean;
 };
 
 /** Scroll-reveal: opacity 0 → .in-view (IntersectionObserver threshold 0.15). */
-export function RevealSection({ children, className = "", alt }: Props) {
+export function RevealSection({
+  children,
+  className = "",
+  alt,
+  stagger,
+}: Props) {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -27,7 +34,7 @@ export function RevealSection({ children, className = "", alt }: Props) {
           if (e.isIntersecting) e.target.classList.add("in-view");
         });
       },
-      { threshold: 0.15 },
+      { threshold: 0.12 },
     );
 
     observer.observe(el);
@@ -37,7 +44,7 @@ export function RevealSection({ children, className = "", alt }: Props) {
   return (
     <section
       ref={ref}
-      className={`sec ${alt ? "sec-alt" : ""} ${className}`.trim()}
+      className={`sec ${alt ? "sec-alt" : ""} ${stagger ? "sec-stagger" : ""} ${className}`.trim()}
     >
       {children}
     </section>

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { SegmentIcon } from "@/components/Icons";
 import { SEGMENTOS } from "@/lib/site";
@@ -64,7 +63,7 @@ export function SegmentCarousel() {
       <div className="carousel" ref={ref}>
         {SEGMENTOS.map((s) => (
           <article key={s.id} className="seg-card">
-            <Link href={s.href} className="seg-card__link" draggable={false}>
+            <div className="seg-card__link" draggable={false}>
               <div className="seg-photo">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={s.image} alt="" draggable={false} />
@@ -78,9 +77,8 @@ export function SegmentCarousel() {
               <div className="seg-body">
                 <h5>{s.nome}</h5>
                 <p>{s.descricao}</p>
-                <span className="ref">{s.cert}</span>
               </div>
-            </Link>
+            </div>
           </article>
         ))}
       </div>
